@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAI – Konzept · Automatisierung · Internet</title>
+  <title>Studio KAI — Webdesign & KI-Systeme</title>
   <style>
     :root {
-      --bg: #0f1115;
-      --card: #181b22;
-      --border: #2a2f3a;
-      --text: #f3f4f6;
-      --muted: #9ca3af;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #5e5e66;
+      --border: #e6e6ea;
+      --accent: #111111;
+      --accent-hover: #2d2d32;
+      --badge-bg: #f0f0f4;
+      --radius: 16px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
     }
 
-    header {
+    .container {
       max-width: 960px;
-      width: 100%;
       margin: 0 auto;
-      padding: 28px 20px;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 28px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -43,317 +47,464 @@
     }
 
     .logo {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
     }
 
-    .logo span {
-      color: var(--accent);
+    .header-cta {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      transition: all 0.2s ease;
     }
 
-    main {
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 64px 20px 120px;
-      flex: 1;
+    .header-cta:hover {
+      border-color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 84px 0 64px;
+      max-width: 680px;
     }
 
     .badge {
       display: inline-block;
-      background: rgba(59, 130, 246, 0.14);
-      color: #93c5fd;
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      padding: 6px 14px;
+      background: var(--badge-bg);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.15;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      margin-bottom: 20px;
     }
 
-    .subtitle {
+    .hero p {
+      font-size: 1.12rem;
       color: var(--muted);
-      font-size: 1.15rem;
-      max-width: 640px;
       margin-bottom: 34px;
+      max-width: 580px;
     }
 
-    .cta-btn {
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
       background: var(--accent);
-      color: #fff;
+      color: #ffffff;
       border: none;
-      padding: 14px 26px;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s ease;
     }
 
-    .cta-btn:hover {
+    .btn-primary:hover {
       background: var(--accent-hover);
     }
 
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text);
+    }
+
+    /* Leistungen */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
-      margin-top: 64px;
+      padding: 20px 0 80px;
     }
 
     .card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
+      border-radius: var(--radius);
+      padding: 28px;
     }
 
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+    .card h2 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
     }
 
     .card p {
-      color: var(--muted);
       font-size: 0.95rem;
-    }
-
-    footer {
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 24px 20px;
-      border-top: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.85rem;
     }
 
-    /* Chat Widget */
-    .chat-toggle {
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* KAI Chat Box */
+    .chat-launcher {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 24px;
+      bottom: 24px;
       background: var(--accent);
-      color: #fff;
+      color: #ffffff;
       border: none;
       border-radius: 999px;
       padding: 14px 22px;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+      z-index: 999;
+      transition: transform 0.18s ease, background 0.18s ease;
     }
 
-    .chat-toggle:hover {
+    .chat-launcher:hover {
       background: var(--accent-hover);
+      transform: translateY(-1px);
     }
 
-    .chat-box {
+    .chat-window {
       position: fixed;
-      right: 22px;
-      bottom: 82px;
-      width: 360px;
-      max-width: calc(100vw - 44px);
-      height: 470px;
-      background: var(--card);
+      right: 24px;
+      bottom: 84px;
+      width: min(390px, calc(100vw - 32px));
+      height: 500px;
+      max-height: calc(100vh - 110px);
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
       display: none;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
       z-index: 1000;
     }
 
-    .chat-box.open {
+    .chat-window.open {
       display: flex;
     }
 
     .chat-header {
-      padding: 14px 16px;
-      background: #12151b;
+      padding: 16px 18px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: var(--surface);
+    }
+
+    .chat-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-title {
       font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .chat-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
     }
 
     .chat-close {
       background: none;
       border: none;
+      font-size: 1.3rem;
       color: var(--muted);
-      font-size: 1.2rem;
       cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
     }
 
     .chat-messages {
       flex: 1;
-      padding: 14px;
+      padding: 16px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      font-size: 0.92rem;
+      background: #fcfcfd;
     }
 
     .msg {
-      padding: 10px 14px;
-      border-radius: 12px;
-      max-width: 85%;
+      max-width: 84%;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+      line-height: 1.48;
       white-space: pre-wrap;
+      word-break: break-word;
     }
 
     .msg.bot {
-      background: #222733;
       align-self: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
     }
 
     .msg.user {
-      background: var(--accent);
-      color: #fff;
       align-self: flex-end;
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .msg.error {
+      align-self: flex-start;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: #9b2c2c;
+      font-size: 0.85rem;
     }
 
     .chat-form {
-      display: flex;
+      padding: 12px;
       border-top: 1px solid var(--border);
-      background: #12151b;
+      background: var(--surface);
+      display: flex;
+      gap: 8px;
     }
 
-    .chat-form input {
+    .chat-input {
       flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      padding: 14px;
-      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 0.92rem;
       outline: none;
+      font-family: inherit;
     }
 
-    .chat-form button {
+    .chat-input:focus {
+      border-color: var(--text);
+    }
+
+    .chat-send {
       background: var(--accent);
-      color: #fff;
+      color: #ffffff;
       border: none;
-      padding: 0 18px;
-      font-weight: 600;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 500;
       cursor: pointer;
+    }
+
+    .chat-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo"><span>KAI</span> · AGENTUR</div>
-    <div style="color: var(--muted); font-size: 0.9rem;">Konzept · Automatisierung · Internet</div>
-  </header>
 
-  <main>
-    <div class="badge" id="source-badge">KI-Lösungen für den Mittelstand</div>
-    <h1>Klare Websites &amp; smarte KI-Assistenten, die Kunden gewinnen.</h1>
-    <p class="subtitle">
-      Wir verbinden modernes Webdesign mit praxisnaher Automatisierung – damit Anfragen rund um die Uhr beantwortet werden und Ihr Betrieb spürbar Zeit spart.
-    </p>
-    <button class="cta-btn" onclick="openChat()">Direkt mit KAI sprechen</button>
+  <div class="container">
+    <header>
+      <div class="logo">STUDIO KAI</div>
+      <a href="mailto:kontakt@deine-agentur.de" class="header-cta">Projekt anfragen</a>
+    </header>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Konzept</h3>
-        <p>Klare Positionierung und digitale Abläufe ohne unnötigen Ballast – verständlich und messbar.</p>
-      </div>
-      <div class="card">
-        <h3>Automatisierung</h3>
-        <p>KI-Chatbots und smarte Workflows, die Kundenfragen sofort beantworten und Termine vorbereiten.</p>
-      </div>
-      <div class="card">
-        <h3>Internet</h3>
-        <p>Schnelle, minimalistische Websites, die auf jedem Smartphone überzeugen und Vertrauen schaffen.</p>
-      </div>
-    </div>
-  </main>
+    <main>
+      <section class="hero">
+        <span class="badge" id="source-badge">Digitale Marken & KI-Systeme</span>
+        <h1>Klare Websites, die aus Besuchern Kunden machen.</h1>
+        <p>
+          Wir gestalten reduzierte, schnelle Webauftritte und integrieren intelligente KI-Assistenten, die Fragen sofort beantworten und Anfragen vorqualifizieren.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="hero-chat-btn">Frag KAI direkt</button>
+          <a href="mailto:kontakt@deine-agentur.de" class="btn-secondary">Erstgespräch sichern</a>
+        </div>
+      </section>
 
-  <footer>
-    © 2026 KAI – Konzept · Automatisierung · Internet
-  </footer>
+      <section class="grid">
+        <article class="card">
+          <h2>Minimalistisches Webdesign</h2>
+          <p>Ohne überladene Effekte: Fokus auf klare Botschaften, schnelle Ladezeiten und perfekte Darstellung auf jedem Gerät.</p>
+        </article>
+        <article class="card">
+          <h2>KI-Assistenten wie KAI</h2>
+          <p>Maßgeschneiderte Chat-Systeme auf Basis moderner Sprachmodelle – trainiert auf deine Leistungen und deinen Stil.</p>
+        </article>
+        <article class="card">
+          <h2>Messbare Conversion</h2>
+          <p>Vom Visitenkarten-QR-Code bis zur direkten Terminanfrage: Jedes Element hat ein klares Ziel.</p>
+        </article>
+      </section>
+    </main>
 
-  <button class="chat-toggle" onclick="toggleChat()">Frag KAI</button>
+    <footer>
+      <span>© 2026 Studio KAI</span>
+      <span><a href="mailto:kontakt@deine-agentur.de">kontakt@deine-agentur.de</a></span>
+    </footer>
+  </div>
 
-  <div class="chat-box" id="chat-box">
+  <!-- KAI Chat Widget -->
+  <button class="chat-launcher" id="chat-toggle">Frag KAI</button>
+
+  <div class="chat-window" id="chat-window" aria-label="Chat mit KAI">
     <div class="chat-header">
-      <span>KAI Assistent</span>
-      <button class="chat-close" onclick="toggleChat()">×</button>
+      <div class="chat-title-wrap">
+        <div class="chat-title"><span class="status-dot"></span> KAI · Agentur-Assistent</div>
+        <div class="chat-subtitle">Antwortet in Sekunden</div>
+      </div>
+      <button class="chat-close" id="chat-close" aria-label="Chat schließen">×</button>
     </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="msg bot" id="welcome-msg">Hallo! Ich bin KAI. Wie kann ich Ihrem Unternehmen heute helfen?</div>
-    </div>
-    <form class="chat-form" onsubmit="sendMessage(event)">
-      <input type="text" id="chat-input" placeholder="Frage eingeben..." required />
-      <button type="submit">Senden</button>
+
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <form class="chat-form" id="chat-form">
+      <input
+        type="text"
+        class="chat-input"
+        id="chat-input"
+        placeholder="Schreib KAI eine Nachricht..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="chat-send" id="chat-send">Senden</button>
     </form>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    if (params.get("source") === "karte") {
-      document.getElementById("source-badge").textContent = "Willkommen über unsere Visitenkarte";
-      document.getElementById("welcome-msg").textContent =
-        "Schön, dass Sie den QR-Code gescannt haben! Fragen Sie mich gern direkt, wie KAI Ihren Betrieb unterstützen kann.";
+    const source = params.get('source') || 'web';
+
+    const sourceBadge = document.getElementById('source-badge');
+    const chatWindow = document.getElementById('chat-window');
+    const chatToggle = document.getElementById('chat-toggle');
+    const heroChatBtn = document.getElementById('hero-chat-btn');
+    const chatClose = document.getElementById('chat-close');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+
+    function addMessage(text, type = 'bot') {
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return div;
     }
 
-    function toggleChat() {
-      document.getElementById("chat-box").classList.toggle("open");
+    // Begrüßung je nach Herkunft (?source=karte oder normal)
+    if (source === 'karte') {
+      sourceBadge.textContent = 'Schön, dass du unsere Karte gescannt hast';
+      addMessage('Hey! Schön, dass du über unsere Visitenkarte hier bist. Wie kann ich dir weiterhelfen – Website, KI-Assistent oder kurzes Kennenlernen?', 'bot');
+    } else {
+      addMessage('Hallo! Ich bin KAI. Frag mich gerne alles zu unseren Websites, KI-Lösungen oder Preisen.', 'bot');
     }
 
     function openChat() {
-      document.getElementById("chat-box").classList.add("open");
-      document.getElementById("chat-input").focus();
+      chatWindow.classList.add('open');
+      chatInput.focus();
     }
 
-    async function sendMessage(e) {
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+      if (chatWindow.classList.contains('open')) chatInput.focus();
+    });
+
+    heroChatBtn.addEventListener('click', openChat);
+    chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+    chatForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const input = document.getElementById("chat-input");
-      const messages = document.getElementById("chat-messages");
-      const text = input.value.trim();
+      const text = chatInput.value.trim();
       if (!text) return;
 
-      const userDiv = document.createElement("div");
-      userDiv.className = "msg user";
-      userDiv.textContent = text;
-      messages.appendChild(userDiv);
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
+      addMessage(text, 'user');
+      chatInput.value = '';
+      chatInput.disabled = true;
+      chatSend.disabled = true;
 
-      const botDiv = document.createElement("div");
-      botDiv.className = "msg bot";
-      botDiv.textContent = "KAI schreibt...";
-      messages.appendChild(botDiv);
-      messages.scrollTop = messages.scrollHeight;
+      const loadingMsg = addMessage('KAI schreibt...', 'bot');
 
       try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text }),
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, source })
         });
 
-        const data = await res.json();
-        if (!res.ok) {
-          botDiv.textContent = data.error || "Fehler beim Abrufen der Antwort.";
-        } else {
-          botDiv.textContent = data.reply;
+        const rawText = await response.text();
+        let data = {};
+        try {
+          data = JSON.parse(rawText);
+        } catch {
+          throw new Error(`Server antwortete mit Status ${response.status} (kein JSON).`);
         }
+
+        if (!response.ok) {
+          throw new Error(data.details || data.error || `HTTP-Fehler ${response.status}`);
+        }
+
+        loadingMsg.textContent = data.reply || 'Keine Antwort erhalten.';
       } catch (err) {
-        botDiv.textContent = "Verbindungsfehler – bitte versuchen Sie es gleich noch einmal.";
+        loadingMsg.className = 'msg error';
+        loadingMsg.textContent = `Fehler: ${err.message}`;
+      } finally {
+        chatInput.disabled = false;
+        chatSend.disabled = false;
+        chatInput.focus();
       }
-      messages.scrollTop = messages.scrollHeight;
-    }
+    });
   </script>
 </body>
 </html>
