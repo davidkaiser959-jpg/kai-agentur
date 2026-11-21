@@ -1,0 +1,206 @@
+HTML
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAI – Konzept · Automatisierung · Internet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 sticky top-0 bg-slate-950/90 backdrop-blur z-30">
+    <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white text-lg">K</div>
+        <div>
+          <span class="font-bold tracking-wide text-lg block leading-none">KAI</span>
+          <span class="text-xs text-slate-400">Konzept · Automatisierung · Internet</span>
+        </div>
+      </div>
+      <button onclick="openChat()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
+        KI-Assistent testen
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-5 pt-14 pb-16 md:pt-20 md:pb-24">
+    <div class="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-medium mb-5">
+      24/7 Digitale Mitarbeiter für Ihr Unternehmen
+    </div>
+    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+      Ihre Website beantwortet Kundenfragen &amp; bucht Termine – <span class="text-indigo-400">rund um die Uhr.</span>
+    </h1>
+    <p class="mt-5 text-slate-300 text-lg max-w-2xl leading-relaxed">
+      Wir entwickeln maßgeschneiderte KI-Chatbots, trainiert auf Ihre eigenen Leistungen, Preise und Abläufe. Weniger Telefon-Unterbrechungen, mehr qualifizierte Anfragen.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+      <button onclick="openChat()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-lg shadow-indigo-600/20">
+        Jetzt live im Chat ausprobieren →
+      </button>
+      <a href="#vorteile" class="border border-slate-700 hover:border-slate-500 text-slate-200 font-medium px-6 py-3.5 rounded-xl text-center transition">
+        So funktioniert’s
+      </a>
+    </div>
+  </section>
+
+  <!-- Vorteile -->
+  <section id="vorteile" class="max-w-5xl mx-auto px-5 py-12 border-t border-slate-800/80">
+    <h2 class="text-2xl font-bold mb-8">Warum ein eigener KI-Assistent von KAI?</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-slate-900/70 border border-slate-800 p-6 rounded-2xl">
+        <div class="text-indigo-400 font-bold text-sm mb-2">01 · KONZEPT</div>
+        <h3 class="font-semibold text-lg mb-2">Individuell auf Sie trainiert</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Kein Standard-Bot von der Stange: Ihr Assistent kennt Ihre Angebote, Öffnungszeiten und Antworten auf typische Kundenfragen.</p>
+      </div>
+      <div class="bg-slate-900/70 border border-slate-800 p-6 rounded-2xl">
+        <div class="text-indigo-400 font-bold text-sm mb-2">02 · AUTOMATISIERUNG</div>
+        <h3 class="font-semibold text-lg mb-2">Leads &amp; Termine statt Leerlauf</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Interessenten erhalten sofort kompetente Antworten und werden direkt zur Terminbuchung oder Rückrufanfrage geführt.</p>
+      </div>
+      <div class="bg-slate-900/70 border border-slate-800 p-6 rounded-2xl">
+        <div class="text-indigo-400 font-bold text-sm mb-2">03 · INTERNET</div>
+        <h3 class="font-semibold text-lg mb-2">Schnell integriert &amp; DSGVO-bewusst</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Passt sich optisch Ihrer Website an und ist innerhalb weniger Tage einsatzbereit – inklusive sauberer Datenschutz-Einbindung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-5xl mx-auto px-5 py-14">
+    <div class="bg-gradient-to-r from-indigo-950 to-slate-900 border border-indigo-500/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <h2 class="text-2xl font-bold">Neugierig, wie das auf Ihrer Website aussieht?</h2>
+        <p class="text-slate-300 mt-2 text-sm md:text-base">Fragen Sie direkt unseren KI-Assistenten unten rechts – er zeigt Ihnen sofort Beispiele für Ihre Branche.</p>
+      </div>
+      <button onclick="openChat()" class="bg-white text-slate-950 hover:bg-slate-200 font-semibold px-6 py-3 rounded-xl shrink-0 transition">
+        Chat starten
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer (Platzhalter für dein Impressum) -->
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+    <p>© 2026 KAI – Konzept · Automatisierung · Internet</p>
+    <p class="mt-2">
+      <a href="#impressum" onclick="alert('Hier dein Impressum & Datenschutzerklärung verlinken')" class="underline hover:text-slate-300">Impressum &amp; Datenschutz</a>
+    </p>
+  </footer>
+
+  <!-- Floating Chat Button -->
+  <button id="chat-toggle" onclick="toggleChat()" aria-label="Chat öffnen"
+    class="fixed bottom-5 right-5 z-40 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-3.5 rounded-full shadow-2xl flex items-center gap-2 font-medium transition">
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span>Frag KAI</span>
+  </button>
+
+  <!-- Chat Window -->
+  <div id="chat-box" class="hidden fixed bottom-20 right-4 left-4 sm:left-auto sm:right-5 sm:w-96 z-50 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden" style="height: 500px; max-height: 78vh;">
+    <div class="bg-indigo-600 px-4 py-3 flex items-center justify-between">
+      <div>
+        <div class="font-bold text-white text-sm">KAI · Digitaler Assistent</div>
+        <div class="text-indigo-100 text-xs">Online · Antwortet sofort</div>
+      </div>
+      <button onclick="toggleChat()" class="text-white/80 hover:text-white text-lg font-bold px-2">✕</button>
+    </div>
+
+    <div class="bg-slate-800/70 px-3 py-1.5 text-[11px] text-slate-400 border-b border-slate-800">
+      Hinweis: KI-gestützter Assistent. Bitte keine sensiblen Daten eingeben.
+    </div>
+
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 text-sm"></div>
+
+    <!-- Quick Replies -->
+    <div id="quick-replies" class="px-3 pb-2 flex flex-wrap gap-1.5">
+      <button onclick="sendQuick('Was bringt mir ein KI-Chatbot für mein Unternehmen?')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg border border-slate-700 transition">Nutzen für meine Branche?</button>
+      <button onclick="sendQuick('Was kostet ein eigener KI-Assistent?')" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1.5 rounded-lg border border-slate-700 transition">Kosten &amp; Ablauf?</button>
+    </div>
+
+    <form onsubmit="handleSend(event)" class="p-3 border-t border-slate-800 flex gap-2 bg-slate-950">
+      <input id="chat-input" type="text" placeholder="Ihre Frage eingeben..." required
+        class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-indigo-500" />
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm font-medium transition">
+        Senden
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    const messagesEl = document.getElementById('chat-messages');
+    const inputEl = document.getElementById('chat-input');
+    const history = [];
+
+    const isFromCard = new URLSearchParams(window.location.search).get('source') === 'karte';
+    const welcomeText = isFromCard
+      ? 'Hallo und willkommen! Schön, dass Sie den QR-Code auf meiner Visitenkarte gescannt haben. Ich bin KAI – stellen Sie mir gerne direkt eine Frage, um zu testen, wie ich auch Ihre Kunden beraten kann!'
+      : 'Hallo! Ich bin KAI, der digitale Assistent von Konzept · Automatisierung · Internet. Wie kann ich Ihnen heute helfen?';
+
+    function addMessage(role, text) {
+      history.push({ role, text });
+      const wrap = document.createElement('div');
+      wrap.className = role === 'user' ? 'flex justify-end' : 'flex justify-start';
+      const bubble = document.createElement('div');
+      bubble.className = role === 'user'
+        ? 'bg-indigo-600 text-white px-3.5 py-2.5 rounded-2xl rounded-br-sm max-w-[85%] whitespace-pre-wrap'
+        : 'bg-slate-800 text-slate-100 px-3.5 py-2.5 rounded-2xl rounded-bl-sm max-w-[85%] whitespace-pre-wrap';
+      bubble.textContent = text;
+      wrap.appendChild(bubble);
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return bubble;
+    }
+
+    addMessage('model', welcomeText);
+
+    function openChat() {
+      chatBox.classList.remove('hidden');
+      inputEl.focus();
+    }
+
+    function toggleChat() {
+      chatBox.classList.toggle('hidden');
+      if (!chatBox.classList.contains('hidden')) inputEl.focus();
+    }
+
+    if (isFromCard) {
+      setTimeout(openChat, 600);
+    }
+
+    function sendQuick(text) {
+      document.getElementById('quick-replies').classList.add('hidden');
+      sendMessage(text);
+    }
+
+    async function handleSend(e) {
+      e.preventDefault();
+      const text = inputEl.value.trim();
+      if (!text) return;
+      inputEl.value = '';
+      document.getElementById('quick-replies').classList.add('hidden');
+      await sendMessage(text);
+    }
+
+    async function sendMessage(text) {
+      addMessage('user', text);
+      const loadingBubble = addMessage('model', 'KAI schreibt...');
+      history.pop(); // Platzhalter wieder entfernen
+
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ history }),
+        });
+        const data = await res.json();
+        loadingBubble.textContent = data.reply;
+        history.push({ role: 'model', text: data.reply });
+      } catch (err) {
+        loadingBubble.textContent = 'Verbindungsfehler. Bitte versuchen Sie es gleich noch einmal.';
+      }
+    }
+  </script>
+</body>
+</html>
