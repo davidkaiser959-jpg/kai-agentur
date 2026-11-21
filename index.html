@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAI-Agentur — Minimalistisches Webdesign & KI-Systeme</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111111;
+      --muted: #5c5c64;
+      --border: #e5e5ea;
+      --accent: #111111;
+      --accent-hover: #2c2c32;
+      --badge-bg: #f0f0f4;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .header-cta {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      transition: border-color 0.2s ease;
+    }
+
+    .header-cta:hover {
+      border-color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 64px;
+      max-width: 680px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 4.5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin-bottom: 34px;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 20px 0 80px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .card h2 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .chat-launcher {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+      z-index: 999;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .chat-launcher:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .chat-window {
+      position: fixed;
+      right: 24px;
+      bottom: 84px;
+      width: min(390px, calc(100vw - 32px));
+      height: 500px;
+      max-height: calc(100vh - 110px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .chat-window.open {
+      display: flex;
+    }
+
+    .chat-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+
+    .chat-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .chat-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fcfcfd;
+    }
+
+    .msg {
+      max-width: 84%;
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+      line-height: 1.48;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .msg.error {
+      align-self: flex-start;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: #9b2c2c;
+      font-size: 0.85rem;
+    }
+
+    .chat-form {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 0.92rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .chat-input:focus {
+      border-color: var(--text);
+    }
+
+    .chat-send {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .chat-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo">KAI-Agentur</div>
+      <a href="mailto:kontakt@kai-agentur.de" class="header-cta">Projekt anfragen</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="badge" id="source-badge">KAI-Agentur · Web & KI</span>
+        <h1>Klare Websites, die aus Besuchern Kunden machen.</h1>
+        <p>
+          Wir gestalten reduzierte, schnelle Webauftritte und integrieren intelligente KI-Assistenten, die Fragen sofort beantworten und Anfragen vorqualifizieren.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" id="hero-chat-btn">Frag KAI direkt</button>
+          <a href="mailto:kontakt@kai-agentur.de" class="btn-secondary">Erstgespräch sichern</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Minimalistisches Webdesign</h2>
+          <p>Ohne überladene Effekte: Fokus auf klare Botschaften, schnelle Ladezeiten und perfekte Darstellung auf jedem Gerät.</p>
+        </article>
+        <article class="card">
+          <h2>KI-Assistenten wie KAI</h2>
+          <p>Maßgeschneiderte Chat-Systeme auf Basis moderner Sprachmodelle – trainiert auf deine Leistungen und deinen Stil.</p>
+        </article>
+        <article class="card">
+          <h2>Messbare Conversion</h2>
+          <p>Vom Visitenkarten-QR-Code bis zur direkten Terminanfrage: Jedes Element hat ein klares Ziel.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 KAI-Agentur</span>
+      <span><a href="mailto:kontakt@kai-agentur.de">kontakt@kai-agentur.de</a></span>
+    </footer>
+  </div>
+
+  <!-- KAI Chat Widget -->
+  <button class="chat-launcher" id="chat-toggle">Frag KAI</button>
+
+  <div class="chat-window" id="chat-window" aria-label="Chat mit KAI">
+    <div class="chat-header">
+      <div class="chat-title-wrap">
+        <div class="chat-title"><span class="status-dot"></span> KAI · KAI-Agentur</div>
+        <div class="chat-subtitle">Antwortet in Sekunden</div>
+      </div>
+      <button class="chat-close" id="chat-close" aria-label="Chat schließen">×</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <form class="chat-form" id="chat-form">
+      <input
+        type="text"
+        class="chat-input"
+        id="chat-input"
+        placeholder="Schreib KAI eine Nachricht..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="chat-send" id="chat-send">Senden</button>
+    </form>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get('source') || 'web';
+
+    const sourceBadge = document.getElementById('source-badge');
+    const chatWindow = document.getElementById('chat-window');
+    const chatToggle = document.getElementById('chat-toggle');
+    const heroChatBtn = document.getElementById('hero-chat-btn');
+    const chatClose = document.getElementById('chat-close');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+
+    function addMessage(text, type = 'bot') {
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return div;
+    }
+
+    if (source === 'karte') {
+      sourceBadge.textContent = 'Schön, dass du unsere Karte gescannt hast';
+      addMessage('Hey! Schön, dass du über unsere Visitenkarte zur KAI-Agentur gefunden hast. Wie kann ich dir weiterhelfen – Website, KI-Assistent oder kurzes Kennenlernen?', 'bot');
+    } else {
+      addMessage('Hallo! Ich bin KAI von der KAI-Agentur. Frag mich gerne alles zu unseren Websites, KI-Lösungen oder Preisen.', 'bot');
+    }
+
+    function openChat() {
+      chatWindow.classList.add('open');
+      chatInput.focus();
+    }
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('open');
+      if (chatWindow.classList.contains('open')) chatInput.focus();
+    });
+
+    heroChatBtn.addEventListener('click', openChat);
+    chatClose.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'user');
+      chatInput.value = '';
+      chatInput.disabled = true;
+      chatSend.disabled = true;
+
+      const loadingMsg = addMessage('KAI schreibt...', 'bot');
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, source })
+        });
+
+        const rawText = await response.text();
+        let data = {};
+        try {
+          data = JSON.parse(rawText);
+        } catch {
+          throw new Error(`Server antwortete mit Status ${response.status} (kein JSON).`);
+        }
+
+        if (!response.ok) {
+          throw new Error(data.details || data.error || `HTTP-Fehler ${response.status}`);
+        }
+
+        loadingMsg.textContent = data.reply || 'Keine Antwort erhalten.';
+      } catch (err) {
+        loadingMsg.className = 'msg error';
+        loadingMsg.textContent = `Fehler: ${err.message}`;
+      } finally {
+        chatInput.disabled = false;
+        chatSend.disabled = false;
+        chatInput.focus();
+      }
+    });
+  </script>
+</body>
+</html>
