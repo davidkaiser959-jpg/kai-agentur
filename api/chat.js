@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         : 'Du bist KAI, der freundliche digitale Assistent einer minimalistischen Web- und KI-Agentur. Antworte kurz, klar, sympathisch und auf Deutsch.';
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.8-flash',
       contents: message,
       config: {
         systemInstruction,
