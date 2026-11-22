@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAI-Agentur | K.A.I. – Kunden. Automatisch. Informieren.</title>
-  <meta name="description" content="K.A.I. (Kunden. Automatisch. Informieren.) – Intelligente digitale Kundenassistenten für lokale Unternehmen in Lamspringe, Niedersachsen und ganz Deutschland." />
+  <title>KAI | Kunden - Automatisch - Informieren</title>
+  <meta name="description" content="KAI – Kunden - Automatisch - Informieren. Intelligente digitale Kundenassistenten für lokale Unternehmen." />
   <style>
     :root {
       --bg: #0b1120;
@@ -46,7 +46,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(11, 17, 32, 0.9);
+      background: rgba(11, 17, 32, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
@@ -55,16 +55,29 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 70px;
+      height: 76px;
     }
 
     .logo {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
     }
 
-    .logo span { color: var(--primary); }
+    .logo-main {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
 
     .nav-links {
       display: flex;
@@ -103,7 +116,7 @@
 
     /* Hero */
     .hero {
-      padding: 80px 0 64px;
+      padding: 84px 0 68px;
       text-align: center;
     }
 
@@ -202,71 +215,178 @@
       font-size: 14px;
     }
 
-    /* Live Demo Split */
-    .demo-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .demo-info h2 {
-      font-size: 30px;
-      margin-bottom: 14px;
-    }
-
-    .demo-info p {
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .check-list {
-      list-style: none;
+    /* Demo Banner */
+    .demo-banner {
+      background: var(--bg-card);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 38px 28px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .check-list li {
+    .demo-banner-text {
+      max-width: 640px;
+    }
+
+    .demo-banner-text h2 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .demo-banner-text p {
+      color: var(--text-muted);
       font-size: 15px;
-      color: #e2e8f0;
     }
 
-    .check-list li::before {
-      content: "✓ ";
-      color: var(--primary);
+    /* Contact Box */
+    .contact-card {
+      background: linear-gradient(135deg, #131c31 0%, #1e293b 100%);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 40px 28px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 26px;
+    }
+
+    .contact-methods {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 90px;
+      margin-top: 32px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* Floating Chat Launcher Button */
+    .chat-launcher {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: 15px;
       font-weight: 700;
-      margin-right: 6px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.45);
+      transition: transform 0.2s, background 0.2s;
     }
 
-    /* Chat Widget */
-    .chat-box {
-      width: 100%;
-      max-width: 460px;
-      margin: 0 auto;
+    .chat-launcher:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .chat-launcher-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    /* Floating Chat Window */
+    .chat-widget {
+      position: fixed;
+      bottom: 84px;
+      right: 22px;
+      z-index: 1000;
+      width: calc(100vw - 32px);
+      max-width: 400px;
+      height: 520px;
+      max-height: calc(100vh - 110px);
       background: #1e293b;
       border: 1px solid #334155;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-      display: flex;
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6);
+      display: none;
       flex-direction: column;
-      height: 520px;
+    }
+
+    .chat-widget.open {
+      display: flex;
     }
 
     .chat-header {
       background: var(--primary-hover);
-      padding: 15px 20px;
-      font-weight: 700;
-      font-size: 16px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .chat-header span {
+    .chat-header-title {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .chat-header-title span {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
       opacity: 0.92;
+    }
+
+    .chat-close {
+      background: rgba(255, 255, 255, 0.16);
+      border: none;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.28);
     }
 
     #messages {
@@ -334,60 +454,16 @@
       cursor: not-allowed;
     }
 
-    /* Contact Box */
-    .contact-card {
-      background: linear-gradient(135deg, #131c31 0%, #1e293b 100%);
-      border: 1px solid #334155;
-      border-radius: 20px;
-      padding: 40px 28px;
-      text-align: center;
-    }
-
-    .contact-card h2 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .contact-card p {
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto 26px;
-    }
-
-    .contact-methods {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-      margin-top: 32px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a:hover { color: var(--text); }
-
-    @media (max-width: 820px) {
-      .demo-wrapper { grid-template-columns: 1fr; }
+    @media (max-width: 720px) {
       .nav-links a:not(.btn) { display: none; }
+      .chat-widget {
+        right: 16px;
+        bottom: 80px;
+      }
+      .chat-launcher {
+        right: 16px;
+        bottom: 16px;
+      }
     }
   </style>
 </head>
@@ -395,11 +471,13 @@
 
 <header>
   <div class="container nav">
-    <a href="#" class="logo">KAI<span>-Agentur</span></a>
+    <a href="#" class="logo">
+      <span class="logo-main">KAI</span>
+      <span class="logo-sub">Kunden - Automatisch - Informieren</span>
+    </a>
     <nav class="nav-links">
       <a href="#vorteile">Vorteile</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#live-demo">Live-Demo</a>
       <a href="#kontakt" class="btn" style="padding: 9px 16px; color: #fff;">Erstgespräch</a>
     </nav>
   </div>
@@ -409,14 +487,14 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <div class="badge">K.A.I. – Kunden. Automatisch. Informieren.</div>
+      <div class="badge">K.A.I. – Kunden - Automatisch - Informieren</div>
       <h1>Mehr Kundenanfragen, weniger Unterbrechungen – <span>rund um die Uhr.</span></h1>
       <p>
         Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
         Ihre Website-Besucher erhalten sofort verlässliche Antworten – auch nach Feierabend und am Wochenende.
       </p>
       <div class="hero-actions">
-        <a href="#live-demo" class="btn">Assistent jetzt live testen</a>
+        <button type="button" class="btn" id="openChatHero">Assistent jetzt live testen</button>
         <a href="#kontakt" class="btn btn-outline">Kostenloses Erstgespräch</a>
       </div>
     </div>
@@ -476,35 +554,15 @@
     </div>
   </section>
 
-  <!-- Live Demo -->
-  <section id="live-demo">
-    <div class="container demo-wrapper">
-      <div class="demo-info">
-        <div class="badge">Live-Test</div>
-        <h2>Probieren Sie K.A.I. direkt hier aus</h2>
-        <p>
-          Stellen Sie unserem Assistenten gerne eine typische Frage – genau so könnte er schon bald auf Ihrer eigenen Website mit Ihren Kunden kommunizieren.
-        </p>
-        <ul class="check-list">
-          <li>Natürliche, freundliche Antworten in Echtzeit</li>
-          <li>Klare Grenzen – bleibt strikt beim Thema Ihres Betriebs</li>
-          <li>Funktioniert auf Smartphone, Tablet und PC</li>
-        </ul>
-        <a href="#kontakt" class="btn">Eigene Demo für Ihren Betrieb anfragen</a>
-      </div>
-
-      <div class="chat-box">
-        <div class="chat-header">
-          K.A.I. Assistent
-          <span>Kunden. Automatisch. Informieren.</span>
+  <!-- Live Demo Hinweis -->
+  <section>
+    <div class="container">
+      <div class="demo-banner">
+        <div class="demo-banner-text">
+          <h2>Neugierig, wie K.A.I. für Ihre Kunden klingt?</h2>
+          <p>Öffnen Sie den digitalen Assistenten unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
         </div>
-        <div id="messages">
-          <div class="msg bot">Hallo! Ich bin K.A.I. – wie kann ich Ihnen rund um digitale Kundenassistenten für Ihren Betrieb weiterhelfen?</div>
-        </div>
-        <form class="input-area" id="chatForm">
-          <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
-          <button type="submit" id="sendBtn">Senden</button>
-        </form>
+        <button type="button" class="btn" id="openChatBanner">Chat-Assistent öffnen</button>
       </div>
     </div>
   </section>
@@ -515,7 +573,7 @@
       <div class="contact-card">
         <h2>Bereit für Ihren eigenen digitalen Assistenten?</h2>
         <p>
-          Lassen Sie uns unverbindlich sprechen – ich zeige Ihnen gerne an einem konkreten Beispiel, wie K.A.I. Ihren Alltag entlastet.
+          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie K.A.I. Ihren Alltag entlastet.
         </p>
         <div class="contact-methods">
           <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20K.A.I.%20Kundenassistent" class="btn">
@@ -532,7 +590,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <div>© 2026 KAI-Agentur · David Kaiser · Lamspringe</div>
+    <div>© 2026 KAI · Kunden - Automatisch - Informieren · Alle Rechte vorbehalten</div>
     <div class="footer-links">
       <a href="/impressum.html">Impressum</a>
       <a href="/datenschutz.html">Datenschutz</a>
@@ -540,13 +598,65 @@
   </div>
 </footer>
 
+<!-- Floating Chat Button -->
+<button type="button" class="chat-launcher" id="chatLauncher" aria-label="K.A.I. Assistent öffnen">
+  <span class="chat-launcher-dot"></span>
+  <span>K.A.I. fragen</span>
+</button>
+
+<!-- Floating Chat Window -->
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="K.A.I. Assistent">
+  <div class="chat-header">
+    <div class="chat-header-title">
+      K.A.I. Assistent
+      <span>Kunden - Automatisch - Informieren</span>
+    </div>
+    <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
+  </div>
+  <div id="messages">
+    <div class="msg bot">Hallo! Ich bin K.A.I. – wie kann ich Ihnen rund um digitale Kundenassistenten für Ihren Betrieb weiterhelfen?</div>
+  </div>
+  <form class="input-area" id="chatForm">
+    <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
+    <button type="submit" id="sendBtn">Senden</button>
+  </form>
+</div>
+
 <script>
   let chatHistory = [];
+
+  const chatWidget = document.getElementById("chatWidget");
+  const chatLauncher = document.getElementById("chatLauncher");
+  const chatClose = document.getElementById("chatClose");
+  const openChatHero = document.getElementById("openChatHero");
+  const openChatBanner = document.getElementById("openChatBanner");
 
   const messagesDiv = document.getElementById("messages");
   const chatForm = document.getElementById("chatForm");
   const userInput = document.getElementById("userInput");
   const sendBtn = document.getElementById("sendBtn");
+
+  function openChat() {
+    chatWidget.classList.add("open");
+    userInput.focus();
+  }
+
+  function closeChat() {
+    chatWidget.classList.remove("open");
+  }
+
+  function toggleChat() {
+    if (chatWidget.classList.contains("open")) {
+      closeChat();
+    } else {
+      openChat();
+    }
+  }
+
+  chatLauncher.addEventListener("click", toggleChat);
+  chatClose.addEventListener("click", closeChat);
+  openChatHero.addEventListener("click", openChat);
+  openChatBanner.addEventListener("click", openChat);
 
   function appendMessage(text, sender) {
     const div = document.createElement("div");
