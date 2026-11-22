@@ -3,42 +3,272 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>K.A.I. – Kunden. Automatisch. Informieren.</title>
+  <title>KAI-Agentur | K.A.I. – Kunden. Automatisch. Informieren.</title>
+  <meta name="description" content="K.A.I. (Kunden. Automatisch. Informieren.) – Intelligente digitale Kundenassistenten für lokale Unternehmen in Lamspringe, Niedersachsen und ganz Deutschland." />
   <style>
-    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
-    body {
-      background: #0f172a;
-      color: #f8fafc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 16px;
+    :root {
+      --bg: #0b1120;
+      --bg-card: #131c31;
+      --bg-elevated: #1e293b;
+      --primary: #0ea5e9;
+      --primary-hover: #0284c7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 17, 32, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: var(--primary-hover); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #334155;
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-elevated);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 64px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(14, 165, 233, 0.14);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      font-weight: 800;
+      max-width: 820px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span { color: var(--primary); }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 650px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Sections */
+    section { padding: 64px 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Grid Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Live Demo Split */
+    .demo-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .demo-info h2 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .demo-info p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .check-list li {
+      font-size: 15px;
+      color: #e2e8f0;
+    }
+
+    .check-list li::before {
+      content: "✓ ";
+      color: var(--primary);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    /* Chat Widget */
     .chat-box {
       width: 100%;
       max-width: 460px;
+      margin: 0 auto;
       background: #1e293b;
+      border: 1px solid #334155;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
-      height: 600px;
+      height: 520px;
     }
+
     .chat-header {
-      background: #0284c7;
-      padding: 16px 20px;
+      background: var(--primary-hover);
+      padding: 15px 20px;
       font-weight: 700;
       font-size: 16px;
     }
+
     .chat-header span {
       display: block;
       font-size: 12px;
       font-weight: 400;
-      opacity: 0.9;
+      opacity: 0.92;
     }
+
     #messages {
       flex: 1;
       padding: 16px;
@@ -47,33 +277,38 @@
       flex-direction: column;
       gap: 12px;
     }
+
     .msg {
-      max-width: 82%;
+      max-width: 84%;
       padding: 10px 14px;
       border-radius: 12px;
       line-height: 1.45;
       font-size: 14px;
       white-space: pre-wrap;
     }
+
     .user {
       align-self: flex-end;
-      background: #0284c7;
+      background: var(--primary-hover);
       color: #fff;
       border-bottom-right-radius: 2px;
     }
+
     .bot {
       align-self: flex-start;
       background: #334155;
       color: #f1f5f9;
       border-bottom-left-radius: 2px;
     }
+
     .input-area {
       display: flex;
       padding: 12px;
       background: #0f172a;
       gap: 8px;
     }
-    input {
+
+    .input-area input {
       flex: 1;
       padding: 10px 14px;
       border-radius: 8px;
@@ -83,33 +318,227 @@
       font-size: 14px;
       outline: none;
     }
-    button {
-      padding: 10px 18px;
+
+    .input-area button {
+      padding: 10px 16px;
       border: none;
       border-radius: 8px;
-      background: #0284c7;
+      background: var(--primary-hover);
       color: #fff;
       font-weight: 600;
       cursor: pointer;
     }
-    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .input-area button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Contact Box */
+    .contact-card {
+      background: linear-gradient(135deg, #131c31 0%, #1e293b 100%);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 40px 28px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 26px;
+    }
+
+    .contact-methods {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 32px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 820px) {
+      .demo-wrapper { grid-template-columns: 1fr; }
+      .nav-links a:not(.btn) { display: none; }
+    }
   </style>
 </head>
 <body>
 
-<div class="chat-box">
-  <div class="chat-header">
-    K.A.I. Assistent
-    <span>Kunden. Automatisch. Informieren.</span>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">KAI<span>-Agentur</span></a>
+    <nav class="nav-links">
+      <a href="#vorteile">Vorteile</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#live-demo">Live-Demo</a>
+      <a href="#kontakt" class="btn" style="padding: 9px 16px; color: #fff;">Erstgespräch</a>
+    </nav>
   </div>
-  <div id="messages">
-    <div class="msg bot">Hallo! Wie kann ich dir heute weiterhelfen?</div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge">K.A.I. – Kunden. Automatisch. Informieren.</div>
+      <h1>Mehr Kundenanfragen, weniger Unterbrechungen – <span>rund um die Uhr.</span></h1>
+      <p>
+        Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
+        Ihre Website-Besucher erhalten sofort verlässliche Antworten – auch nach Feierabend und am Wochenende.
+      </p>
+      <div class="hero-actions">
+        <a href="#live-demo" class="btn">Assistent jetzt live testen</a>
+        <a href="#kontakt" class="btn btn-outline">Kostenloses Erstgespräch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteile -->
+  <section id="vorteile">
+    <div class="container">
+      <div class="section-title">
+        <h2>Warum lokale Unternehmen auf K.A.I. setzen</h2>
+        <p>Schluss mit verpassten Anrufen während der Arbeit und ständig wiederkehrenden Standardfragen.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">24/7</div>
+          <h3>Immer erreichbar</h3>
+          <p>Ihr digitaler Assistent beantwortet Kundenfragen sofort – nachts, am Wochenende und während Sie beim Kunden vor Ort sind.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">AI</div>
+          <h3>Auf Ihren Betrieb trainiert</h3>
+          <p>Öffnungszeiten, Leistungen, Abläufe und häufige Fragen werden exakt auf Ihr Unternehmen abgestimmt.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">+</div>
+          <h3>Mehr qualifizierte Anfragen</h3>
+          <p>Interessenten fühlen sich sofort gut beraten und hinterlassen eher ihre Anfrage oder buchen direkt einen Termin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section id="ablauf" style="background: rgba(19, 28, 49, 0.45);">
+    <div class="container">
+      <div class="section-title">
+        <h2>In 3 einfachen Schritten startklar</h2>
+        <p>Kein technischer Aufwand für Sie – wir übernehmen Einrichtung, Anpassung und Integration.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>Kurzes Kennenlernen</h3>
+          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was der Assistent abnehmen soll.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>Individueller Aufbau</h3>
+          <p>Wir richten Ihren persönlichen K.A.I.-Assistenten passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Live auf Ihrer Website</h3>
+          <p>Nach Ihrer Freigabe binden wir den Assistenten auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo -->
+  <section id="live-demo">
+    <div class="container demo-wrapper">
+      <div class="demo-info">
+        <div class="badge">Live-Test</div>
+        <h2>Probieren Sie K.A.I. direkt hier aus</h2>
+        <p>
+          Stellen Sie unserem Assistenten gerne eine typische Frage – genau so könnte er schon bald auf Ihrer eigenen Website mit Ihren Kunden kommunizieren.
+        </p>
+        <ul class="check-list">
+          <li>Natürliche, freundliche Antworten in Echtzeit</li>
+          <li>Klare Grenzen – bleibt strikt beim Thema Ihres Betriebs</li>
+          <li>Funktioniert auf Smartphone, Tablet und PC</li>
+        </ul>
+        <a href="#kontakt" class="btn">Eigene Demo für Ihren Betrieb anfragen</a>
+      </div>
+
+      <div class="chat-box">
+        <div class="chat-header">
+          K.A.I. Assistent
+          <span>Kunden. Automatisch. Informieren.</span>
+        </div>
+        <div id="messages">
+          <div class="msg bot">Hallo! Ich bin K.A.I. – wie kann ich Ihnen rund um digitale Kundenassistenten für Ihren Betrieb weiterhelfen?</div>
+        </div>
+        <form class="input-area" id="chatForm">
+          <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
+          <button type="submit" id="sendBtn">Senden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Bereit für Ihren eigenen digitalen Assistenten?</h2>
+        <p>
+          Lassen Sie uns unverbindlich sprechen – ich zeige Ihnen gerne an einem konkreten Beispiel, wie K.A.I. Ihren Alltag entlastet.
+        </p>
+        <div class="contact-methods">
+          <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20K.A.I.%20Kundenassistent" class="btn">
+            E-Mail schreiben: kai-agentur@gmail.com
+          </a>
+          <a href="tel:+491784919319" class="btn btn-outline">
+            Anrufen: +49 178 4919319
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 KAI-Agentur · David Kaiser · Lamspringe</div>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
   </div>
-  <form class="input-area" id="chatForm">
-    <input type="text" id="userInput" placeholder="Nachricht eingeben..." autocomplete="off" required />
-    <button type="submit" id="sendBtn">Senden</button>
-  </form>
-</div>
+</footer>
 
 <script>
   let chatHistory = [];
@@ -128,6 +557,10 @@
     return div;
   }
 
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   chatForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const text = userInput.value.trim();
@@ -142,6 +575,23 @@
 
     const botBubble = appendMessage("", "bot");
     let fullReply = "";
+    let charQueue = [];
+    let streamDone = false;
+
+    const typerPromise = (async () => {
+      while (!streamDone || charQueue.length > 0) {
+        if (charQueue.length > 0) {
+          const step = charQueue.length > 80 ? 4 : charQueue.length > 30 ? 2 : 1;
+          for (let i = 0; i < step && charQueue.length > 0; i++) {
+            botBubble.textContent += charQueue.shift();
+          }
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          await sleep(14);
+        } else {
+          await sleep(20);
+        }
+      }
+    })();
 
     try {
       const response = await fetch("/api/chat", {
@@ -167,31 +617,40 @@
         const { done, value } = await reader.read();
         if (done) break;
 
-        buffer += decoder.decode(value, { stream: true });
+        buffer += decoder.decode(value, { stream: true }).replace(/\r\n/g, "\n");
         const lines = buffer.split("\n");
-        buffer = lines.pop();
+        buffer = lines.pop() ?? "";
 
         for (const line of lines) {
-          if (line.startsWith("data: ")) {
-            const jsonStr = line.slice(6).trim();
-            if (!jsonStr) continue;
-            try {
-              const data = JSON.parse(jsonStr);
-              const chunk = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-              if (chunk) {
-                fullReply += chunk;
-                botBubble.textContent = fullReply;
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-              }
-            } catch (_) {}
-          }
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("data:")) continue;
+          const jsonStr = trimmed.slice(5).trim();
+          if (!jsonStr || jsonStr === "[DONE]") continue;
+
+          try {
+            const data = JSON.parse(jsonStr);
+            const chunk = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+            if (chunk) {
+              fullReply += chunk;
+              charQueue.push(...chunk);
+            }
+          } catch (_) {}
         }
       }
 
-      chatHistory.push({ role: "model", parts: [{ text: fullReply }] });
+      streamDone = true;
+      await typerPromise;
+
+      if (fullReply) {
+        chatHistory.push({ role: "model", parts: [{ text: fullReply }] });
+      } else if (!botBubble.textContent) {
+        botBubble.textContent = "Entschuldigung, ich konnte gerade keine Antwort erstellen.";
+      }
 
     } catch (err) {
-      botBubble.textContent = `Fehler: ${err.message}`;
+      streamDone = true;
+      await typerPromise;
+      botBubble.textContent = "Entschuldigung, da gab es gerade ein kurzes Verbindungsproblem.";
       console.error(err);
     } finally {
       sendBtn.disabled = false;
