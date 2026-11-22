@@ -55,28 +55,28 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 76px;
+      height: 88px;
     }
 
     .logo {
       display: flex;
       flex-direction: column;
-      line-height: 1.15;
+      line-height: 1.1;
     }
 
     .logo-main {
-      font-size: 24px;
+      font-size: 34px;
       font-weight: 800;
       letter-spacing: 0.04em;
       color: var(--primary);
     }
 
     .logo-sub {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
       letter-spacing: 0.02em;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .nav-links {
@@ -118,18 +118,6 @@
     .hero {
       padding: 84px 0 68px;
       text-align: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(14, 165, 233, 0.14);
-      color: #38bdf8;
-      border: 1px solid rgba(14, 165, 233, 0.35);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 20px;
     }
 
     .hero h1 {
@@ -456,6 +444,8 @@
 
     @media (max-width: 720px) {
       .nav-links a:not(.btn) { display: none; }
+      .logo-main { font-size: 28px; }
+      .logo-sub { font-size: 11.5px; }
       .chat-widget {
         right: 16px;
         bottom: 80px;
@@ -487,7 +477,6 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <div class="badge">K.A.I. – Kunden - Automatisch - Informieren</div>
       <h1>Mehr Kundenanfragen, weniger Unterbrechungen – <span>rund um die Uhr.</span></h1>
       <p>
         Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
