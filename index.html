@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAI | Kunden - Automatisch - Informieren</title>
-  <meta name="description" content="KAI – Kunden - Automatisch - Informieren. Intelligente digitale Kundenassistenten für lokale Unternehmen." />
+  <title>KAI | kunden - auto - inf</title>
+  <meta name="description" content="KAI – kunden - auto - inf. Intelligente digitale Kundenassistenten für lokale Unternehmen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800;9..144,900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b1120;
@@ -52,15 +55,17 @@
     }
 
     .nav {
+      position: relative;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      height: 92px;
+      height: 96px;
     }
 
     .logo {
       display: inline-flex;
       flex-direction: column;
+      align-items: center;
       width: max-content;
     }
 
@@ -81,6 +86,8 @@
     }
 
     .nav-links {
+      position: absolute;
+      right: 20px;
       display: flex;
       gap: 24px;
       align-items: center;
@@ -443,10 +450,10 @@
       cursor: not-allowed;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 860px) {
       .nav-links { display: none; }
       .logo-svg { height: 38px; }
-      .logo-sub { font-size: 11px; }
+      .logo-sub { font-size: 12px; }
       .chat-widget {
         right: 16px;
         bottom: 80px;
@@ -462,11 +469,11 @@
 
 <header>
   <div class="container nav">
-    <a href="#" class="logo" aria-label="KAI – Kunden - Automatisch - Informieren">
-      <svg class="logo-svg" viewBox="0 0 300 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="38" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="44" font-weight="900" textLength="300" lengthAdjust="spacingAndGlyphs">KAI</text>
+    <a href="#" class="logo" aria-label="KAI – kunden - auto - inf">
+      <svg class="logo-svg" viewBox="0 0 165 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="38" font-family="'Fraunces', Georgia, 'Times New Roman', serif" font-size="44" font-weight="900" textLength="165" lengthAdjust="spacingAndGlyphs">KAI</text>
       </svg>
-      <span class="logo-sub">Kunden - Automatisch - Informieren</span>
+      <span class="logo-sub">kunden - auto - inf</span>
     </a>
     <nav class="nav-links">
       <a href="#vorteile">Vorteile</a>
@@ -582,7 +589,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <div>© 2026 KAI · Kunden - Automatisch - Informieren · Alle Rechte vorbehalten</div>
+    <div>© 2026 KAI · kunden - auto - inf · Alle Rechte vorbehalten</div>
     <div class="footer-links">
       <a href="/impressum.html">Impressum</a>
       <a href="/datenschutz.html">Datenschutz</a>
@@ -601,7 +608,7 @@
   <div class="chat-header">
     <div class="chat-header-title">
       KAI
-      <span>Kunden - Automatisch - Informieren</span>
+      <span>kunden - auto - inf</span>
     </div>
     <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
   </div>
