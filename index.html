@@ -59,16 +59,20 @@
     }
 
     .logo {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
-      line-height: 1.1;
+      width: max-content;
+      line-height: 1.05;
     }
 
     .logo-main {
-      font-size: 34px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 36px;
       font-weight: 800;
-      letter-spacing: 0.04em;
       color: var(--primary);
+      text-transform: uppercase;
     }
 
     .logo-sub {
@@ -77,6 +81,7 @@
       color: var(--text-muted);
       letter-spacing: 0.02em;
       margin-top: 3px;
+      white-space: nowrap;
     }
 
     .nav-links {
@@ -443,9 +448,9 @@
     }
 
     @media (max-width: 720px) {
-      .nav-links a:not(.btn) { display: none; }
-      .logo-main { font-size: 28px; }
-      .logo-sub { font-size: 11.5px; }
+      .nav-links { display: none; }
+      .logo-main { font-size: 30px; }
+      .logo-sub { font-size: 11px; }
       .chat-widget {
         right: 16px;
         bottom: 80px;
@@ -462,13 +467,13 @@
 <header>
   <div class="container nav">
     <a href="#" class="logo">
-      <span class="logo-main">KAI</span>
+      <span class="logo-main"><span>K</span><span>A</span><span>I</span></span>
       <span class="logo-sub">Kunden - Automatisch - Informieren</span>
     </a>
     <nav class="nav-links">
       <a href="#vorteile">Vorteile</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#kontakt" class="btn" style="padding: 9px 16px; color: #fff;">Erstgespräch</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
 </header>
