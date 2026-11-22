@@ -1,42 +1,37 @@
-import { GoogleGenAI } from '@google/genai';
+export const config = {
+  runtime: 'edge',
+};
 
-export default async function handler(req, res) {
+export default async function handler(req) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return new Response('Method not allowed', { status: 405 });
   }
 
+  // Holt deinen geschützten Key sicher aus Vercel
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'GEMINI_API_KEY fehlt in den Vercel Environment Variables.' });
-  }
+  const model = "gemini-3.8-flash";
 
-  try {
-    const { message, source } = req.body || {};
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Nachricht fehlt.' });
+  const { contents } = await req.json();
+
+  const systemPrompt = `Du bist K.A.I. (Kunden. Automatisch. Informieren.), ein freundlicher, hilfsbereiter KI-Assistent für lokale Unternehmen. Antworte kurz, klar und kundenorientiert auf Deutsch.`;
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?alt=sse&key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: systemPrompt }] },
+        contents
+      }),
     }
+  );
 
-    const ai = new GoogleGenAI({ apiKey });
-
-    const systemInstruction =
-      source === 'karte'
-        ? 'Du bist KAI, der freundliche digitale Assistent der KAI-Agentur. Der Besucher kommt gerade über den QR-Code unserer Visitenkarte auf die Website. Antworte auf Deutsch, kurz, klar, sympathisch und ohne Fachjargon. Hilf bei Fragen zu Websites, KI-Assistenten und einer möglichen Zusammenarbeit.'
-        : 'Du bist KAI, der freundliche digitale Assistent der KAI-Agentur. Antworte auf Deutsch, kurz, klar, sympathisch und ohne Fachjargon. Hilf Besuchern bei Fragen zu modernen Websites, KI-Chatbots und einer Zusammenarbeit mit der KAI-Agentur.';
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
-      contents: message,
-      config: {
-        systemInstruction,
-      },
-    });
-
-    return res.status(200).json({ reply: response.text });
-  } catch (error) {
-    console.error('Gemini API Fehler:', error);
-    return res.status(500).json({
-      error: 'Fehler bei der Gemini-Anfrage',
-      details: error.message,
-    });
-  }
+  // Leitet den Live-Stream direkt an dein Chatfenster weiter
+  return new Response(response.body, {
+    headers: {
+      'Content-Type': 'text/event-stream; charset=utf-8',
+      'Cache-Control': 'no-cache',
+    },
+  });
 }
