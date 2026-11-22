@@ -59,21 +59,17 @@
     }
 
     .logo {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
-      width: max-content;
-      line-height: 1.0;
+      line-height: 1.05;
     }
 
     .logo-main {
-      display: inline-block;
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 900;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.22em;
       color: var(--primary);
       text-transform: uppercase;
-      transform: scaleX(2.65);
-      transform-origin: left center;
     }
 
     .logo-sub {
@@ -332,3 +328,437 @@
       height: 520px;
       max-height: calc(100vh - 110px);
       background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6);
+      display: none;
+      flex-direction: column;
+    }
+
+    .chat-widget.open {
+      display: flex;
+    }
+
+    .chat-header {
+      background: var(--primary-hover);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header-title {
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .chat-header-title span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.92;
+    }
+
+    .chat-close {
+      background: rgba(255, 255, 255, 0.16);
+      border: none;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    #messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      max-width: 84%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.45;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: var(--primary-hover);
+      color: #fff;
+      border-bottom-right-radius: 2px;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #334155;
+      color: #f1f5f9;
+      border-bottom-left-radius: 2px;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 12px;
+      background: #0f172a;
+      gap: 8px;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .input-area button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: var(--primary-hover);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .input-area button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .logo-main { font-size: 32px; letter-spacing: 0.18em; }
+      .logo-sub { font-size: 11px; }
+      .chat-widget {
+        right: 16px;
+        bottom: 80px;
+      }
+      .chat-launcher {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-main">KAI</span>
+      <span class="logo-sub">Kunden - Automatisch - Informieren</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#vorteile">Vorteile</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Mehr Kundenanfragen, weniger Unterbrechungen – <span>rund um die Uhr.</span></h1>
+      <p>
+        Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
+        Ihre Website-Besucher erhalten sofort verlässliche Antworten – auch nach Feierabend und am Wochenende.
+      </p>
+      <div class="hero-actions">
+        <button type="button" class="btn" id="openChatHero">Assistent jetzt live testen</button>
+        <a href="#kontakt" class="btn btn-outline">Kostenloses Erstgespräch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteile -->
+  <section id="vorteile">
+    <div class="container">
+      <div class="section-title">
+        <h2>Warum lokale Unternehmen auf K.A.I. setzen</h2>
+        <p>Schluss mit verpassten Anrufen während der Arbeit und ständig wiederkehrenden Standardfragen.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">24/7</div>
+          <h3>Immer erreichbar</h3>
+          <p>Ihr digitaler Assistent beantwortet Kundenfragen sofort – nachts, am Wochenende und während Sie beim Kunden vor Ort sind.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">AI</div>
+          <h3>Auf Ihren Betrieb trainiert</h3>
+          <p>Öffnungszeiten, Leistungen, Abläufe und häufige Fragen werden exakt auf Ihr Unternehmen abgestimmt.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">+</div>
+          <h3>Mehr qualifizierte Anfragen</h3>
+          <p>Interessenten fühlen sich sofort gut beraten und hinterlassen eher ihre Anfrage oder buchen direkt einen Termin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section id="ablauf" style="background: rgba(19, 28, 49, 0.45);">
+    <div class="container">
+      <div class="section-title">
+        <h2>In 3 einfachen Schritten startklar</h2>
+        <p>Kein technischer Aufwand für Sie – wir übernehmen Einrichtung, Anpassung und Integration.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>Kurzes Kennenlernen</h3>
+          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was der Assistent abnehmen soll.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>Individueller Aufbau</h3>
+          <p>Wir richten Ihren persönlichen K.A.I.-Assistenten passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Live auf Ihrer Website</h3>
+          <p>Nach Ihrer Freigabe binden wir den Assistenten auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo Hinweis -->
+  <section>
+    <div class="container">
+      <div class="demo-banner">
+        <div class="demo-banner-text">
+          <h2>Neugierig, wie K.A.I. für Ihre Kunden klingt?</h2>
+          <p>Öffnen Sie den digitalen Assistenten unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
+        </div>
+        <button type="button" class="btn" id="openChatBanner">Chat-Assistent öffnen</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Bereit für Ihren eigenen digitalen Assistenten?</h2>
+        <p>
+          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie K.A.I. Ihren Alltag entlastet.
+        </p>
+        <div class="contact-methods">
+          <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20K.A.I.%20Kundenassistent" class="btn">
+            E-Mail schreiben: kai-agentur@gmail.com
+          </a>
+          <a href="tel:+491784919319" class="btn btn-outline">
+            Anrufen: +49 178 4919319
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 KAI · Kunden - Automatisch - Informieren · Alle Rechte vorbehalten</div>
+    <div class="footer-links">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Chat Button -->
+<button type="button" class="chat-launcher" id="chatLauncher" aria-label="K.A.I. Assistent öffnen">
+  <span class="chat-launcher-dot"></span>
+  <span>K.A.I. fragen</span>
+</button>
+
+<!-- Floating Chat Window -->
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="K.A.I. Assistent">
+  <div class="chat-header">
+    <div class="chat-header-title">
+      K.A.I. Assistent
+      <span>Kunden - Automatisch - Informieren</span>
+    </div>
+    <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
+  </div>
+  <div id="messages">
+    <div class="msg bot">Hallo! Ich bin K.A.I. – wie kann ich Ihnen rund um digitale Kundenassistenten für Ihren Betrieb weiterhelfen?</div>
+  </div>
+  <form class="input-area" id="chatForm">
+    <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
+    <button type="submit" id="sendBtn">Senden</button>
+  </form>
+</div>
+
+<script>
+  let chatHistory = [];
+
+  const chatWidget = document.getElementById("chatWidget");
+  const chatLauncher = document.getElementById("chatLauncher");
+  const chatClose = document.getElementById("chatClose");
+  const openChatHero = document.getElementById("openChatHero");
+  const openChatBanner = document.getElementById("openChatBanner");
+
+  const messagesDiv = document.getElementById("messages");
+  const chatForm = document.getElementById("chatForm");
+  const userInput = document.getElementById("userInput");
+  const sendBtn = document.getElementById("sendBtn");
+
+  function openChat() {
+    chatWidget.classList.add("open");
+    userInput.focus();
+  }
+
+  function closeChat() {
+    chatWidget.classList.remove("open");
+  }
+
+  function toggleChat() {
+    if (chatWidget.classList.contains("open")) {
+      closeChat();
+    } else {
+      openChat();
+    }
+  }
+
+  chatLauncher.addEventListener("click", toggleChat);
+  chatClose.addEventListener("click", closeChat);
+  openChatHero.addEventListener("click", openChat);
+  openChatBanner.addEventListener("click", openChat);
+
+  function appendMessage(text, sender) {
+    const div = document.createElement("div");
+    div.className = `msg ${sender}`;
+    div.textContent = text;
+    messagesDiv.appendChild(div);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    return div;
+  }
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  chatForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    appendMessage(text, "user");
+    userInput.value = "";
+    sendBtn.disabled = true;
+
+    chatHistory.push({ role: "user", parts: [{ text }] });
+    if (chatHistory.length > 10) chatHistory = chatHistory.slice(-10);
+
+    const botBubble = appendMessage("", "bot");
+    let fullReply = "";
+    let charQueue = [];
+    let streamDone = false;
+
+    const typerPromise = (async () => {
+      while (!streamDone || charQueue.length > 0) {
+        if (charQueue.length > 0) {
+          const step = charQueue.length > 80 ? 4 : charQueue.length > 30 ? 2 : 1;
+          for (let i = 0; i < step && charQueue.length > 0; i++) {
+            botBubble.textContent += charQueue.shift();
+          }
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+          await sleep(14);
+        } else {
+          await sleep(20);
+        }
+      }
+    })();
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contents: chatHistory })
+      });
+
+      if (!response.ok) {
+        let details = `Status ${response.status}`;
+        try {
+          const errJson = await response.json();
+          if (errJson?.error) details = errJson.error;
+        } catch (_) {}
+        throw new Error(details);
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true }).replace(/\r\n/g, "\n");
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("data:")) continue;
+          const jsonStr = trimmed.slice(5).trim();
+          if (!jsonStr || jsonStr === "[DONE]") continue;
+
+          try {
+            const data = JSON.parse(jsonStr);
+            const chunk = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+            if (chunk) {
+              fullReply += chunk;
+              charQueue.push(...chunk);
+            }
+          } catch (_) {}
+        }
+      }
+
+      streamDone = true;
+      await typerPromise;
+
+      if (fullReply) {
+        chatHistory.push({ role: "model", parts: [{ text: fullReply }] });
+      } else if (!botBubble.textContent) {
+        botBubble.textContent = "Entschuldigung, ich konnte gerade keine Antwort erstellen.";
+      }
+
+    } catch (err) {
+      streamDone = true;
+      await typerPromise;
+      botBubble.textContent = "Entschuldigung, da gab es gerade ein kurzes Verbindungsproblem.";
+      console.error(err);
+    } finally {
+      sendBtn.disabled = false;
+      userInput.focus();
+    }
+  });
+</script>
+
+</body>
+</html>
