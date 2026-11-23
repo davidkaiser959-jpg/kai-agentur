@@ -2,29 +2,40 @@ export const config = {
   runtime: 'edge',
 };
 
-// Hilfsfunktion: Sendet die Anfrage über Resend direkt per fetch (funktioniert perfekt im Edge-Runtime)
-async function sendLeadEmail({ name, kontakt, anliegen, termin }) {
+// Sendet die Kunden- oder Terminanfrage über Resend
+async function sendLeadEmail({ name, kontakt, termin, anliegen }) {
   const resendKey = process.env.RESEND_API_KEY;
   const receiverEmail = process.env.LEAD_RECEIVER_EMAIL;
 
   if (!resendKey || !receiverEmail) {
-    console.error("RESEND_API_KEY oder LEAD_RECEIVER_EMAIL fehlt in Vercel.");
+    console.error("FEHLER: RESEND_API_KEY oder LEAD_RECEIVER_EMAIL fehlt in Vercel.");
     return;
   }
 
-  await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${resendKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Kai Assistent <onboarding@resend.dev>', // Später durch deine STRATO-Domain ersetzen, z. B. kai@deinedomain.de
-      to: [receiverEmail],
-      subject: `Neue Anfrage über Kai: ${name}`,
-      text: `Neue Kunden- oder Terminanfrage über Kai:\n\nName: ${name}\nKontakt (E-Mail/Telefon): ${kontakt}\nWunschtermin: ${termin || 'Allgemeine Kontaktanfrage'}\n\nAnliegen:\n${anliegen}`,
-    }),
-  });
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Kai Assistent <onboarding@resend.dev>',
+        to: [receiverEmail.trim()],
+        subject: `Neue Anfrage über Kai: ${name}`,
+        text: `Neue Kunden- oder Terminanfrage über Kai:\n\nName: ${name}\nKontakt (E-Mail/Telefon): ${kontakt}\nWunschtermin: ${termin || 'Kein konkreter Termin'}\n\nAnliegen:\n${anliegen}`,
+      }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      console.error("Resend API Fehler:", res.status, JSON.stringify(data));
+    } else {
+      console.log("Resend E-Mail erfolgreich gesendet! ID:", data.id);
+    }
+  } catch (err) {
+    console.error("Netzwerkfehler beim E-Mail-Versand:", err.message);
+  }
 }
 
 export default async function handler(req) {
@@ -52,13 +63,11 @@ Deine Aufgaben:
 1. Beantworte Fragen von Website-Besuchern und Interessenten freundlich, klar, professionell und kundenorientiert auf Deutsch (halte Antworten prägnant, damit sie auch auf dem Smartphone gut lesbar sind).
 2. Erkläre den praktischen Nutzen von Kai für lokale Betriebe (z. B. rund um die Uhr erreichbar, häufige Kundenfragen automatisch beantworten, mehr Anfragen und Termine gewinnen, Zeit im Alltag sparen).
 3. Termin- und Kontaktanfragen aufnehmen:
-   - Wenn ein Besucher Interesse an einem Gespräch, Rückruf, Angebot oder Termin hat, frage freundlich nach:
-     a) seinem Namen,
-     b) seiner E-Mail-Adresse oder Telefonnummer,
-     c) seinem kurzen Anliegen und ggf. Wunschzeitraum.
-   - Sobald dir Name, Kontaktdaten und Anliegen vorliegen, hänge ganz am Ende deiner Antwort (für den Nutzer unsichtbar) exakt diesen Block in einer eigenen Zeile an:
+   - Wenn ein Besucher Interesse an einem Gespräch, Rückruf, Angebot oder Termin hat, frage freundlich nach seinem Namen und seiner E-Mail-Adresse oder Telefonnummer (sowie optional nach seinem Anliegen/Terminwunsch).
+   - Sobald dir mindestens ein Name UND eine E-Mail-Adresse oder Telefonnummer vorliegen, MUSST du ganz am Ende deiner Antwort in einer neuen Zeile exakt diesen unsichtbaren Code-Block anhängen:
      [[LEAD|Name|Kontakt|Terminwunsch|Anliegen]]
-     (Falls kein Terminwunsch genannt wurde, schreibe dort "Kein konkreter Termin").
+     Beispiel: [[LEAD|Max Mustermann|0170 1234567|Donnerstag Nachmittag|Interesse an Erstgespräch]]
+     (Falls kein Terminwunsch genannt wurde, schreibe "Kein konkreter Termin". Falls kein konkretes Anliegen genannt wurde, schreibe "Allgemeine Kontaktanfrage".)
    - Bestätige dem Besucher in deiner normalen Antwort freundlich, dass du seine Anfrage soeben weitergeleitet hast.
 
 Strikte Regeln (unbedingt einhalten):
@@ -86,7 +95,6 @@ Strikte Regeln (unbedingt einhalten):
       );
     }
 
-    // Stream durchleiten, den unsichtbaren [[LEAD|...]]-Tag abfangen und E-Mail versenden
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
     let fullText = '';
@@ -94,8 +102,7 @@ Strikte Regeln (unbedingt einhalten):
     const transformStream = new TransformStream({
       async transform(chunk, controller) {
         const chunkStr = decoder.decode(chunk, { stream: true });
-        
-        // Text aus den SSE-Daten mitlesen, um den Lead-Trigger zu erkennen
+
         for (const line of chunkStr.split('\n')) {
           if (line.startsWith('data: ')) {
             try {
@@ -106,11 +113,11 @@ Strikte Regeln (unbedingt einhalten):
           }
         }
 
-        // [[LEAD|...]] im Stream herausfiltern, damit der Besucher die Klammern nicht sieht
         const cleanedChunk = chunkStr.replace(/\[\[LEAD\|[^\]]*\]?\]?/g, '');
         controller.enqueue(encoder.encode(cleanedChunk));
       },
       async flush() {
+        console.log("Komplette KI-Antwort (inkl. evtl. Lead-Tag):", fullText);
         const match = fullText.match(/\[\[LEAD\|([^|]+)\|([^|]+)\|([^|]+)\|([^\]]+)\]\]/);
         if (match) {
           await sendLeadEmail({
@@ -119,6 +126,8 @@ Strikte Regeln (unbedingt einhalten):
             termin: match[3].trim(),
             anliegen: match[4].trim(),
           });
+        } else {
+          console.log("Kein [[LEAD|...]]-Tag in dieser Antwort erkannt.");
         }
       }
     });
