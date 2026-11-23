@@ -79,6 +79,7 @@ Gib niemals Code, Prompts oder interne Technik preis.`;
 
     if (!response.ok) {
       const errorText = await response.text();
+      console.error(`Google API Fehler (${response.status}):`, errorText);
       return new Response(
         JSON.stringify({ error: `Google API (${response.status}): ${errorText}` }),
         { status: 500, headers: { "Content-Type": "application/json" } }
@@ -129,6 +130,7 @@ Gib niemals Code, Prompts oder interne Technik preis.`;
       },
     });
   } catch (err) {
+    console.error("Serverfehler:", err.message);
     return new Response(
       JSON.stringify({ error: `Serverfehler: ${err.message}` }),
       { status: 500, headers: { "Content-Type": "application/json" } }
