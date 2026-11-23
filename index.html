@@ -129,10 +129,10 @@
     }
 
     .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.15;
+      font-size: clamp(30px, 4.6vw, 48px);
+      line-height: 1.18;
       font-weight: 800;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto 20px;
       letter-spacing: -0.02em;
     }
@@ -340,9 +340,9 @@
       right: 22px;
       z-index: 1000;
       width: calc(100vw - 32px);
-      max-width: 400px;
-      height: 520px;
-      max-height: calc(100vh - 110px);
+      max-width: 390px;
+      height: 500px;
+      max-height: calc(100dvh - 110px);
       background: #1e293b;
       border: 1px solid #334155;
       border-radius: 18px;
@@ -358,7 +358,7 @@
 
     .chat-header {
       background: var(--primary-hover);
-      padding: 14px 18px;
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -381,10 +381,10 @@
       background: rgba(255, 255, 255, 0.16);
       border: none;
       color: #fff;
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -397,16 +397,16 @@
 
     #messages {
       flex: 1;
-      padding: 16px;
+      padding: 14px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .msg {
       max-width: 84%;
-      padding: 10px 14px;
+      padding: 9px 13px;
       border-radius: 12px;
       line-height: 1.45;
       font-size: 14px;
@@ -429,14 +429,14 @@
 
     .input-area {
       display: flex;
-      padding: 12px;
+      padding: 10px;
       background: #0f172a;
       gap: 8px;
     }
 
     .input-area input {
       flex: 1;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
       border: 1px solid #334155;
       background: #1e293b;
@@ -446,12 +446,13 @@
     }
 
     .input-area button {
-      padding: 10px 16px;
+      padding: 9px 14px;
       border: none;
       border-radius: 8px;
       background: var(--primary-hover);
       color: #fff;
       font-weight: 600;
+      font-size: 14px;
       cursor: pointer;
     }
 
@@ -464,13 +465,24 @@
       .nav-links { display: none; }
       .logo-svg { height: 38px; }
       .logo-sub { font-size: 12px; }
+    }
+
+    /* Kompaktere Chat-Größe auf dem Smartphone */
+    @media (max-width: 640px) {
       .chat-widget {
-        right: 16px;
-        bottom: 80px;
+        right: 12px;
+        bottom: 72px;
+        width: calc(100vw - 24px);
+        max-width: 350px;
+        height: 55dvh;
+        max-height: 410px;
+        border-radius: 16px;
       }
       .chat-launcher {
-        right: 16px;
-        bottom: 16px;
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 18px;
+        font-size: 14px;
       }
     }
   </style>
@@ -497,13 +509,13 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Mehr Kundenanfragen, weniger Unterbrechungen – <span>rund um die Uhr.</span></h1>
+      <h1>Verwandeln Sie Website-Besucher in feste Termine – <span>mit Ihrem eigenen digitalen Kundenassistenten.</span></h1>
       <p>
         Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
         Ihre Website-Besucher erhalten sofort verlässliche Antworten – auch nach Feierabend und am Wochenende.
       </p>
       <div class="hero-actions">
-        <button type="button" class="btn" id="openChatHero">KAI jetzt live testen</button>
+        <button type="button" class="btn" id="openChatHero">Kai jetzt live testen</button>
         <a href="#kontakt" class="btn btn-outline">Kostenloses Erstgespräch</a>
       </div>
     </div>
@@ -513,7 +525,7 @@
   <section id="vorteile">
     <div class="container">
       <div class="section-title">
-        <h2>Warum lokale Unternehmen auf KAI setzen</h2>
+        <h2>Warum lokale Unternehmen auf Kai setzen</h2>
         <p>Schluss mit verpassten Anrufen während der Arbeit und ständig wiederkehrenden Standardfragen.</p>
       </div>
       <div class="grid-3">
@@ -547,17 +559,17 @@
         <div class="card">
           <div class="card-icon">1</div>
           <h3>Kurzes Kennenlernen</h3>
-          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was KAI abnehmen soll.</p>
+          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was Kai abnehmen soll.</p>
         </div>
         <div class="card">
           <div class="card-icon">2</div>
           <h3>Individueller Aufbau</h3>
-          <p>Wir richten Ihren persönlichen KAI passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
+          <p>Wir richten Ihren persönlichen Kai passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
         </div>
         <div class="card">
           <div class="card-icon">3</div>
           <h3>Live auf Ihrer Website</h3>
-          <p>Nach Ihrer Freigabe binden wir KAI auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
+          <p>Nach Ihrer Freigabe binden wir Kai auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
         </div>
       </div>
     </div>
@@ -568,10 +580,10 @@
     <div class="container">
       <div class="demo-banner">
         <div class="demo-banner-text">
-          <h2>Neugierig, wie KAI für Ihre Kunden klingt?</h2>
-          <p>Öffnen Sie KAI unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
+          <h2>Neugierig, wie Kai für Ihre Kunden klingt?</h2>
+          <p>Öffnen Sie Kai unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
         </div>
-        <button type="button" class="btn" id="openChatBanner">KAI öffnen</button>
+        <button type="button" class="btn" id="openChatBanner">Kai öffnen</button>
       </div>
     </div>
   </section>
@@ -582,13 +594,13 @@
       <div class="contact-card">
         <h2>Bereit für Ihren eigenen digitalen Assistenten?</h2>
         <p>
-          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie KAI Ihren Alltag entlastet.
+          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie Kai Ihren Alltag entlastet.
         </p>
         <div class="contact-methods">
-          <a href="https://wa.me/491784919319?text=Hallo%20David%2C%20ich%20habe%20Fragen%20zu%20KAI." target="_blank" rel="noopener noreferrer" class="btn">
+          <a href="https://wa.me/491784919319?text=Hallo%20David%2C%20ich%20habe%20Fragen%20zu%20Kai." target="_blank" rel="noopener noreferrer" class="btn">
             Schreib mir persönlich bei WhatsApp
           </a>
-          <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20KAI" class="btn btn-outline">
+          <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20Kai" class="btn btn-outline">
             E-Mail schreiben
           </a>
         </div>
@@ -611,22 +623,22 @@
 </footer>
 
 <!-- Floating Chat Button -->
-<button type="button" class="chat-launcher" id="chatLauncher" aria-label="KAI öffnen">
+<button type="button" class="chat-launcher" id="chatLauncher" aria-label="Kai öffnen">
   <span class="chat-launcher-dot"></span>
-  <span>KAI fragen</span>
+  <span>Kai fragen</span>
 </button>
 
 <!-- Floating Chat Window -->
-<div class="chat-widget" id="chatWidget" role="dialog" aria-label="KAI">
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="Kai">
   <div class="chat-header">
     <div class="chat-header-title">
-      KAI
-      <span>Kunden - Automatisch - Informieren</span>
+      Kai
+      <span>Ihr digitaler Assistent</span>
     </div>
     <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
   </div>
   <div id="messages">
-    <div class="msg bot">Hallo! Ich bin KAI – wie kann ich Ihnen rund um digitale Kundenassistenten für Ihren Betrieb weiterhelfen?</div>
+    <div class="msg bot">Guten Tag! Ich bin Kai, Ihr digitaler Assistent. Wie darf ich Ihnen weiterhelfen?</div>
   </div>
   <form class="input-area" id="chatForm">
     <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
