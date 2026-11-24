@@ -597,6 +597,7 @@
       font-size: 0.96rem;
       line-height: 1.45;
       word-wrap: break-word;
+      white-space: pre-line;
     }
 
     .msg.bot {
@@ -1022,18 +1023,22 @@
       }
 
       function appendMessage(text, sender) {
-        if (!chatMessages) return;
+        if (!chatMessages) return null;
         const div = document.createElement("div");
         div.className = "msg " + sender;
         div.textContent = text;
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        return div;
       }
 
-      function extractTextFromSseOrJson(rawText) {
-        let combined = "";
-        const lines = rawText.split("\n");
+      function stripLeadMarker(text) {
+        return text.replace(/\[{1,2}LEAD\|[^\]]*\]{1,2}/g, "").trim();
+      }
 
+      function parseSseChunk(lineText) {
+        let delta = "";
+        const lines = lineText.split("\n");
         for (const line of lines) {
           if (line.startsWith("data: ")) {
             const payload = line.slice(6).trim();
@@ -1041,19 +1046,11 @@
             try {
               const parsed = JSON.parse(payload);
               const partText = parsed?.candidates?.[0]?.content?.parts?.[0]?.text;
-              if (partText) combined += partText;
+              if (partText) delta += partText;
             } catch (_) {}
           }
         }
-
-        if (!combined) {
-          try {
-            const jsonData = JSON.parse(rawText);
-            combined = jsonData?.reply || jsonData?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-          } catch (_) {}
-        }
-
-        return combined;
+        return delta;
       }
 
       async function sendChatMessage(rawText) {
@@ -1065,7 +1062,10 @@
         contents.push({ role: "user", parts: [{ text: text }] });
         if (chatSend) chatSend.disabled = true;
 
-        let responseText = "";
+        const botBubble = appendMessage("...", "bot");
+        let fullRawReply = "";
+        let buffer = "";
+        let collectedRawText = "";
 
         try {
           const res = await fetch("/api/chat", {
@@ -1074,30 +1074,70 @@
             body: JSON.stringify({ contents: contents })
           });
 
-          responseText = await res.text();
           if (!res.ok) {
-            throw new Error("HTTP " + res.status);
+            const errText = await res.text();
+            throw new Error("HTTP " + res.status + (errText ? " – " + errText.slice(0, 180) : ""));
           }
 
-          const rawReply = extractTextFromSseOrJson(responseText);
-          const cleanReply = rawReply.replace(/\[{1,2}LEAD\|[^\]]*\]{1,2}/g, "").trim();
+          if (res.body && typeof res.body.getReader === "function") {
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder();
 
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+
+              buffer += decoder.decode(value, { stream: true });
+              const parts = buffer.split("\n\n");
+              buffer = parts.pop() || "";
+
+              for (const part of parts) {
+                const delta = parseSseChunk(part);
+                if (delta) {
+                  fullRawReply += delta;
+                  const visibleText = stripLeadMarker(fullRawReply);
+                  if (botBubble && visibleText) {
+                    botBubble.textContent = visibleText;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                  }
+                }
+              }
+            }
+
+            if (buffer.trim()) {
+              const tailDelta = parseSseChunk(buffer);
+              if (tailDelta) {
+                fullRawReply += tailDelta;
+              }
+            }
+          } else {
+            collectedRawText = await res.text();
+            const parsedTail = parseSseChunk(collectedRawText);
+            if (parsedTail) {
+              fullRawReply = parsedTail;
+            } else {
+              try {
+                const jsonData = JSON.parse(collectedRawText);
+                fullRawReply = jsonData?.reply || jsonData?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+              } catch (_) {}
+            }
+          }
+
+          const cleanReply = stripLeadMarker(fullRawReply);
           if (!cleanReply) {
             throw new Error("Leere Antwort");
           }
 
-          appendMessage(cleanReply, "bot");
+          if (botBubble) {
+            botBubble.textContent = cleanReply;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
           contents.push({ role: "model", parts: [{ text: cleanReply }] });
         } catch (err) {
           contents.pop();
-          let detail = err?.message || "Unbekannter Fehler";
-          try {
-            const parsedErr = JSON.parse(responseText);
-            if (parsedErr?.error) detail += " – " + parsedErr.error;
-          } catch (_) {
-            if (responseText) detail += " – " + responseText.slice(0, 180);
+          if (botBubble) {
+            botBubble.textContent = "Kurze Störung: " + (err?.message || "Unbekannter Fehler");
           }
-          appendMessage("Kurze Störung: " + detail, "bot");
         } finally {
           if (chatSend) chatSend.disabled = false;
         }
