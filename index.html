@@ -613,6 +613,40 @@
       border-bottom-right-radius: 4px;
     }
 
+    .quick-prompts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .quick-prompt-btn {
+      align-self: flex-start;
+      max-width: 92%;
+      text-align: left;
+      background: rgba(59, 130, 246, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #e6f2ff;
+      border-radius: 12px;
+      padding: 9px 13px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: background 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+    }
+
+    .quick-prompt-btn:hover:not(:disabled) {
+      background: rgba(59, 130, 246, 0.28);
+      border-color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .quick-prompt-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .chat-form {
       display: flex;
       align-items: center;
@@ -897,7 +931,18 @@
 
     <div class="chat-messages" id="chatMessages">
       <div class="msg bot">
-        Hey! 👋 Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀
+        Hey! 👋 Ich bin Kai 🤖 – dein digitaler Kundenberater. Frag mich gern alles oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀
+      </div>
+      <div class="quick-prompts" id="quickPrompts">
+        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Ich würde gerne einen Termin ausmachen.')">
+          📅 Ich würde gerne einen Termin ausmachen.
+        </button>
+        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Erzähl mir bitte, was du kannst.')">
+          🤖 Erzähl mir bitte, was du kannst.
+        </button>
+        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Erzähl mir einen Witz.')">
+          😂 Erzähl mir einen Witz.
+        </button>
       </div>
     </div>
 
@@ -920,11 +965,14 @@
     const chatForm = document.getElementById("chatForm");
     const chatInput = document.getElementById("chatInput");
     const chatSend = document.getElementById("chatSend");
+    const quickPrompts = document.getElementById("quickPrompts");
+
+    const welcomeText = "Hey! 👋 Ich bin Kai 🤖 – dein digitaler Kundenberater. Frag mich gern alles oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀";
 
     const history = [
       {
         role: "assistant",
-        content: "Hey! 👋 Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀"
+        content: welcomeText
       }
     ];
 
@@ -945,6 +993,12 @@
       }
     }
 
+    function hideQuickPrompts() {
+      if (quickPrompts) {
+        quickPrompts.style.display = "none";
+      }
+    }
+
     function appendMessage(text, sender) {
       const div = document.createElement("div");
       div.className = "msg " + sender;
@@ -953,14 +1007,13 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    chatForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const text = chatInput.value.trim();
-      if (!text) return;
+    async function sendChatMessage(rawText) {
+      const text = (rawText || "").trim();
+      if (!text || chatSend.disabled) return;
 
+      hideQuickPrompts();
       appendMessage(text, "user");
       history.push({ role: "user", content: text });
-      chatInput.value = "";
       chatSend.disabled = true;
 
       try {
@@ -981,6 +1034,15 @@
       } finally {
         chatSend.disabled = false;
       }
+    }
+
+    chatForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      chatInput.value = "";
+      await sendChatMessage(text);
     });
   </script>
 </body>
