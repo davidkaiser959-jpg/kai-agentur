@@ -6,17 +6,18 @@
   <title>KAI Agentur – Kunden · Automatisch · Informieren</title>
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #121933;
-      --card: #161f3d;
+      --bg: #080d1d;
+      --bg-soft: #101730;
+      --card: #151e3c;
       --card-border: rgba(255, 255, 255, 0.1);
       --text: #f3f6ff;
       --muted: #b6c2e2;
       --primary: #3b82f6;
       --primary-hover: #2563eb;
       --accent: #38bdf8;
+      --accent-2: #818cf8;
       --whatsapp: #25d366;
-      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
       --radius: 18px;
     }
 
@@ -32,7 +33,10 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at top right, #1b2856 0%, var(--bg) 52%);
+      background:
+        radial-gradient(circle at 82% 12%, rgba(56, 189, 248, 0.16) 0%, transparent 38%),
+        radial-gradient(circle at 15% 22%, rgba(99, 102, 241, 0.16) 0%, transparent 42%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -55,8 +59,8 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(12px);
-      background: rgba(11, 16, 32, 0.85);
+      backdrop-filter: blur(14px);
+      background: rgba(8, 13, 29, 0.82);
       border-bottom: 1px solid var(--card-border);
     }
 
@@ -153,39 +157,42 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 750;
       font-size: 1rem;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       min-width: 0;
       text-align: center;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #2563eb);
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 55%, #0284c7 100%);
       color: #fff;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.42);
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #4f8ff7, #1d4ed8);
+      background: linear-gradient(135deg, #60a5fa 0%, #2563eb 60%, #0ea5e9 100%);
+      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.35);
     }
 
     .btn-secondary {
       background: rgba(255, 255, 255, 0.06);
       color: var(--text);
-      border-color: var(--card-border);
+      border-color: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(56, 189, 248, 0.4);
     }
 
     .btn-email {
@@ -210,108 +217,251 @@
       background: rgba(37, 211, 102, 0.24);
     }
 
-    /* Hero */
+    /* Neuer moderner & spielerischer Hero */
     .hero {
-      padding: 56px 0 52px;
+      padding: 46px 0 60px;
+      position: relative;
     }
 
-    .hero-card {
-      background: linear-gradient(160deg, rgba(22, 31, 61, 0.95), rgba(14, 21, 44, 0.95));
-      border: 1px solid var(--card-border);
-      border-radius: 26px;
-      padding: 44px 36px;
-      box-shadow: var(--shadow);
-      max-width: 820px;
-      margin: 0 auto;
+    .hero-stage {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
     }
 
-    .hero-title-wrap {
-      margin-bottom: 24px;
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .hero-title-btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: clamp(2rem, 4.8vw, 3.2rem);
-      line-height: 1.15;
-      font-weight: 850;
-      letter-spacing: -0.02em;
+      gap: 14px;
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.03em;
       color: #ffffff;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(56, 189, 248, 0.14));
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 12px 24px;
-      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.24), rgba(129, 140, 248, 0.16));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 14px 26px;
+      border-radius: 24px;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25);
-      transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      margin-bottom: 24px;
+      box-shadow: 0 16px 38px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      transition: transform 0.18s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
       text-align: left;
     }
 
     .hero-title-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.01);
       border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.34), rgba(56, 189, 248, 0.22));
-      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.28);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.36), rgba(56, 189, 248, 0.24));
+      box-shadow: 0 20px 44px rgba(56, 189, 248, 0.34);
     }
 
-    .hero-title-btn:active {
-      transform: translateY(0);
-    }
-
-    .hero-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 26px;
-      font-size: clamp(1.08rem, 2.2vw, 1.28rem);
-      font-weight: 500;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 14px 18px;
-      border-radius: 14px;
-    }
-
-    .hero-bullet {
-      color: var(--accent);
-      font-weight: 900;
+    .hero-bot-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #38bdf8, #3b82f6);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+      font-size: 1.9rem;
       flex-shrink: 0;
+      animation: floatBot 3.6s ease-in-out infinite;
+    }
+
+    @keyframes floatBot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* 2x2 Spielerische Feature-Kacheln */
+    .hero-bento {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .bento-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(21, 30, 60, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: #f8fafc;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+      transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .bento-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.45);
+      background: rgba(28, 40, 78, 0.92);
     }
 
     .hero-hook {
-      font-size: clamp(1.2rem, 2.5vw, 1.45rem);
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 28px;
+      font-size: clamp(1.22rem, 2.5vw, 1.48rem);
+      font-weight: 850;
+      background: linear-gradient(90deg, #ffffff 0%, #bae6fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 22px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 20px;
     }
 
-    .hero-bottom-info {
-      margin-top: 26px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .hero-pill {
-      display: inline-block;
-      padding: 7px 15px;
+    .hero-trust-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
       border-radius: 999px;
-      background: rgba(56, 189, 248, 0.14);
-      color: var(--accent);
-      font-size: 0.94rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.32);
+      color: #a7f3d0;
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .trust-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 10px #34d399;
+      flex-shrink: 0;
+    }
+
+    /* Rechte Spalte: Spielerische Live-Vorschau-Karte */
+    .hero-preview {
+      background: linear-gradient(165deg, rgba(24, 34, 68, 0.96), rgba(13, 19, 41, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 26px;
+      padding: 20px;
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .preview-agent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .preview-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #6ee7b7;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .preview-chat-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .p-msg {
+      padding: 11px 14px;
+      border-radius: 16px;
+      font-size: 0.93rem;
+      line-height: 1.45;
+      max-width: 90%;
+    }
+
+    .p-msg.bot {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom-left-radius: 4px;
+      color: #f1f5f9;
+    }
+
+    .p-msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-bottom-right-radius: 4px;
+      color: #fff;
       font-weight: 600;
+    }
+
+    .preview-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .preview-chip {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      color: #e0f2fe;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.16s ease, transform 0.14s ease, border-color 0.16s ease;
+    }
+
+    .preview-chip:hover {
+      background: rgba(56, 189, 248, 0.28);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .preview-footer-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px dashed rgba(56, 189, 248, 0.45);
+      color: #bae6fd;
+      font-size: 0.92rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .preview-footer-btn:hover {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--accent);
     }
 
     /* Sections */
@@ -820,6 +970,7 @@
     }
 
     @media (max-width: 920px) {
+      .hero-stage,
       .grid-3,
       .packages-grid {
         grid-template-columns: 1fr;
@@ -828,13 +979,13 @@
       .offer-box {
         grid-template-columns: 1fr;
       }
-
-      .hero-card {
-        padding: 30px 20px;
-      }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 560px) {
+      .hero-bento {
+        grid-template-columns: 1fr;
+      }
+
       .hero-actions .btn,
       .cta-buttons .btn {
         width: 100%;
@@ -845,7 +996,8 @@
       }
 
       .hero-title-btn {
-        padding: 10px 18px;
+        padding: 12px 18px;
+        width: 100%;
       }
     }
   </style>
@@ -878,44 +1030,75 @@
   </header>
 
   <main>
-    <!-- Hero Bereich -->
+    <!-- Hero Bereich: Spielerisch & Modern -->
     <section id="start" class="hero">
       <div class="container">
-        <div class="hero-card">
-          <div class="hero-title-wrap">
+        <div class="hero-stage">
+          <!-- Linke Spalte: Headline, 2x2 Bento-Kacheln & CTAs -->
+          <div class="hero-left">
             <button type="button" class="hero-title-btn" data-open-chat aria-label="Chat mit Kai öffnen">
+              <span class="hero-bot-avatar">🤖</span>
               <span>Das 🤖 ist Kai</span>
             </button>
+
+            <div class="hero-bento">
+              <div class="bento-pill">
+                <span>🧠 Kai ist eine künstliche Intelligenz. 💡</span>
+              </div>
+              <div class="bento-pill">
+                <span>🤝 Kai ist der beste Berater. 🏆</span>
+              </div>
+              <div class="bento-pill">
+                <span>😴 Du schläfst, Kai arbeitet. 🧑‍💻</span>
+              </div>
+              <div class="bento-pill">
+                <span>🌐 Kai auf deiner Website? 💻📱 - Ja Klar</span>
+              </div>
+            </div>
+
+            <p class="hero-hook">Kai ist cool 😎 wie soll deiner heißen? 💬</p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-open-chat>Sprich mit Kai 🤖</button>
+              <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
+            </div>
+
+            <div class="hero-trust-bar">
+              <span class="trust-dot"></span>
+              <span>Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖</span>
+            </div>
           </div>
 
-          <ul class="hero-list">
-            <li>
-              <span class="hero-bullet">•</span>
-              <span>🧠 Kai ist eine künstliche Intelligenz. 💡</span>
-            </li>
-            <li>
-              <span class="hero-bullet">•</span>
-              <span>🤝 Kai ist der beste Berater. 🏆</span>
-            </li>
-            <li>
-              <span class="hero-bullet">•</span>
-              <span>😴 Du schläfst, Kai arbeitet. 🧑‍💻</span>
-            </li>
-            <li>
-              <span class="hero-bullet">•</span>
-              <span>🌐 Kai auf deiner Website? 💻📱 - Ja Klar</span>
-            </li>
-          </ul>
+          <!-- Rechte Spalte: Spielerische Live-Vorschau -->
+          <div class="hero-preview" aria-label="Vorschau wie Kai auf deiner Website aussieht">
+            <div class="preview-top">
+              <div class="preview-agent">
+                <span>🤖</span>
+                <span>Kai · Live-Vorschau</span>
+              </div>
+              <span class="preview-badge">● 24/7 aktiv</span>
+            </div>
 
-          <p class="hero-hook">Kai ist cool 😎 wie soll deiner heißen? 💬</p>
+            <div class="preview-chat-body">
+              <div class="p-msg bot">
+                Hey! 👋 Ich berate deine Besucher sofort, beantworte Fragen und schicke dir fertige Anfragen direkt per E-Mail. 📩
+              </div>
+              <div class="p-msg user">
+                Kann ich meinen Assistenten auch „Max“ oder „Lisa“ nennen? 😄
+              </div>
+              <div class="p-msg bot">
+                Na klar! Name, Tonfall und Wissen passen wir komplett an deinen Betrieb an. ✨
+              </div>
+            </div>
 
-          <div class="hero-actions">
-            <button type="button" class="btn btn-primary" data-open-chat>Sprich mit Kai 🤖</button>
-            <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
-          </div>
+            <div class="preview-chips">
+              <button type="button" class="preview-chip" data-open-chat>💬 Jetzt live testen</button>
+              <button type="button" class="preview-chip" data-open-chat>📅 Termin vereinbaren</button>
+            </div>
 
-          <div class="hero-bottom-info">
-            <span class="hero-pill">Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖</span>
+            <button type="button" class="preview-footer-btn" data-open-chat>
+              Klick hier &amp; sprich direkt mit Kai →
+            </button>
           </div>
         </div>
       </div>
