@@ -664,7 +664,7 @@
       color: #fff;
       border-radius: 12px;
       padding: 11px 13px;
-      font-size: 16px; /* verhindert iOS Auto-Zoom */
+      font-size: 16px;
       outline: none;
     }
 
@@ -967,12 +967,10 @@
     const chatSend = document.getElementById("chatSend");
     const quickPrompts = document.getElementById("quickPrompts");
 
-    // Startet bewusst leer, damit die erste Nachricht an die API immer vom "user" stammt
-    const history = [];
+    const contents = [];
 
     function openChat() {
       chatWindow.classList.add("open");
-      // Bewusst kein .focus(), damit auf Smartphones keine Tastatur aufspringt
     }
 
     function closeChat() {
@@ -992,52 +990,3 @@
         quickPrompts.style.display = "none";
       }
     }
-
-    function appendMessage(text, sender) {
-      const div = document.createElement("div");
-      div.className = "msg " + sender;
-      div.textContent = text;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    async function sendChatMessage(rawText) {
-      const text = (rawText || "").trim();
-      if (!text || chatSend.disabled) return;
-
-      hideQuickPrompts();
-      appendMessage(text, "user");
-      history.push({ role: "user", content: text });
-      chatSend.disabled = true;
-
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: history })
-        });
-
-        const data = await res.json();
-        const rawReply = data.reply || "Entschuldige, da gab es gerade eine kurze Störung. Versuch es bitte gleich noch einmal!";
-        const cleanReply = rawReply.replace(/\[\[LEAD\|[\s\S]*?\]\]/g, "").trim();
-
-        appendMessage(cleanReply, "bot");
-        history.push({ role: "assistant", content: cleanReply });
-      } catch (err) {
-        appendMessage("Gerade bin ich kurz nicht erreichbar. Schreib uns gern direkt per E-Mail oder WhatsApp!", "bot");
-      } finally {
-        chatSend.disabled = false;
-      }
-    }
-
-    chatForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const text = chatInput.value.trim();
-      if (!text) return;
-
-      chatInput.value = "";
-      await sendChatMessage(text);
-    });
-  </script>
-</body>
-</html>
