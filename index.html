@@ -72,22 +72,19 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 800;
-      font-size: 1.25rem;
+      font-weight: 850;
+      font-size: 1.3rem;
       letter-spacing: 0.4px;
     }
 
-    .brand-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+    .brand-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff;
-      font-weight: 900;
-      font-size: 0.95rem;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+      flex-shrink: 0;
     }
 
     .nav-actions {
@@ -174,17 +171,6 @@
       margin: 0 auto;
     }
 
-    .hero-pill {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.14);
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
     .hero h1 {
       font-size: clamp(2.2rem, 5vw, 3.4rem);
       line-height: 1.15;
@@ -232,10 +218,27 @@
       gap: 14px;
     }
 
+    .hero-bottom-info {
+      margin-top: 26px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
     .hero-note {
-      margin-top: 18px;
       font-size: 0.95rem;
       color: var(--muted);
+      line-height: 1.55;
     }
 
     /* Sections */
@@ -568,10 +571,6 @@
       .cta-buttons .btn {
         width: 100%;
       }
-
-      .nav .btn-secondary {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -579,12 +578,11 @@
   <header>
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-badge">KAI</span>
+        <span class="brand-dot" aria-hidden="true"></span>
         <span>KAI Agentur</span>
       </a>
       <div class="nav-actions">
         <a href="#ablauf" class="btn btn-secondary">So funktioniert's</a>
-        <button type="button" class="btn btn-primary" onclick="openChat()">Kai 🤖 testen</button>
       </div>
     </div>
   </header>
@@ -594,7 +592,6 @@
     <section class="hero">
       <div class="container">
         <div class="hero-card">
-          <span class="hero-pill">Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖</span>
           <h1>Das 🤖 ist Kai</h1>
 
           <ul class="hero-list">
@@ -619,13 +616,16 @@
           <p class="hero-hook">Kai ist cool 😎 wie heißt deiner? 💬</p>
 
           <div class="hero-actions">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Kai 🤖 jetzt live testen</button>
+            <button type="button" class="btn btn-primary" onclick="openChat()">Kai kostenlos testen</button>
             <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
           </div>
 
-          <p class="hero-note">
-            Kein Umbau deiner Seite nötig. Kai 🤖 beantwortet Fragen und sammelt Anfragen für dich – 24/7.
-          </p>
+          <div class="hero-bottom-info">
+            <span class="hero-pill">Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖</span>
+            <p class="hero-note">
+              Kein Umbau deiner bestehenden Seite nötig: Kai 🤖 fügt sich nahtlos ein, beantwortet Kundenfragen sofort und sammelt rund um die Uhr Anfragen für dich – 24/7.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -719,7 +719,7 @@
             Teste Kai 🤖 direkt unten rechts im Chat oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht.
           </p>
           <div class="cta-buttons">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Kai 🤖 im Chat testen</button>
+            <button type="button" class="btn btn-primary" onclick="openChat()">Kai kostenlos testen</button>
             <a href="mailto:info@kai-agentur.de?subject=Anfrage%20Kai%20Website-Berater" class="btn btn-email" aria-label="E-Mail senden">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="4" width="20" height="16" rx="3"></rect>
