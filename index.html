@@ -20,7 +20,7 @@
       --radius: 18px;
     }
 
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -474,16 +474,36 @@
 
     .footer-inner {
       display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-top-row {
+      display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+    }
+
+    .footer-legal a:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     .footer-tab {
@@ -495,10 +515,8 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
       color: var(--text);
-      font-family: inherit;
       font-size: 0.88rem;
       font-weight: 600;
-      cursor: pointer;
       transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
     }
 
@@ -506,83 +524,6 @@
       background: rgba(56, 189, 248, 0.15);
       border-color: rgba(56, 189, 248, 0.4);
       transform: translateY(-1px);
-    }
-
-    /* Legal Modal (Impressum & Datenschutz) */
-    .legal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      background: rgba(5, 8, 18, 0.78);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .legal-backdrop.open {
-      display: flex;
-    }
-
-    .legal-modal {
-      width: min(680px, 100%);
-      max-height: min(82dvh, 720px);
-      background: #121a36;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 22px;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .legal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 18px 22px;
-      background: #182347;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .legal-header h2 {
-      font-size: 1.25rem;
-      font-weight: 800;
-    }
-
-    .legal-close {
-      background: rgba(255, 255, 255, 0.08);
-      border: none;
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .legal-body {
-      padding: 22px;
-      overflow-y: auto;
-      color: var(--muted);
-      font-size: 0.96rem;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .legal-body h3 {
-      color: var(--text);
-      font-size: 1.05rem;
-      margin-top: 4px;
-    }
-
-    .legal-body a {
-      color: var(--accent);
-      text-decoration: underline;
     }
 
     /* Chat Widget */
@@ -813,13 +754,13 @@
       </a>
 
       <div class="nav-actions">
-        <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20Kai%20Website-Berater" class="nav-icon-btn nav-icon-email" aria-label="E-Mail senden" title="E-Mail an kai-agentur@gmail.com">
+        <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20Kai%20Website-Berater" class="nav-icon-btn nav-icon-email" aria-label="E-Mail senden" title="E-Mail senden">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="4" width="20" height="16" rx="3"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
         </a>
-        <a href="https://wa.me/491784919319?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Kai%20auf%20meiner%20Website." target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-icon-whatsapp" aria-label="Per WhatsApp schreiben" title="Per WhatsApp schreiben (+491784919319)">
+        <a href="https://wa.me/491784919319?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Kai%20auf%20meiner%20Website." target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-icon-whatsapp" aria-label="Per WhatsApp schreiben" title="Per WhatsApp schreiben">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
             <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.33-1.66a11.87 11.87 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42ZM12.07 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
           </svg>
@@ -983,29 +924,22 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© 2026 KAI Agentur – Kunden · Automatisch · Informieren</span>
-      <nav class="footer-links" aria-label="Fußzeilen-Navigation">
-        <a href="#start" class="footer-tab">Start 🤖</a>
-        <a href="#vorteile" class="footer-tab">Vorteile ⚡</a>
-        <a href="#ablauf" class="footer-tab">Ablauf 🛠️</a>
-        <a href="#paket" class="footer-tab">Preise 💶</a>
-        <a href="#kontakt" class="footer-tab">Kontakt 📞</a>
-        <button type="button" class="footer-tab" data-open-legal="impressum">Impressum 📜</button>
-        <button type="button" class="footer-tab" data-open-legal="datenschutz">Datenschutz 🔒</button>
-      </nav>
+      <div class="footer-top-row">
+        <span>© 2026 KAI Agentur – Kunden · Automatisch · Informieren</span>
+        <nav class="footer-links" aria-label="Fußzeilen-Navigation">
+          <a href="#start" class="footer-tab">Start 🤖</a>
+          <a href="#vorteile" class="footer-tab">Vorteile ⚡</a>
+          <a href="#ablauf" class="footer-tab">Ablauf 🛠️</a>
+          <a href="#paket" class="footer-tab">Preise 💶</a>
+          <a href="#kontakt" class="footer-tab">Kontakt 📞</a>
+        </nav>
+      </div>
+      <div class="footer-legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
     </div>
   </footer>
-
-  <!-- Legal Modal -->
-  <div class="legal-backdrop" id="legalBackdrop" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
-    <div class="legal-modal">
-      <div class="legal-header">
-        <h2 id="legalTitle">Impressum</h2>
-        <button type="button" class="legal-close" id="legalClose" aria-label="Fenster schließen">✕</button>
-      </div>
-      <div class="legal-body" id="legalBody"></div>
-    </div>
-  </div>
 
   <!-- Chat Launcher -->
   <button type="button" class="chat-launcher" id="chatLauncher" aria-label="Chat mit Kai öffnen">
@@ -1063,32 +997,197 @@
       const chatSend = document.getElementById("chatSend");
       const quickPrompts = document.getElementById("quickPrompts");
 
-      const legalBackdrop = document.getElementById("legalBackdrop");
-      const legalTitle = document.getElementById("legalTitle");
-      const legalBody = document.getElementById("legalBody");
-      const legalClose = document.getElementById("legalClose");
-
       const contents = [];
 
-      const legalContent = {
-        impressum: {
-          title: "Impressum 📜",
-          html: `
-            <p><strong>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz):</strong></p>
-            <p>
-              KAI Agentur – Kunden · Automatisch · Informieren<br />
-              [Vor- und Nachname / Inhaber: bitte ergänzen]<br />
-              [Straße und Hausnummer, PLZ Ort: bitte ergänzen]
-            </p>
-            <h3>Kontakt</h3>
-            <p>
-              Telefon: <a href="tel:+491784919319">+49 178 4919319</a><br />
-              WhatsApp: <a href="https://wa.me/491784919319" target="_blank" rel="noopener noreferrer">+49 178 4919319</a><br />
-              E-Mail: <a href="mailto:kai-agentur@gmail.com">kai-agentur@gmail.com</a>
-            </p>
-            <h3>Hinweis</h3>
-            <p>Bitte ergänzen Sie hier noch Ihre vollständige ladungsfähige Anschrift sowie ggf. Steuernummer / USt-IdNr. vor Veröffentlichung.</p>
-          `
-        },
-        datenschutz: {
-          title: "Datenschutzerklärung 🔒",
+      function setChatOpen(isOpen) {
+        if (!chatWindow) return;
+        if (isOpen) {
+          chatWindow.classList.add("open");
+          chatWindow.style.display = "flex";
+        } else {
+          chatWindow.classList.remove("open");
+          chatWindow.style.display = "none";
+        }
+      }
+
+      window.openChat = function () {
+        setChatOpen(true);
+      };
+
+      window.closeChat = function () {
+        setChatOpen(false);
+      };
+
+      window.toggleChat = function () {
+        if (!chatWindow) return;
+        const isCurrentlyOpen = chatWindow.classList.contains("open") || chatWindow.style.display === "flex";
+        setChatOpen(!isCurrentlyOpen);
+      };
+
+      document.querySelectorAll("[data-open-chat]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setChatOpen(true);
+        });
+      });
+
+      if (chatLauncher) {
+        chatLauncher.addEventListener("click", function () {
+          window.toggleChat();
+        });
+      }
+
+      if (chatClose) {
+        chatClose.addEventListener("click", function () {
+          setChatOpen(false);
+        });
+      }
+
+      function hideQuickPrompts() {
+        if (quickPrompts) {
+          quickPrompts.style.display = "none";
+        }
+      }
+
+      function appendMessage(text, sender) {
+        if (!chatMessages) return null;
+        const div = document.createElement("div");
+        div.className = "msg " + sender;
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return div;
+      }
+
+      function stripLeadMarker(text) {
+        return text.replace(/\[{1,2}LEAD\|[^\]]*\]{1,2}/g, "").trim();
+      }
+
+      function extractStreamDelta(rawChunk) {
+        let out = "";
+        const lines = rawChunk.split("\n");
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("data:")) continue;
+          const payload = trimmed.slice(5).trim();
+          if (!payload || payload === "[DONE]") continue;
+          try {
+            const parsed = JSON.parse(payload);
+            if (parsed?.error) {
+              throw new Error(parsed.error);
+            }
+            if (typeof parsed?.text === "string") {
+              out += parsed.text;
+            } else {
+              const gemText = parsed?.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (gemText) out += gemText;
+            }
+          } catch (e) {
+            if (e && e.message && e.message !== "Unexpected token" && !e.message.includes("JSON")) {
+              throw e;
+            }
+          }
+        }
+        return out;
+      }
+
+      async function sendChatMessage(rawText) {
+        const text = (rawText || "").trim();
+        if (!text || (chatSend && chatSend.disabled)) return;
+
+        hideQuickPrompts();
+        appendMessage(text, "user");
+        contents.push({ role: "user", parts: [{ text: text }] });
+        if (chatSend) chatSend.disabled = true;
+
+        const botBubble = appendMessage("...", "bot");
+        let fullRawReply = "";
+        let buffer = "";
+
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: contents })
+          });
+
+          if (!res.ok) {
+            const errText = await res.text();
+            throw new Error("HTTP " + res.status + (errText ? " – " + errText.slice(0, 180) : ""));
+          }
+
+          if (res.body && typeof res.body.getReader === "function") {
+            const reader = res.body.getReader();
+            const decoder = new TextDecoder();
+
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+
+              buffer += decoder.decode(value, { stream: true });
+              const blocks = buffer.split("\n\n");
+              buffer = blocks.pop() || "";
+
+              for (const block of blocks) {
+                const delta = extractStreamDelta(block);
+                if (delta) {
+                  fullRawReply += delta;
+                  const visibleText = stripLeadMarker(fullRawReply);
+                  if (botBubble && visibleText) {
+                    botBubble.textContent = visibleText;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                  }
+                }
+              }
+            }
+
+            if (buffer.trim()) {
+              const tailDelta = extractStreamDelta(buffer);
+              if (tailDelta) {
+                fullRawReply += tailDelta;
+              }
+            }
+          } else {
+            const fullText = await res.text();
+            fullRawReply = extractStreamDelta(fullText) || fullText;
+          }
+
+          const cleanReply = stripLeadMarker(fullRawReply);
+          if (!cleanReply) {
+            throw new Error("Leere Antwort");
+          }
+
+          if (botBubble) {
+            botBubble.textContent = cleanReply;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+          contents.push({ role: "model", parts: [{ text: cleanReply }] });
+        } catch (err) {
+          contents.pop();
+          if (botBubble) {
+            botBubble.textContent = "Kurze Störung: " + (err?.message || "Unbekannter Fehler");
+          }
+        } finally {
+          if (chatSend) chatSend.disabled = false;
+        }
+      }
+
+      document.querySelectorAll(".quick-prompt-btn[data-prompt]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const promptText = btn.getAttribute("data-prompt");
+          sendChatMessage(promptText);
+        });
+      });
+
+      if (chatForm && chatInput) {
+        chatForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const text = chatInput.value.trim();
+          if (!text) return;
+          chatInput.value = "";
+          await sendChatMessage(text);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
