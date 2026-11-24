@@ -225,12 +225,38 @@
       margin: 0 auto;
     }
 
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
+    .hero-title-wrap {
+      margin-bottom: 24px;
+    }
+
+    .hero-title-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: clamp(2rem, 4.8vw, 3.2rem);
       line-height: 1.15;
       font-weight: 850;
-      margin-bottom: 24px;
       letter-spacing: -0.02em;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(56, 189, 248, 0.14));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 12px 24px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.25);
+      transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      text-align: left;
+    }
+
+    .hero-title-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.34), rgba(56, 189, 248, 0.22));
+      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.28);
+    }
+
+    .hero-title-btn:active {
+      transform: translateY(0);
     }
 
     .hero-list {
@@ -451,12 +477,33 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .footer-links {
       display: flex;
-      gap: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .footer-tab:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
     }
 
     /* Chat Widget */
@@ -633,13 +680,17 @@
       .brand-sub {
         font-size: 0.7rem;
       }
+
+      .hero-title-btn {
+        padding: 10px 18px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a href="#" class="brand">
+      <a href="#start" class="brand">
         <span class="brand-main">
           <span class="brand-kai">KAI</span>
           <span>Agentur 🤖</span>
@@ -665,10 +716,14 @@
 
   <main>
     <!-- Hero Bereich -->
-    <section class="hero">
+    <section id="start" class="hero">
       <div class="container">
         <div class="hero-card">
-          <h1>Das 🤖 ist Kai</h1>
+          <div class="hero-title-wrap">
+            <button type="button" class="hero-title-btn" onclick="openChat()" aria-label="Chat mit Kai öffnen">
+              <span>Das 🤖 ist Kai</span>
+            </button>
+          </div>
 
           <ul class="hero-list">
             <li>
@@ -815,10 +870,13 @@
   <footer>
     <div class="container footer-inner">
       <span>© 2026 KAI Agentur – Kunden · Automatisch · Informieren</span>
-      <div class="footer-links">
-        <a href="#kontakt">Kontakt 📞</a>
-        <a href="#paket">Leistungen ✨</a>
-      </div>
+      <nav class="footer-links" aria-label="Fußzeilen-Navigation">
+        <a href="#start" class="footer-tab">Start 🤖</a>
+        <a href="#vorteile" class="footer-tab">Vorteile ⚡</a>
+        <a href="#ablauf" class="footer-tab">Ablauf 🛠️</a>
+        <a href="#paket" class="footer-tab">Preise 💶</a>
+        <a href="#kontakt" class="footer-tab">Kontakt 📞</a>
+      </nav>
     </div>
   </footer>
 
