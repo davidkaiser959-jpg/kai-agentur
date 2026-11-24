@@ -754,7 +754,7 @@
       <div class="container">
         <div class="hero-card">
           <div class="hero-title-wrap">
-            <button type="button" class="hero-title-btn" onclick="openChat()" aria-label="Chat mit Kai öffnen">
+            <button type="button" class="hero-title-btn" data-open-chat aria-label="Chat mit Kai öffnen">
               <span>Das 🤖 ist Kai</span>
             </button>
           </div>
@@ -781,7 +781,7 @@
           <p class="hero-hook">Kai ist cool 😎 wie soll deiner heißen? 💬</p>
 
           <div class="hero-actions">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Sprich mit Kai 🤖</button>
+            <button type="button" class="btn btn-primary" data-open-chat>Sprich mit Kai 🤖</button>
             <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
           </div>
 
@@ -882,7 +882,7 @@
             Teste Kai 🤖 direkt unten rechts im Chat 💬 oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht. ✨
           </p>
           <div class="cta-buttons">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Mit Kai 🤖 einen Termin ausmachen</button>
+            <button type="button" class="btn btn-primary" data-open-chat>Mit Kai 🤖 einen Termin ausmachen</button>
             <a href="mailto:info@kai-agentur.de?subject=Anfrage%20Kai%20Website-Berater" class="btn btn-email" aria-label="E-Mail senden">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="4" width="20" height="16" rx="3"></rect>
@@ -915,7 +915,7 @@
   </footer>
 
   <!-- Chat Launcher -->
-  <button type="button" class="chat-launcher" onclick="toggleChat()" aria-label="Chat mit Kai öffnen">
+  <button type="button" class="chat-launcher" id="chatLauncher" aria-label="Chat mit Kai öffnen">
     <span>Kai 🤖 fragen</span>
   </button>
 
@@ -926,7 +926,7 @@
         <span>Kai 🤖</span>
         <span class="chat-status">● online</span>
       </div>
-      <button type="button" class="chat-close" onclick="closeChat()" aria-label="Chat schließen">✕</button>
+      <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
     </div>
 
     <div class="chat-messages" id="chatMessages">
@@ -934,13 +934,13 @@
         Hey! 👋 Ich bin Kai 🤖 – dein digitaler Kundenberater. Frag mich gern alles oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀
       </div>
       <div class="quick-prompts" id="quickPrompts">
-        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Ich würde gerne einen Termin ausmachen.')">
+        <button type="button" class="quick-prompt-btn" data-prompt="Ich würde gerne einen Termin ausmachen.">
           📅 Ich würde gerne einen Termin ausmachen.
         </button>
-        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Erzähl mir bitte, was du kannst.')">
+        <button type="button" class="quick-prompt-btn" data-prompt="Erzähl mir bitte, was du kannst.">
           🤖 Erzähl mir bitte, was du kannst.
         </button>
-        <button type="button" class="quick-prompt-btn" onclick="sendChatMessage('Erzähl mir einen Witz.')">
+        <button type="button" class="quick-prompt-btn" data-prompt="Erzähl mir einen Witz.">
           😂 Erzähl mir einen Witz.
         </button>
       </div>
@@ -960,33 +960,166 @@
   </div>
 
   <script>
-    const chatWindow = document.getElementById("chatWindow");
-    const chatMessages = document.getElementById("chatMessages");
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-    const chatSend = document.getElementById("chatSend");
-    const quickPrompts = document.getElementById("quickPrompts");
+    (function () {
+      const chatWindow = document.getElementById("chatWindow");
+      const chatLauncher = document.getElementById("chatLauncher");
+      const chatClose = document.getElementById("chatClose");
+      const chatMessages = document.getElementById("chatMessages");
+      const chatForm = document.getElementById("chatForm");
+      const chatInput = document.getElementById("chatInput");
+      const chatSend = document.getElementById("chatSend");
+      const quickPrompts = document.getElementById("quickPrompts");
 
-    const contents = [];
+      const contents = [];
 
-    function openChat() {
-      chatWindow.classList.add("open");
-    }
-
-    function closeChat() {
-      chatWindow.classList.remove("open");
-    }
-
-    function toggleChat() {
-      if (chatWindow.classList.contains("open")) {
-        closeChat();
-      } else {
-        openChat();
+      function setChatOpen(isOpen) {
+        if (!chatWindow) return;
+        if (isOpen) {
+          chatWindow.classList.add("open");
+          chatWindow.style.display = "flex";
+        } else {
+          chatWindow.classList.remove("open");
+          chatWindow.style.display = "none";
+        }
       }
-    }
 
-    function hideQuickPrompts() {
-      if (quickPrompts) {
-        quickPrompts.style.display = "none";
+      window.openChat = function () {
+        setChatOpen(true);
+      };
+
+      window.closeChat = function () {
+        setChatOpen(false);
+      };
+
+      window.toggleChat = function () {
+        if (!chatWindow) return;
+        const isCurrentlyOpen = chatWindow.classList.contains("open") || chatWindow.style.display === "flex";
+        setChatOpen(!isCurrentlyOpen);
+      };
+
+      document.querySelectorAll("[data-open-chat]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          setChatOpen(true);
+        });
+      });
+
+      if (chatLauncher) {
+        chatLauncher.addEventListener("click", function () {
+          window.toggleChat();
+        });
       }
-    }
+
+      if (chatClose) {
+        chatClose.addEventListener("click", function () {
+          setChatOpen(false);
+        });
+      }
+
+      function hideQuickPrompts() {
+        if (quickPrompts) {
+          quickPrompts.style.display = "none";
+        }
+      }
+
+      function appendMessage(text, sender) {
+        if (!chatMessages) return;
+        const div = document.createElement("div");
+        div.className = "msg " + sender;
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function extractTextFromSseOrJson(rawText) {
+        let combined = "";
+        const lines = rawText.split("\n");
+
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const payload = line.slice(6).trim();
+            if (!payload || payload === "[DONE]") continue;
+            try {
+              const parsed = JSON.parse(payload);
+              const partText = parsed?.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (partText) combined += partText;
+            } catch (_) {}
+          }
+        }
+
+        if (!combined) {
+          try {
+            const jsonData = JSON.parse(rawText);
+            combined = jsonData?.reply || jsonData?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          } catch (_) {}
+        }
+
+        return combined;
+      }
+
+      async function sendChatMessage(rawText) {
+        const text = (rawText || "").trim();
+        if (!text || (chatSend && chatSend.disabled)) return;
+
+        hideQuickPrompts();
+        appendMessage(text, "user");
+        contents.push({ role: "user", parts: [{ text: text }] });
+        if (chatSend) chatSend.disabled = true;
+
+        let responseText = "";
+
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: contents })
+          });
+
+          responseText = await res.text();
+          if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+          }
+
+          const rawReply = extractTextFromSseOrJson(responseText);
+          const cleanReply = rawReply.replace(/\[{1,2}LEAD\|[^\]]*\]{1,2}/g, "").trim();
+
+          if (!cleanReply) {
+            throw new Error("Leere Antwort");
+          }
+
+          appendMessage(cleanReply, "bot");
+          contents.push({ role: "model", parts: [{ text: cleanReply }] });
+        } catch (err) {
+          contents.pop();
+          let detail = err?.message || "Unbekannter Fehler";
+          try {
+            const parsedErr = JSON.parse(responseText);
+            if (parsedErr?.error) detail += " – " + parsedErr.error;
+          } catch (_) {
+            if (responseText) detail += " – " + responseText.slice(0, 180);
+          }
+          appendMessage("Kurze Störung: " + detail, "bot");
+        } finally {
+          if (chatSend) chatSend.disabled = false;
+        }
+      }
+
+      document.querySelectorAll(".quick-prompt-btn[data-prompt]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const promptText = btn.getAttribute("data-prompt");
+          sendChatMessage(promptText);
+        });
+      });
+
+      if (chatForm && chatInput) {
+        chatForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const text = chatInput.value.trim();
+          if (!text) return;
+          chatInput.value = "";
+          await sendChatMessage(text);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
