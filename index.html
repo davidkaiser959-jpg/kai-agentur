@@ -69,28 +69,32 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 850;
-      font-size: 1.3rem;
+      font-size: 1.32rem;
       letter-spacing: 0.4px;
     }
 
-    .brand-dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+    .brand-art {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 25%, rgba(56, 189, 248, 0.25), rgba(59, 130, 246, 0.08));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
       flex-shrink: 0;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .brand-text-accent {
+      background: linear-gradient(90deg, #ffffff 0%, #bae6fd 65%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     /* Buttons */
@@ -578,12 +582,23 @@
   <header>
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span>KAI Agentur</span>
+        <span class="brand-art" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <defs>
+              <linearGradient id="kaiArtGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="55%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+            <path d="M5 17C5 10.5 9.5 6 16 6C17.8 6 19.2 6.5 20 7.2" stroke="url(#kaiArtGrad)" stroke-width="2.4" stroke-linecap="round" />
+            <path d="M6 12.5C9.5 12.5 12.5 9.5 14.5 6" stroke="#bae6fd" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+            <circle cx="17.5" cy="15.5" r="3.2" fill="url(#kaiArtGrad)" />
+            <circle cx="17.5" cy="15.5" r="1.2" fill="#ffffff" />
+          </svg>
+        </span>
+        <span class="brand-text-accent">KAI Agentur</span>
       </a>
-      <div class="nav-actions">
-        <a href="#ablauf" class="btn btn-secondary">So funktioniert's</a>
-      </div>
     </div>
   </header>
 
@@ -616,7 +631,7 @@
           <p class="hero-hook">Kai ist cool 😎 wie heißt deiner? 💬</p>
 
           <div class="hero-actions">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Kai kostenlos testen</button>
+            <button type="button" class="btn btn-primary" onclick="openChat()">Sprich mit Kai 🤖</button>
             <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
           </div>
 
@@ -719,7 +734,7 @@
             Teste Kai 🤖 direkt unten rechts im Chat oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht.
           </p>
           <div class="cta-buttons">
-            <button type="button" class="btn btn-primary" onclick="openChat()">Kai kostenlos testen</button>
+            <button type="button" class="btn btn-primary" onclick="openChat()">Mit Kai 🤖 einen Termin ausmachen</button>
             <a href="mailto:info@kai-agentur.de?subject=Anfrage%20Kai%20Website-Berater" class="btn btn-email" aria-label="E-Mail senden">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="4" width="20" height="16" rx="3"></rect>
