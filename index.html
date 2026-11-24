@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KAI Agentur – Dein digitaler Website-Berater</title>
+  <title>KAI Agentur – Kunden · Automatisch · Informieren</title>
   <style>
     :root {
       --bg: #0b1020;
@@ -56,7 +56,7 @@
       top: 0;
       z-index: 40;
       backdrop-filter: blur(12px);
-      background: rgba(11, 16, 32, 0.82);
+      background: rgba(11, 16, 32, 0.85);
       border-bottom: 1px solid var(--card-border);
     }
 
@@ -64,37 +64,87 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 70px;
-      gap: 16px;
+      min-height: 74px;
+      gap: 12px;
+      padding: 8px 0;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 850;
-      font-size: 1.32rem;
-      letter-spacing: 0.4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
     }
 
-    .brand-art {
+    .brand-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 1.32rem;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .brand-kai {
+      background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 60%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand-sub {
+      font-size: 0.76rem;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .brand-sub strong {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .nav-icon-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 40px;
       height: 40px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 25%, rgba(56, 189, 248, 0.25), rgba(59, 130, 246, 0.08));
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+      border-radius: 11px;
+      transition: transform 0.15s ease, background 0.2s ease;
       flex-shrink: 0;
     }
 
-    .brand-text-accent {
-      background: linear-gradient(90deg, #ffffff 0%, #bae6fd 65%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .nav-icon-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-icon-email {
+      background: #ffffff;
+      border: 1px solid rgba(29, 78, 216, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-icon-email:hover {
+      background: #f1f5f9;
+    }
+
+    .nav-icon-whatsapp {
+      background: rgba(37, 211, 102, 0.16);
+      border: 1px solid rgba(37, 211, 102, 0.45);
+    }
+
+    .nav-icon-whatsapp:hover {
+      background: rgba(37, 211, 102, 0.28);
     }
 
     /* Buttons */
@@ -162,7 +212,7 @@
 
     /* Hero */
     .hero {
-      padding: 64px 0 56px;
+      padding: 56px 0 52px;
     }
 
     .hero-card {
@@ -230,19 +280,12 @@
 
     .hero-pill {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 7px 15px;
       border-radius: 999px;
       background: rgba(56, 189, 248, 0.14);
       color: var(--accent);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .hero-note {
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.55;
     }
 
     /* Sections */
@@ -282,7 +325,7 @@
     }
 
     .card-icon {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       margin-bottom: 12px;
       display: inline-block;
     }
@@ -316,15 +359,15 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 11px;
+      margin-top: 16px;
       color: var(--muted);
     }
 
-    .offer-list li::before {
-      content: "✓ ";
-      color: var(--accent);
-      font-weight: 800;
+    .offer-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
     }
 
     .price-panel {
@@ -343,16 +386,27 @@
     }
 
     .price-sub {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--accent);
-      font-weight: 700;
-      margin-top: 6px;
+      font-weight: 750;
+      margin-top: 10px;
     }
 
     .price-caption {
       font-size: 0.9rem;
       color: var(--muted);
-      margin-top: 8px;
+      margin-top: 4px;
+    }
+
+    .price-bonus {
+      margin-top: 14px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+      font-size: 0.88rem;
+      font-weight: 700;
     }
 
     /* Contact / CTA */
@@ -575,6 +629,10 @@
       .cta-buttons .btn {
         width: 100%;
       }
+
+      .brand-sub {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -582,23 +640,26 @@
   <header>
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-art" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <defs>
-              <linearGradient id="kaiArtGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#38bdf8" />
-                <stop offset="55%" stop-color="#3b82f6" />
-                <stop offset="100%" stop-color="#a855f7" />
-              </linearGradient>
-            </defs>
-            <path d="M5 17C5 10.5 9.5 6 16 6C17.8 6 19.2 6.5 20 7.2" stroke="url(#kaiArtGrad)" stroke-width="2.4" stroke-linecap="round" />
-            <path d="M6 12.5C9.5 12.5 12.5 9.5 14.5 6" stroke="#bae6fd" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
-            <circle cx="17.5" cy="15.5" r="3.2" fill="url(#kaiArtGrad)" />
-            <circle cx="17.5" cy="15.5" r="1.2" fill="#ffffff" />
-          </svg>
+        <span class="brand-main">
+          <span class="brand-kai">KAI</span>
+          <span>Agentur 🤖</span>
         </span>
-        <span class="brand-text-accent">KAI Agentur</span>
+        <span class="brand-sub"><strong>K</strong>unden · <strong>A</strong>utomatisch · <strong>I</strong>nformieren</span>
       </a>
+
+      <div class="nav-actions">
+        <a href="mailto:info@kai-agentur.de?subject=Anfrage%20Kai%20Website-Berater" class="nav-icon-btn nav-icon-email" aria-label="E-Mail senden" title="E-Mail senden">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </a>
+        <a href="https://wa.me/4915100000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Kai%20auf%20meiner%20Website." target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-icon-whatsapp" aria-label="Per WhatsApp schreiben" title="Per WhatsApp schreiben">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
+            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.33-1.66a11.87 11.87 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42ZM12.07 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -637,9 +698,6 @@
 
           <div class="hero-bottom-info">
             <span class="hero-pill">Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖</span>
-            <p class="hero-note">
-              Kein Umbau deiner bestehenden Seite nötig: Kai 🤖 fügt sich nahtlos ein, beantwortet Kundenfragen sofort und sammelt rund um die Uhr Anfragen für dich – 24/7.
-            </p>
           </div>
         </div>
       </div>
@@ -649,25 +707,25 @@
     <section id="vorteile">
       <div class="container">
         <div class="section-head">
-          <h2>Was Kai 🤖 für deinen Betrieb übernimmt</h2>
-          <p>Weniger verpasste Anrufe während der Arbeit, mehr echte Kundenanfragen direkt in deinem Postfach.</p>
+          <h2>Was Kai 🤖 für deinen Betrieb übernimmt ⚡</h2>
+          <p>Weniger verpasste Anrufe während der Arbeit 📵, mehr echte Kundenanfragen direkt in deinem Postfach. 📬</p>
         </div>
 
         <div class="grid-3">
           <div class="card">
             <span class="card-icon">💬</span>
-            <h3>Sofortige Antworten</h3>
-            <p>Kai 🤖 erklärt deine Leistungen, Öffnungszeiten, Preise und Abläufe direkt im Chat – ohne Wartezeit für deine Besucher.</p>
+            <h3>Sofortige Antworten ⚡</h3>
+            <p>Kai 🤖 erklärt deine Leistungen, Öffnungszeiten 🕒, Preise und Abläufe direkt im Chat – ohne Wartezeit für deine Besucher.</p>
           </div>
           <div class="card">
-            <span class="card-icon">📋</span>
-            <h3>Anfragen & Termine sichern</h3>
-            <p>Statt Besucher an leere Kontaktformulare zu verlieren, fragt Kai 🤖 gezielt Name, Anliegen und Rückrufwunsch ab.</p>
+            <span class="card-icon">📅</span>
+            <h3>Anfragen & Termine sichern 📝</h3>
+            <p>Statt Besucher an leere Kontaktformulare zu verlieren, fragt Kai 🤖 gezielt Name, Anliegen und Rückrufwunsch ab. 📞</p>
           </div>
           <div class="card">
             <span class="card-icon">📩</span>
-            <h3>Direkt per E-Mail an dich</h3>
-            <p>Jede erfasste Anfrage landet übersichtlich zusammengefasst in deinem Postfach, damit du sofort nachfassen kannst.</p>
+            <h3>Direkt per E-Mail an dich 🚀</h3>
+            <p>Jede erfasste Anfrage landet übersichtlich zusammengefasst in deinem Postfach, damit du sofort nachfassen kannst. ✅</p>
           </div>
         </div>
       </div>
@@ -677,25 +735,25 @@
     <section id="ablauf">
       <div class="container">
         <div class="section-head">
-          <h2>In 3 Schritten zu deinem eigenen Kai 🤖</h2>
-          <p>Du musst dich um keine Technik kümmern – wir übernehmen Einrichtung, Training und Einbindung.</p>
+          <h2>In 3 Schritten zu deinem eigenen Kai 🤖 ✨</h2>
+          <p>Du musst dich um keine Technik kümmern 🛠️ – wir übernehmen Einrichtung, Training und Einbindung.</p>
         </div>
 
         <div class="grid-3">
           <div class="card">
             <span class="card-icon">1️⃣</span>
-            <h3>Kurzes Gespräch</h3>
-            <p>Wir klären in 15 Minuten, welche Fragen deine Kunden stellen und wie dein Assistent heißen und auftreten soll.</p>
+            <h3>Kurzes Gespräch ☕</h3>
+            <p>Wir klären in 15 Minuten ⏱️, welche Fragen deine Kunden stellen und wie dein Assistent heißen und auftreten soll.</p>
           </div>
           <div class="card">
             <span class="card-icon">2️⃣</span>
-            <h3>Individueller Aufbau</h3>
-            <p>Wir richten deinen Assistenten exakt auf deinen Betrieb, deine Leistungen und deinen Tonfall ein.</p>
+            <h3>Individueller Aufbau 🎨</h3>
+            <p>Wir richten deinen Assistenten exakt auf deinen Betrieb, deine Leistungen und deinen Tonfall ein. 🎯</p>
           </div>
           <div class="card">
             <span class="card-icon">3️⃣</span>
-            <h3>Live auf deiner Seite</h3>
-            <p>Nach deiner Freigabe binden wir ihn sauber auf deiner bestehenden Website ein – sofort startklar für deine Kunden.</p>
+            <h3>Live auf deiner Seite 🎉</h3>
+            <p>Nach deiner Freigabe binden wir ihn sauber auf deiner bestehenden Website ein 🌐 – sofort startklar für deine Kunden.</p>
           </div>
         </div>
       </div>
@@ -706,20 +764,21 @@
       <div class="container">
         <div class="offer-box">
           <div>
-            <h2>Alles drin für deinen Start</h2>
+            <h2>Alles drin für deinen Start 🚀</h2>
             <ul class="offer-list">
-              <li>Individuell auf deinen Betrieb trainierter KI-Berater</li>
-              <li>Eigenen Namen & Persönlichkeit für deinen Assistenten</li>
-              <li>Direkte Lead-Weiterleitung per E-Mail an dich</li>
-              <li>Saubere Einbindung auf deiner bestehenden Website</li>
-              <li>Laufende Betreuung & Anpassungen</li>
+              <li><span>🧠</span><span>Individuell auf deinen Betrieb trainierter KI-Berater</span></li>
+              <li><span>🏷️</span><span>Eigener Name & Persönlichkeit für deinen Assistenten</span></li>
+              <li><span>📩</span><span>Direkte Lead-Weiterleitung per E-Mail an dich</span></li>
+              <li><span>🌐</span><span>Saubere Einbindung auf deiner bestehenden Website</span></li>
+              <li><span>🤝</span><span>Laufende Betreuung & Anpassungen</span></li>
             </ul>
           </div>
           <div class="price-panel">
             <div class="price-main">480 €</div>
-            <div class="price-caption">einmalige Einrichtung</div>
+            <div class="price-caption">einmalige Einrichtung 🛠️</div>
             <div class="price-sub">+ 50 € / Monat</div>
-            <div class="price-caption">Betrieb, Hosting & Support</div>
+            <div class="price-caption">Betrieb, Hosting & Support ☁️</div>
+            <div class="price-bonus">🎁 Im ersten Monat entfällt die monatliche Gebühr!</div>
           </div>
         </div>
       </div>
@@ -729,9 +788,9 @@
     <section id="kontakt">
       <div class="container">
         <div class="cta-box">
-          <h2>Bereit für deinen eigenen Kai 🤖?</h2>
+          <h2>Bereit für deinen eigenen Kai 🤖? 🚀</h2>
           <p>
-            Teste Kai 🤖 direkt unten rechts im Chat oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht.
+            Teste Kai 🤖 direkt unten rechts im Chat 💬 oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht. ✨
           </p>
           <div class="cta-buttons">
             <button type="button" class="btn btn-primary" onclick="openChat()">Mit Kai 🤖 einen Termin ausmachen</button>
@@ -755,10 +814,10 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© 2026 KAI Agentur – Digitale Website-Berater</span>
+      <span>© 2026 KAI Agentur – Kunden · Automatisch · Informieren</span>
       <div class="footer-links">
-        <a href="#kontakt">Kontakt</a>
-        <a href="#paket">Leistungen</a>
+        <a href="#kontakt">Kontakt 📞</a>
+        <a href="#paket">Leistungen ✨</a>
       </div>
     </div>
   </footer>
@@ -780,7 +839,7 @@
 
     <div class="chat-messages" id="chatMessages">
       <div class="msg bot">
-        Hey! Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst!
+        Hey! 👋 Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀
       </div>
     </div>
 
@@ -807,7 +866,7 @@
     const history = [
       {
         role: "assistant",
-        content: "Hey! Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst!"
+        content: "Hey! 👋 Ich bin Kai 🤖 – dein digitaler Website-Berater. Frag mich gern alles über unsere Website-Chatbots oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀"
       }
     ];
 
