@@ -6,18 +6,19 @@
   <title>KAI Agentur – Kunden · Automatisch · Informieren</title>
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #121933;
-      --card: #161f3d;
+      --bg: #070b19;
+      --bg-soft: #0f162e;
+      --card: #131c3a;
       --card-border: rgba(255, 255, 255, 0.1);
-      --text: #f3f6ff;
-      --muted: #b6c2e2;
+      --text: #f8fafc;
+      --muted: #94a3b8;
       --primary: #3b82f6;
       --primary-hover: #2563eb;
       --accent: #38bdf8;
+      --accent-2: #818cf8;
       --whatsapp: #25d366;
-      --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-      --radius: 18px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
+      --radius: 20px;
     }
 
     * {
@@ -32,7 +33,10 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at top right, #1b2856 0%, var(--bg) 52%);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(56, 189, 248, 0.16) 0%, transparent 38%),
+        radial-gradient(circle at 84% 16%, rgba(99, 102, 241, 0.18) 0%, transparent 42%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -55,8 +59,8 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(12px);
-      background: rgba(11, 16, 32, 0.85);
+      backdrop-filter: blur(14px);
+      background: rgba(7, 11, 25, 0.82);
       border-bottom: 1px solid var(--card-border);
     }
 
@@ -153,39 +157,42 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 13px 22px;
-      border-radius: 12px;
+      padding: 14px 24px;
+      border-radius: 14px;
       font-weight: 700;
       font-size: 1rem;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       min-width: 0;
       text-align: center;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #2563eb);
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 55%, #0284c7 100%);
       color: #fff;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.42);
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #4f8ff7, #1d4ed8);
+      background: linear-gradient(135deg, #60a5fa 0%, #2563eb 60%, #0ea5e9 100%);
+      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.34);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
-      border-color: var(--card-border);
+      border-color: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(56, 189, 248, 0.42);
     }
 
     .btn-email {
@@ -210,129 +217,186 @@
       background: rgba(37, 211, 102, 0.24);
     }
 
-    /* Hero: Modern, fokussiert & frech */
+    /* Hero: Modern, professionell & spielerisch */
     .hero {
-      padding: 58px 0 54px;
+      padding: 64px 0 56px;
+      position: relative;
     }
 
-    .hero-stage {
-      max-width: 920px;
+    .hero-wrapper {
+      max-width: 980px;
       margin: 0 auto;
-      background: linear-gradient(160deg, rgba(23, 33, 66, 0.96), rgba(13, 20, 42, 0.96));
-      border: 1px solid rgba(56, 189, 248, 0.26);
-      border-radius: 28px;
-      padding: 44px 36px;
-      box-shadow: var(--shadow), 0 0 60px rgba(59, 130, 246, 0.12);
       text-align: center;
     }
 
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.14);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 700;
+    .hero-headline {
+      font-size: clamp(2.35rem, 5.4vw, 4rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #ffffff;
       margin-bottom: 18px;
     }
 
-    .hero-headline {
-      font-size: clamp(2.1rem, 5vw, 3.35rem);
-      line-height: 1.12;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-      color: #ffffff;
-      margin-bottom: 14px;
-    }
-
-    .hero-headline-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: none;
-      border: none;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-      padding: 4px 10px;
-      border-radius: 16px;
-      transition: background 0.18s ease, transform 0.16s ease;
-    }
-
-    .hero-headline-btn:hover {
-      background: rgba(56, 189, 248, 0.14);
-      transform: translateY(-2px);
+    .hero-gradient {
+      background: linear-gradient(110deg, #38bdf8 0%, #60a5fa 45%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-sub {
-      max-width: 680px;
-      margin: 0 auto 28px;
-      color: var(--muted);
-      font-size: clamp(1.04rem, 2.1vw, 1.2rem);
-    }
-
-    .hero-pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      text-align: left;
-      margin-bottom: 28px;
-    }
-
-    .hero-pillar {
-      background: rgba(11, 16, 32, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 18px 18px;
-      transition: transform 0.16s ease, border-color 0.2s ease;
-    }
-
-    .hero-pillar:hover {
-      transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.42);
-    }
-
-    .hero-pillar-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-
-    .hero-pillar-text {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.48;
-    }
-
-    .hero-hook {
-      font-size: clamp(1.18rem, 2.4vw, 1.42rem);
-      font-weight: 850;
-      color: #ffffff;
-      margin-bottom: 22px;
+      max-width: 690px;
+      margin: 0 auto 30px;
+      color: #cbd5e1;
+      font-size: clamp(1.06rem, 2.1vw, 1.24rem);
+      line-height: 1.65;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-bottom: 36px;
     }
 
-    .hero-note {
-      display: inline-block;
-      padding: 8px 16px;
+    /* Spielerischer Namens-Playground */
+    .name-playground {
+      max-width: 660px;
+      margin: 0 auto 38px;
+      background: linear-gradient(160deg, rgba(22, 32, 64, 0.9), rgba(13, 19, 41, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .playground-label {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .playground-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .name-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+      padding: 7px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      color: #dbeafe;
       font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .name-chip:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .name-chip.active {
+      background: linear-gradient(135deg, #3b82f6, #0284c7);
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    }
+
+    .playground-status {
+      font-size: 0.9rem;
+      color: #7dd3fc;
       font-weight: 600;
+    }
+
+    /* Moderne Bento-Karten im Hero */
+    .hero-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: left;
+    }
+
+    .bento-card {
+      background: linear-gradient(165deg, rgba(21, 30, 62, 0.85), rgba(14, 21, 45, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.42);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+    }
+
+    .bento-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .bento-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .bento-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .bento-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .bento-card p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .hero-footnote {
+      margin-top: 26px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .hero-footnote strong {
+      color: #e2e8f0;
+      font-weight: 650;
     }
 
     /* Sections */
@@ -841,7 +905,7 @@
     }
 
     @media (max-width: 920px) {
-      .hero-pillars,
+      .hero-bento,
       .grid-3,
       .packages-grid {
         grid-template-columns: 1fr;
@@ -851,8 +915,8 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-stage {
-        padding: 32px 20px;
+      .hero {
+        padding: 44px 0 42px;
       }
     }
 
@@ -896,48 +960,75 @@
   </header>
 
   <main>
-    <!-- Hero Bereich -->
+    <!-- Hero Bereich: Modern, professionell & spielerisch -->
     <section id="start" class="hero">
       <div class="container">
-        <div class="hero-stage">
-          <div class="hero-kicker">🚀 Websites, Google-Sichtbarkeit &amp; dein eigener KI-Berater</div>
-
+        <div class="hero-wrapper">
           <h1 class="hero-headline">
-            <button type="button" class="hero-headline-btn" data-open-chat aria-label="Chat mit Kai öffnen">
-              <span>Neue Website + Das 🤖 ist Kai</span>
-            </button>
+            Deine Website. Dein Kai.<br />
+            <span class="hero-gradient">Dein 24/7-Kundenmagnet.</span>
           </h1>
 
           <p class="hero-sub">
-            Schluss mit veralteten Seiten und verpassten Anrufen: Wir bauen dir eine moderne Website, machen dich bei Google sichtbarer und setzen Kai drauf – der rund um die Uhr berät, Fragen klärt und Anfragen einsammelt. ⚡
+            Wir bauen dir eine moderne Website, die bei Google gefunden wird – und setzen deinen eigenen KI-Berater drauf, der Fragen sofort klärt und Termine einsammelt, während du arbeitest oder schläfst.
           </p>
 
-          <div class="hero-pillars">
-            <div class="hero-pillar">
-              <div class="hero-pillar-title">🌐 Website, die was hermacht</div>
-              <p class="hero-pillar-text">Schick auf Handy &amp; PC, blitzschnell und fit für Google &amp; Maps – kein Baukasten-Einheitsbrei.</p>
-            </div>
-            <div class="hero-pillar">
-              <div class="hero-pillar-title">😴 Du schläfst, Kai arbeitet</div>
-              <p class="hero-pillar-text">Kai ist der beste Berater für deinen Betrieb: antwortet sofort, sichert Termine und schickt dir Leads per Mail. 🏆</p>
-            </div>
-            <div class="hero-pillar">
-              <div class="hero-pillar-title">🧠 KI mit Köpfchen &amp; Charme</div>
-              <p class="hero-pillar-text">Künstliche Intelligenz mit 💡 – auf deinen Betrieb trainiert und genau auf deinen Tonfall abgestimmt.</p>
-            </div>
-          </div>
-
-          <p class="hero-hook">Kai ist cool 😎 – wie soll deiner heißen? 💬</p>
-
           <div class="hero-actions">
-            <button type="button" class="btn btn-primary" data-open-chat>Sprich mit Kai 🤖</button>
-            <a href="#paket" class="btn btn-secondary">Pakete &amp; Preise checken 💶</a>
-            <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch 📞</a>
+            <button type="button" class="btn btn-primary" id="heroChatBtn" data-open-chat>Live mit Kai sprechen 🤖</button>
+            <a href="#paket" class="btn btn-secondary">Pakete &amp; Preise ansehen</a>
+            <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch</a>
           </div>
 
-          <div class="hero-note">
-            Deine Website bleibt unverändert – wir ergänzen nur Kai 🤖 (oder bauen dir beides zusammen neu auf).
+          <!-- Spielerischer Namens-Test -->
+          <div class="name-playground">
+            <div class="playground-label">
+              <span>😎 Kai ist cool – wie soll dein digitaler Berater heißen?</span>
+            </div>
+            <div class="playground-chips" id="nameChips">
+              <button type="button" class="name-chip active" data-agent-name="Kai">Kai 🤖</button>
+              <button type="button" class="name-chip" data-agent-name="Luna">Luna ✨</button>
+              <button type="button" class="name-chip" data-agent-name="Max">Max ⚡</button>
+              <button type="button" class="name-chip" data-agent-name="Nova">Nova 🚀</button>
+              <button type="button" class="name-chip" data-agent-name="Ben">Ben 💬</button>
+            </div>
+            <div class="playground-status" id="playgroundStatus">
+              Klick auf einen Namen – wir passen Name, Wissen &amp; Tonfall komplett an deinen Betrieb an.
+            </div>
           </div>
+
+          <!-- 3 Moderne Bento-Karten -->
+          <div class="hero-bento">
+            <div class="bento-card">
+              <div class="bento-top">
+                <span class="bento-icon">🌐</span>
+                <span class="bento-tag">Web &amp; Google</span>
+              </div>
+              <h3>Moderne Websites, die gefunden werden</h3>
+              <p>Individuelles Design für Handy &amp; Desktop, blitzschnell geladen und sauber für Google &amp; Maps optimiert.</p>
+            </div>
+
+            <div class="bento-card">
+              <div class="bento-top">
+                <span class="bento-icon">🧠</span>
+                <span class="bento-tag">KI-Berater</span>
+              </div>
+              <h3>Dein bester Berater – rund um die Uhr</h3>
+              <p>Beantwortet Kundenfragen in Sekunden, erklärt deine Leistungen und leitet fertige Anfragen direkt per Mail an dich weiter.</p>
+            </div>
+
+            <div class="bento-card">
+              <div class="bento-top">
+                <span class="bento-icon">😴</span>
+                <span class="bento-tag">Autopilot</span>
+              </div>
+              <h3>Du schläfst, dein Assistent arbeitet</h3>
+              <p>Kein verlorener Interessent mehr während der Arbeit oder nach Feierabend – dein digitaler Berater ist immer wach.</p>
+            </div>
+          </div>
+
+          <p class="hero-footnote">
+            <strong>Du hast schon eine Website?</strong> Kein Problem – wir ergänzen auch einfach nur Kai, ohne deine bestehende Seite zu verändern.
+          </p>
         </div>
       </div>
     </section>
@@ -1213,8 +1304,27 @@
       const chatInput = document.getElementById("chatInput");
       const chatSend = document.getElementById("chatSend");
       const quickPrompts = document.getElementById("quickPrompts");
+      const heroChatBtn = document.getElementById("heroChatBtn");
+      const playgroundStatus = document.getElementById("playgroundStatus");
 
       const contents = [];
+
+      // Spielerische Namens-Auswahl im Hero
+      document.querySelectorAll(".name-chip[data-agent-name]").forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          document.querySelectorAll(".name-chip").forEach(function (c) {
+            c.classList.remove("active");
+          });
+          chip.classList.add("active");
+          const chosen = chip.getAttribute("data-agent-name") || "Kai";
+          if (heroChatBtn) {
+            heroChatBtn.textContent = "Live mit " + chosen + " sprechen 🤖";
+          }
+          if (playgroundStatus) {
+            playgroundStatus.textContent = "„" + chosen + "“ klingt stark! Wir trainieren deinen Berater genau auf deinen Betrieb.";
+          }
+        });
+      });
 
       function setChatOpen(isOpen) {
         if (!chatWindow) return;
