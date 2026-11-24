@@ -967,14 +967,8 @@
     const chatSend = document.getElementById("chatSend");
     const quickPrompts = document.getElementById("quickPrompts");
 
-    const welcomeText = "Hey! 👋 Ich bin Kai 🤖 – dein digitaler Kundenberater. Frag mich gern alles oder verrat mir, für welchen Betrieb du einen eigenen Kai suchst! 🚀";
-
-    const history = [
-      {
-        role: "assistant",
-        content: welcomeText
-      }
-    ];
+    // Startet bewusst leer, damit die erste Nachricht an die API immer vom "user" stammt
+    const history = [];
 
     function openChat() {
       chatWindow.classList.add("open");
