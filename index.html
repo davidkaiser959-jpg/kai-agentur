@@ -98,7 +98,9 @@
     .nav-links a:hover { color: var(--text); }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--primary);
       color: #fff;
       font-weight: 600;
@@ -107,7 +109,7 @@
       border: none;
       cursor: pointer;
       font-size: 15px;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
 
     .btn:hover { background: var(--primary-hover); }
@@ -120,6 +122,21 @@
 
     .btn-outline:hover {
       background: var(--bg-elevated);
+    }
+
+    .btn-whatsapp {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 12px;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
     }
 
     /* Hero */
@@ -169,7 +186,7 @@
 
     .section-title p {
       color: var(--text-muted);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
     }
 
@@ -262,6 +279,7 @@
       display: flex;
       gap: 14px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -436,16 +454,18 @@
 
     .input-area input {
       flex: 1;
+      min-width: 0;
       padding: 9px 12px;
       border-radius: 8px;
       border: 1px solid #334155;
       background: #1e293b;
       color: #fff;
-      font-size: 14px;
+      font-size: 16px;
       outline: none;
     }
 
     .input-area button {
+      flex-shrink: 0;
       padding: 9px 14px;
       border: none;
       border-radius: 8px;
@@ -498,6 +518,7 @@
       <span class="logo-sub">Kunden - Automatisch - Informieren</span>
     </a>
     <nav class="nav-links">
+      <a href="#funktionen">Was Kai 🤖 kann</a>
       <a href="#vorteile">Vorteile</a>
       <a href="#ablauf">Ablauf</a>
       <a href="#kontakt">Kontakt</a>
@@ -509,14 +530,41 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Verwandeln Sie Website-Besucher in feste Termine – <span>mit Ihrem eigenen digitalen Kundenassistenten.</span></h1>
+      <h1>Verwandeln Sie Ihre Website-Besucher in feste Termine – <span>mit Ihrem eigenen digitalen Kundenassistenten.</span></h1>
       <p>
         Wir entwickeln maßgeschneiderte digitale Kundenassistenten für lokale Betriebe.
         Ihre Website-Besucher erhalten sofort verlässliche Antworten – auch nach Feierabend und am Wochenende.
       </p>
       <div class="hero-actions">
-        <button type="button" class="btn" id="openChatHero">Kai jetzt live testen</button>
+        <button type="button" class="btn" id="openChatHero">Kai 🤖 jetzt live testen</button>
         <a href="#kontakt" class="btn btn-outline">Kostenloses Erstgespräch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Was Kai kann -->
+  <section id="funktionen" style="background: rgba(19, 28, 49, 0.45);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Was Kai 🤖 für Ihr Unternehmen erledigt</h2>
+        <p>Ein digitaler Mitarbeiter auf Ihrer Website, der Besucher abholt, informiert und Anfragen sauber an Sie weitergibt.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>Fragen sofort beantworten</h3>
+          <p>Kai 🤖 erklärt Ihre Leistungen, Preise, Öffnungszeiten und Abläufe direkt im Chat – rund um die Uhr ohne Wartezeit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <h3>Termine & Anfragen vorbereiten</h3>
+          <p>Statt Besucher an leere Kontaktformulare zu verlieren, fragt Kai 🤖 gezielt Name, Anliegen und Rückrufwunsch ab.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✉️</div>
+          <h3>Direkt per E-Mail an Sie</h3>
+          <p>Jede erfasste Anfrage landet übersichtlich zusammengefasst in Ihrem Postfach – damit Sie sofort nachfassen können.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -525,7 +573,7 @@
   <section id="vorteile">
     <div class="container">
       <div class="section-title">
-        <h2>Warum lokale Unternehmen auf Kai setzen</h2>
+        <h2>Warum lokale Unternehmen auf Kai 🤖 setzen</h2>
         <p>Schluss mit verpassten Anrufen während der Arbeit und ständig wiederkehrenden Standardfragen.</p>
       </div>
       <div class="grid-3">
@@ -559,17 +607,17 @@
         <div class="card">
           <div class="card-icon">1</div>
           <h3>Kurzes Kennenlernen</h3>
-          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was Kai abnehmen soll.</p>
+          <p>Wir besprechen in 15 Minuten, welche Fragen Ihre Kunden am häufigsten stellen und was Kai 🤖 abnehmen soll.</p>
         </div>
         <div class="card">
           <div class="card-icon">2</div>
           <h3>Individueller Aufbau</h3>
-          <p>Wir richten Ihren persönlichen Kai passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
+          <p>Wir richten Ihren persönlichen Kai 🤖 passend zu Ihrem Betrieb, Ihrem Tonfall und Ihrem Design ein.</p>
         </div>
         <div class="card">
           <div class="card-icon">3</div>
           <h3>Live auf Ihrer Website</h3>
-          <p>Nach Ihrer Freigabe binden wir Kai auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
+          <p>Nach Ihrer Freigabe binden wir Kai 🤖 auf Ihrer Website ein – sofort einsatzbereit für Ihre Kunden.</p>
         </div>
       </div>
     </div>
@@ -580,10 +628,10 @@
     <div class="container">
       <div class="demo-banner">
         <div class="demo-banner-text">
-          <h2>Neugierig, wie Kai für Ihre Kunden klingt?</h2>
-          <p>Öffnen Sie Kai unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
+          <h2>Neugierig, wie Kai 🤖 für Ihre Kunden klingt?</h2>
+          <p>Öffnen Sie Kai 🤖 unten rechts und stellen Sie ihm direkt eine typische Kundenfrage.</p>
         </div>
-        <button type="button" class="btn" id="openChatBanner">Kai öffnen</button>
+        <button type="button" class="btn" id="openChatBanner">Kai 🤖 öffnen</button>
       </div>
     </div>
   </section>
@@ -594,11 +642,20 @@
       <div class="contact-card">
         <h2>Bereit für Ihren eigenen digitalen Assistenten?</h2>
         <p>
-          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie Kai Ihren Alltag entlastet.
+          Lassen Sie uns unverbindlich sprechen – wir zeigen Ihnen gerne an einem konkreten Beispiel, wie Kai 🤖 Ihren Alltag entlastet.
         </p>
         <div class="contact-methods">
-          <a href="https://wa.me/491784919319?text=Hallo%20David%2C%20ich%20habe%20Fragen%20zu%20Kai." target="_blank" rel="noopener noreferrer" class="btn">
-            Schreib mir persönlich bei WhatsApp
+          <a
+            href="https://wa.me/491784919319?text=Hallo%20David%2C%20ich%20habe%20Fragen%20zu%20Kai."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp"
+            aria-label="Persönlich auf WhatsApp schreiben"
+            title="Persönlich auf WhatsApp schreiben"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.52 3.48A11.82 11.82 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.28-1.65a11.9 11.9 0 0 0 5.76 1.47h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.47-8.4zm-8.48 18.35h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.88 9.88 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.91-9.92 9.91zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.11 3.22 5.11 4.52.71.31 1.27.49 1.71.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+            </svg>
           </a>
           <a href="mailto:kai-agentur@gmail.com?subject=Anfrage%20Kai" class="btn btn-outline">
             E-Mail schreiben
@@ -623,22 +680,22 @@
 </footer>
 
 <!-- Floating Chat Button -->
-<button type="button" class="chat-launcher" id="chatLauncher" aria-label="Kai öffnen">
+<button type="button" class="chat-launcher" id="chatLauncher" aria-label="Kai 🤖 öffnen">
   <span class="chat-launcher-dot"></span>
-  <span>Kai fragen</span>
+  <span>Kai 🤖 fragen</span>
 </button>
 
 <!-- Floating Chat Window -->
-<div class="chat-widget" id="chatWidget" role="dialog" aria-label="Kai">
+<div class="chat-widget" id="chatWidget" role="dialog" aria-label="Kai 🤖">
   <div class="chat-header">
     <div class="chat-header-title">
-      Kai
+      Kai 🤖
       <span>Ihr digitaler Assistent</span>
     </div>
     <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
   </div>
   <div id="messages">
-    <div class="msg bot">Guten Tag! Ich bin Kai, Ihr digitaler Assistent. Wie darf ich Ihnen weiterhelfen?</div>
+    <div class="msg bot">Guten Tag! Ich bin Kai 🤖, Ihr digitaler Assistent. Wie darf ich Ihnen weiterhelfen?</div>
   </div>
   <form class="input-area" id="chatForm">
     <input type="text" id="userInput" placeholder="Frage eingeben..." autocomplete="off" required />
@@ -662,7 +719,6 @@
 
   function openChat() {
     chatWidget.classList.add("open");
-    userInput.focus();
   }
 
   function closeChat() {
@@ -788,7 +844,6 @@
       console.error(err);
     } finally {
       sendBtn.disabled = false;
-      userInput.focus();
     }
   });
 </script>
