@@ -207,14 +207,14 @@
 
     /* SCREEN 1: Exakt 100dvh, clean, button-frei */
     .hero-full {
-      min-height: 100dvh;
-      max-height: 100dvh;
+      min-height: calc(100dvh - 62px);
+      max-height: calc(100dvh - 62px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       text-align: center;
-      padding: 20px 18px 18px;
+      padding: 18px 18px 16px;
       position: relative;
       overflow: hidden;
       background:
@@ -226,11 +226,11 @@
     .hero-top {
       max-width: 780px;
       z-index: 2;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .hero-uv-title {
-      font-size: clamp(2rem, 8.2vw, 3.85rem);
+      font-size: clamp(1.95rem, 8vw, 3.85rem);
       font-weight: 950;
       line-height: 1.05;
       letter-spacing: -0.03em;
@@ -239,7 +239,7 @@
       background-clip: text;
       color: transparent;
       filter: drop-shadow(0 0 22px rgba(192, 132, 252, 0.55));
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-uv-sub {
@@ -256,13 +256,13 @@
       justify-content: center;
       flex: 1;
       width: 100%;
-      max-height: 54dvh;
+      max-height: 52dvh;
       z-index: 2;
     }
 
     .aura-ring {
       position: absolute;
-      width: min(300px, 68vw);
+      width: min(290px, 66vw);
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(217, 70, 239, 0.34) 0%, rgba(147, 51, 234, 0.16) 52%, transparent 72%);
@@ -278,7 +278,7 @@
 
     .hero-avatar-frame {
       position: relative;
-      width: min(245px, 56vw);
+      width: min(235px, 54vw);
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       padding: 4px;
@@ -293,6 +293,7 @@
       object-fit: cover;
       border-radius: 50%;
       display: block;
+      background: #0d0521;
     }
 
     .scroll-cue {
@@ -317,12 +318,12 @@
 
     /* SCREEN 2: Verkaufs-Punch + UV Buttons + 6er Playground */
     .sales-punch-section {
-      padding: 48px 0 36px;
+      padding: 44px 0 36px;
     }
 
     .sales-copy-box {
       max-width: 780px;
-      margin: 0 auto 28px;
+      margin: 0 auto 26px;
       background: linear-gradient(160deg, rgba(35, 14, 78, 0.85), rgba(14, 6, 34, 0.92));
       border: 1px solid rgba(192, 132, 252, 0.35);
       border-radius: 24px;
@@ -347,7 +348,7 @@
 
     .uv-cta-stack {
       max-width: 640px;
-      margin: 0 auto 38px;
+      margin: 0 auto 36px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -366,7 +367,7 @@
 
     .playground-top-label {
       text-align: center;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 800;
       color: #f5d0fe;
       margin-bottom: 14px;
@@ -383,9 +384,9 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(192, 132, 252, 0.24);
       color: #f3e8ff;
-      padding: 10px 8px;
+      padding: 10px 6px;
       border-radius: 14px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 750;
       cursor: pointer;
       transition: all 0.16s ease;
@@ -415,13 +416,14 @@
     }
 
     .active-char-avatar {
-      width: 78px;
-      height: 78px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
       border: 2px solid #e879f9;
       box-shadow: 0 0 20px rgba(217, 70, 239, 0.45);
+      background: #0d0521;
     }
 
     .active-char-role {
@@ -432,20 +434,20 @@
     }
 
     .active-char-quote {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: #e9d5ff;
       line-height: 1.5;
     }
 
     /* Sections & Cards */
     section {
-      padding: 48px 0;
+      padding: 46px 0;
     }
 
     .section-head {
       text-align: center;
       max-width: 740px;
-      margin: 0 auto 30px;
+      margin: 0 auto 28px;
     }
 
     .section-head h2 {
@@ -761,7 +763,7 @@
       color: #fff;
       border: 1px solid rgba(245, 208, 254, 0.55);
       border-radius: 999px;
-      padding: 9px 16px 9px 10px;
+      padding: 8px 16px 8px 9px;
       font-size: 0.95rem;
       font-weight: 800;
       display: inline-flex;
@@ -782,12 +784,13 @@
     }
 
     .chat-launcher-avatar {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid #ffffff;
       flex-shrink: 0;
+      background: #0d0521;
     }
 
     .chat-window {
@@ -828,12 +831,13 @@
     }
 
     .chat-header-avatar {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid #e879f9;
       flex-shrink: 0;
+      background: #0d0521;
     }
 
     .chat-role-sub {
@@ -1008,7 +1012,7 @@
           <img
             id="heroAvatarImg"
             class="hero-avatar-img"
-            src="https://image_generation_content/17400958496521113187"
+            src=""
             alt="Kai – KI-Berater"
           />
         </div>
@@ -1031,7 +1035,7 @@
         </div>
 
         <div class="uv-cta-stack">
-          <button type="button" class="btn btn-uv" id="dynamicTalkBtn" data-open-chat>Mit Kai sprechen 🤖✨</button>
+          <button type="button" class="btn btn-uv" id="dynamicTalkBtn" data-open-chat>Mit Kai sprechen 💬</button>
           <a href="#paket" class="btn btn-uv-outline">Pakete &amp; Preise ansehen 💎</a>
           <a href="#kontakt" class="btn btn-uv-outline">Kostenloses Erstgespräch 📞</a>
         </div>
@@ -1053,7 +1057,7 @@
             <img
               id="activeCharAvatar"
               class="active-char-avatar"
-              src="https://image_generation_content/17400958496521113187"
+              src=""
               alt="Kai Avatar"
             />
             <div>
@@ -1283,10 +1287,10 @@
     <img
       id="launcherAvatarImg"
       class="chat-launcher-avatar"
-      src="https://image_generation_content/17400958496521113187"
+      src=""
       alt="Chat Avatar"
     />
-    <span id="launcherLabel">Kai fragen 🤖</span>
+    <span id="launcherLabel">Kai fragen</span>
   </button>
 
   <!-- Chat Fenster -->
@@ -1296,12 +1300,12 @@
         <img
           id="chatHeaderAvatar"
           class="chat-header-avatar"
-          src="https://image_generation_content/17400958496521113187"
+          src=""
           alt="Aktiver Charakter"
         />
         <div>
           <div id="chatHeaderName">Kai 🤖✨</div>
-          <div class="chat-role-sub" id="chatHeaderSub">● online · Dein KI-Berater</div>
+          <div class="chat-role-sub" id="chatHeaderSub">● online · Ruhig, klar &amp; souverän</div>
         </div>
       </div>
       <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
@@ -1324,13 +1328,62 @@
 
   <script>
     (function () {
+      function makeBotSvg(accent1, accent2, extraSvg) {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+          <defs>
+            <radialGradient id="bg" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="${accent1}" stop-opacity="0.55"/>
+              <stop offset="62%" stop-color="#190836" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#070312" stop-opacity="1"/>
+            </radialGradient>
+            <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f5f3ff"/>
+              <stop offset="50%" stop-color="#c4b5fd"/>
+              <stop offset="100%" stop-color="#6d28d9"/>
+            </linearGradient>
+            <linearGradient id="visor" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="${accent1}"/>
+              <stop offset="100%" stop-color="${accent2}"/>
+            </linearGradient>
+          </defs>
+          <rect width="240" height="240" fill="url(#bg)"/>
+          <circle cx="120" cy="120" r="98" fill="none" stroke="${accent1}" stroke-width="2" stroke-opacity="0.45"/>
+          <circle cx="120" cy="120" r="84" fill="none" stroke="${accent2}" stroke-width="1.5" stroke-dasharray="6 6" stroke-opacity="0.55"/>
+          <!-- Schultern -->
+          <path d="M54 222 C60 182, 85 170, 120 170 C155 170, 180 182, 186 222 Z" fill="url(#metal)"/>
+          <path d="M84 176 L120 198 L156 176" fill="none" stroke="${accent2}" stroke-width="3" stroke-linecap="round"/>
+          <!-- Hals -->
+          <rect x="106" y="148" width="28" height="26" rx="8" fill="#4c1d95"/>
+          <!-- Kopf -->
+          <rect x="68" y="64" width="104" height="92" rx="44" fill="url(#metal)"/>
+          <!-- Ohren / Sensoren -->
+          <rect x="57" y="96" width="12" height="32" rx="6" fill="${accent1}"/>
+          <rect x="171" y="96" width="12" height="32" rx="6" fill="${accent1}"/>
+          <!-- Visier -->
+          <rect x="80" y="88" width="80" height="36" rx="18" fill="#090318" stroke="url(#visor)" stroke-width="3"/>
+          <!-- Augen -->
+          <circle cx="102" cy="106" r="7" fill="${accent2}"/>
+          <circle cx="138" cy="106" r="7" fill="${accent2}"/>
+          <circle cx="104" cy="104" r="2.2" fill="#ffffff"/>
+          <circle cx="140" cy="104" r="2.2" fill="#ffffff"/>
+          <!-- Lächeln -->
+          <path d="M106 135 Q120 144 134 135" fill="none" stroke="#3b0764" stroke-width="3.5" stroke-linecap="round"/>
+          ${extraSvg || ""}
+        </svg>`;
+        return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+      }
+
       const CHARACTERS = {
         kai: {
           name: "Kai",
           badge: "Kai 🤖✨",
           roleTitle: "Kai – Dein KI-Berater 🤖✨",
           subLine: "● online · Ruhig, klar & souverän",
-          avatar: "https://image_generation_content/17400958496521113187",
+          avatarFile: "./kai.jpg",
+          avatarFallback: makeBotSvg("#a855f7", "#38bdf8", `
+            <circle cx="120" cy="54" r="5" fill="#38bdf8"/>
+            <line x1="120" y1="59" x2="120" y2="65" stroke="#38bdf8" stroke-width="3"/>
+          `),
           quote: "Ruhig, souverän und glasklar. Beantwortet Fragen rund um die Uhr, erklärt alles verständlich und führt Besucher ohne Druck direkt zur Anfrage.",
           greeting: "Hey! 👋 Ich bin Kai – dein ruhiger, souveräner KI-Berater. Ich erkläre dir gern unsere Pakete oder nehme direkt dein Anliegen für ein Erstgespräch auf. Was möchtest du wissen? 🤖✨",
           styleInstruction: "Du bist Kai, der ruhige, klare und souveräne KI-Berater der KAI Agentur. Schreibe freundlich, strukturiert und professionell ohne übertriebene Hektik."
@@ -1340,7 +1393,12 @@
           badge: "Luna 🌸📋",
           roleTitle: "Luna – Deine Sekretärin 🌸📋",
           subLine: "● online · Herzlich & top organisiert",
-          avatar: "https://image_generation_content/7077592720050227749",
+          avatarFile: "./luna.jpg",
+          avatarFallback: makeBotSvg("#ec4899", "#f472b6", `
+            <path d="M64 102 C64 62, 176 62, 176 102" fill="none" stroke="#f472b6" stroke-width="4"/>
+            <path d="M174 114 Q170 134 146 136" fill="none" stroke="#f472b6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="144" cy="136" r="4" fill="#f472b6"/>
+          `),
           quote: "Warmherzig, aufmerksam und top organisiert. Nimmt Anliegen charmant entgegen, sortiert alles sauber vor und sorgt dafür, dass kein Kunde untergeht.",
           greeting: "Hallo und herzlich willkommen! 🌸 Ich bin Luna, deine Sekretärin bei der KAI Agentur. Ich sortiere dein Anliegen ganz entspannt für dich vor – wie kann ich dir heute weiterhelfen? 📋✨",
           styleInstruction: "Du bist Luna, die herzliche, aufmerksame und perfekt organisierte Sekretärin der KAI Agentur. Schreibe warmherzig, zuvorkommend und strukturiert."
@@ -1350,7 +1408,12 @@
           badge: "Bob 🛠️💪",
           roleTitle: "Bob – Unser Handwerker 🛠️💪",
           subLine: "● online · Direkt & anpackend",
-          avatar: "https://image_generation_content/12295675431885750969",
+          avatarFile: "./bob.jpg",
+          avatarFallback: makeBotSvg("#9333ea", "#f59e0b", `
+            <path d="M64 82 C68 46, 172 46, 176 82 Z" fill="#f59e0b"/>
+            <rect x="56" y="78" width="128" height="9" rx="4.5" fill="#fbbf24"/>
+            <rect x="112" y="54" width="16" height="24" rx="4" fill="#fef3c7"/>
+          `),
           quote: "Ehrliche Haut, packt direkt an und redet nicht lange um den heißen Brei. Klärt Fakten auf der Baustelle wie am Telefon – kurz, knackig, verlässlich.",
           greeting: "Moin! 🛠️ Ich bin Bob, unser Mann fürs Grobe und Klare. Kein langes Drumherumgerede: Was liegt bei dir an, neue Seite oder KI-Berater auf die bestehende Kiste? 💪",
           styleInstruction: "Du bist Bob, der bodenständige, direkte und zupackende Handwerker der KAI Agentur. Schreibe kurz, ehrlich, locker und ohne Fachchinesisch."
@@ -1360,7 +1423,13 @@
           badge: "Nova 🚀📝",
           roleTitle: "Nova – Unsere Praktikantin 🚀📝",
           subLine: "● online · Frisch & blitzschnell",
-          avatar: "https://image_generation_content/11643169259663903421",
+          avatarFile: "./nova.jpg",
+          avatarFallback: makeBotSvg("#c026d3", "#22d3ee", `
+            <line x1="94" y1="68" x2="84" y2="48" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="84" cy="46" r="5" fill="#e879f9"/>
+            <line x1="146" y1="68" x2="156" y2="48" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="156" cy="46" r="5" fill="#e879f9"/>
+          `),
           quote: "Frisch, neugierig und super motiviert. Hört genau zu, notiert jedes Detail blitzschnell und leitet alles sofort an den Chef weiter.",
           greeting: "Hiii! 🚀 Ich bin Nova, die motivierteste Praktikantin der KAI Agentur! Ich hab schon den Stift gezückt und notiere mir alles super schnell – worum geht’s bei dir? 📝⚡",
           styleInstruction: "Du bist Nova, die frische, begeisterte und super motivierte Praktikantin der KAI Agentur. Schreibe energetisch, schnell, neugierig und hilfsbereit."
@@ -1370,7 +1439,12 @@
           badge: "Kevin 😂",
           roleTitle: "Kevin 😂",
           subLine: "● online · Trocken & entspannt",
-          avatar: "https://image_generation_content/6806310450130586392",
+          avatarFile: "./kevin.jpg",
+          avatarFallback: makeBotSvg("#7e22ce", "#e879f9", `
+            <rect x="78" y="92" width="38" height="22" rx="6" fill="#090318" stroke="#e879f9" stroke-width="3"/>
+            <rect x="124" y="92" width="38" height="22" rx="6" fill="#090318" stroke="#e879f9" stroke-width="3"/>
+            <line x1="116" y1="101" x2="124" y2="101" stroke="#e879f9" stroke-width="3"/>
+          `),
           quote: "Keine Sorge, wir nehmen „Kevin“ absolut ernst! Hinter dem Namen steckt trotzdem ein hochprofessioneller KI-Berater für deinen Betrieb. 😉",
           greeting: "Jo, Kevin hier. 😎 Keine Sorge, wir nehmen „Kevin“ absolut ernst – hinten dran steckt trotzdem volle KI-Power für deinen Betrieb. Was kann ich für dich regeln? 😉",
           styleInstruction: "Du bist Kevin – entspannter trockener Humor gepaart mit verlässlicher Kompetenz. Bleib locker und charmant, ohne unprofessionell zu wirken."
@@ -1380,7 +1454,12 @@
           badge: "Marcel 🏆📞",
           roleTitle: "Marcel – Leiter für Kundenzufriedenheit 🏆📞",
           subLine: "● online · Bringt es zum Laufen",
-          avatar: "https://image_generation_content/17550585987975080515",
+          avatarFile: "./marcel.jpg",
+          avatarFallback: makeBotSvg("#9333ea", "#38bdf8", `
+            <polygon points="120,178 112,190 120,218 128,190" fill="#e879f9"/>
+            <path d="M64 102 C64 62, 176 62, 176 102" fill="none" stroke="#38bdf8" stroke-width="4"/>
+            <path d="M174 114 Q168 136 144 137" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+          `),
           quote: "„Hallo, mein Name ist Marcel – Leiter für Kundenzufriedenheit!“ Wir verkaufen zwar kein DSL, aber wenn du ein Problem hast: Bringt er es zum Laufen. 🤝✨",
           greeting: "Hallo, mein Name ist Marcel – Leiter für Kundenzufriedenheit! 🏆📞 Wir verkaufen zwar kein DSL, aber wenn du ein Problem hast: Ich bringe es zum Laufen. Wo drückt der Schuh? 🤝✨",
           styleInstruction: "Du bist Marcel, Leiter für Kundenzufriedenheit bei der KAI Agentur (mit Augenzwinkern im Stil von Marcel Davis, aber ohne DSL zu verkaufen). Hilfsbereit, lösungsorientiert und verbindlich."
@@ -1410,6 +1489,15 @@
       const chatClose = document.getElementById("chatClose");
       const chatForm = document.getElementById("chatForm");
       const chatSend = document.getElementById("chatSend");
+
+      function setAvatarWithFallback(imgEl, charObj) {
+        if (!imgEl || !charObj) return;
+        imgEl.onerror = function () {
+          imgEl.onerror = null;
+          imgEl.src = charObj.avatarFallback;
+        };
+        imgEl.src = charObj.avatarFile;
+      }
 
       function renderGreetingAndPrompts(charObj) {
         if (!chatMessages) return;
@@ -1453,26 +1541,23 @@
           btn.classList.toggle("active", btn.getAttribute("data-char") === activeKey);
         });
 
-        if (heroAvatarImg) {
-          heroAvatarImg.src = c.avatar;
-          heroAvatarImg.alt = c.roleTitle;
-        }
-        if (activeCharAvatar) {
-          activeCharAvatar.src = c.avatar;
-          activeCharAvatar.alt = c.roleTitle;
-        }
+        setAvatarWithFallback(heroAvatarImg, c);
+        if (heroAvatarImg) heroAvatarImg.alt = c.roleTitle;
+
+        setAvatarWithFallback(activeCharAvatar, c);
+        if (activeCharAvatar) activeCharAvatar.alt = c.roleTitle;
+
         if (activeCharRole) activeCharRole.textContent = c.roleTitle;
         if (activeCharQuote) activeCharQuote.textContent = c.quote;
         if (dynamicTalkBtn) dynamicTalkBtn.textContent = "Mit " + c.name + " sprechen 💬";
-        if (launcherAvatarImg) {
-          launcherAvatarImg.src = c.avatar;
-          launcherAvatarImg.alt = c.name;
-        }
+
+        setAvatarWithFallback(launcherAvatarImg, c);
+        if (launcherAvatarImg) launcherAvatarImg.alt = c.name;
         if (launcherLabel) launcherLabel.textContent = c.name + " fragen";
-        if (chatHeaderAvatar) {
-          chatHeaderAvatar.src = c.avatar;
-          chatHeaderAvatar.alt = c.name;
-        }
+
+        setAvatarWithFallback(chatHeaderAvatar, c);
+        if (chatHeaderAvatar) chatHeaderAvatar.alt = c.name;
+
         if (chatHeaderName) chatHeaderName.textContent = c.badge;
         if (chatHeaderSub) chatHeaderSub.textContent = c.subLine;
         if (benefitsTitle) benefitsTitle.textContent = "Was " + c.name + " für deinen Betrieb übernimmt ⚡";
@@ -1490,7 +1575,6 @@
         });
       });
 
-      // Bubble erst ab Screen 2 (nach dem Scrollen) einblenden
       function updateBubbleVisibility() {
         if (!chatLauncher) return;
         const heroEl = document.getElementById("start");
