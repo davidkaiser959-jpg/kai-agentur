@@ -200,7 +200,7 @@
       padding: 12px 18px;
     }
 
-    /* SCREEN 1: Nahtloses 100dvh ohne Kasten und ohne Anschnitt */
+    /* SCREEN 1: Nahtloses 100dvh – identische Einblendung wie im Charakter-Auswahlmenü */
     .hero-full {
       height: calc(100vh - 62px);
       height: calc(100dvh - 62px);
@@ -214,8 +214,8 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(ellipse 75% 65% at 50% 54%, rgba(168, 85, 247, 0.42) 0%, rgba(126, 34, 206, 0.18) 45%, transparent 78%),
-        radial-gradient(circle at 50% 15%, rgba(217, 70, 239, 0.2) 0%, transparent 55%),
+        radial-gradient(circle at 50% 54%, rgba(168, 85, 247, 0.34) 0%, rgba(126, 34, 206, 0.14) 44%, transparent 72%),
+        radial-gradient(circle at 50% 15%, rgba(217, 70, 239, 0.18) 0%, transparent 55%),
         #060210;
     }
 
@@ -258,7 +258,6 @@
       z-index: 2;
     }
 
-    /* Weicher Raum-Glow ohne Kante */
     .aura-field {
       position: absolute;
       width: min(92vw, 46dvh, 480px);
@@ -275,7 +274,7 @@
       50% { transform: scale(1.04); opacity: 1; }
     }
 
-    /* Kastenloses Ausblenden in den #060210 Hintergrund */
+    /* Exakt dieselbe saubere Kanten-Auflösung wie im Charakter-Auswahlmenü */
     .seamless-avatar-wrap {
       position: relative;
       width: min(86vw, 44dvh, 440px);
@@ -290,19 +289,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      border-radius: 50%;
       -webkit-mask-image:
-        radial-gradient(closest-side, #000 54%, rgba(0, 0, 0, 0.72) 72%, rgba(0, 0, 0, 0.22) 88%, transparent 100%);
+        radial-gradient(circle at 50% 50%, #000 50%, rgba(0, 0, 0, 0.72) 66%, rgba(0, 0, 0, 0.2) 82%, transparent 96%);
       mask-image:
-        radial-gradient(closest-side, #000 54%, rgba(0, 0, 0, 0.72) 72%, rgba(0, 0, 0, 0.22) 88%, transparent 100%);
-      filter: contrast(1.05) saturate(1.12);
-    }
-
-    .seamless-avatar-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, transparent 48%, rgba(6, 2, 16, 0.55) 78%, #060210 100%);
+        radial-gradient(circle at 50% 50%, #000 50%, rgba(0, 0, 0, 0.72) 66%, rgba(0, 0, 0, 0.2) 82%, transparent 96%);
+      filter: contrast(1.05) saturate(1.12) drop-shadow(0 0 28px rgba(192, 132, 252, 0.45));
     }
 
     .scroll-cue {
@@ -1016,7 +1008,7 @@
   </header>
 
   <main>
-    <!-- SCREEN 1 (100dvh, einheitlich ohne Kasten & ohne Buttons) -->
+    <!-- SCREEN 1 (100dvh, identische weiche Bild-Einblendung wie im Charakter-Auswahlmenü) -->
     <section id="start" class="hero-full">
       <div class="hero-top">
         <h1 class="hero-uv-title">Deine Website. Dein KI-Berater.</h1>
