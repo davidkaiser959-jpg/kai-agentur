@@ -6,7 +6,7 @@
   <title>KAI Agentur – Kunden · Automatisch · Informieren</title>
   <style>
     :root {
-      --bg: #070312;
+      --bg: #060210;
       --bg-soft: #120829;
       --card: rgba(24, 11, 54, 0.84);
       --card-border: rgba(192, 132, 252, 0.26);
@@ -33,10 +33,10 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(circle at 50% 18%, rgba(147, 51, 234, 0.36) 0%, transparent 46%),
-        radial-gradient(circle at 82% 8%, rgba(217, 70, 239, 0.24) 0%, transparent 40%),
+        radial-gradient(circle at 50% 18%, rgba(147, 51, 234, 0.34) 0%, transparent 46%),
+        radial-gradient(circle at 82% 8%, rgba(217, 70, 239, 0.22) 0%, transparent 40%),
         radial-gradient(circle at 15% 75%, rgba(109, 40, 217, 0.28) 0%, transparent 45%),
-        #070312;
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -62,22 +62,22 @@
       z-index: 40;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: rgba(7, 3, 18, 0.86);
-      border-bottom: 1px solid rgba(192, 132, 252, 0.18);
+      background: rgba(6, 2, 16, 0.86);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.16);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      height: 62px;
       gap: 12px;
     }
 
     .brand {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
       min-width: 0;
     }
 
@@ -86,7 +86,7 @@
       align-items: center;
       gap: 6px;
       font-weight: 900;
-      font-size: 1.22rem;
+      font-size: 1.2rem;
       letter-spacing: 0.4px;
       line-height: 1.1;
     }
@@ -99,7 +99,7 @@
     }
 
     .brand-sub {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--muted);
       letter-spacing: 0.2px;
       font-weight: 500;
@@ -200,30 +200,33 @@
       padding: 12px 18px;
     }
 
-    /* SCREEN 1: Vollbild-Hero – Charakter frei & groß im Raum */
+    /* SCREEN 1: Nahtloses 100dvh ohne Kasten und ohne Anschnitt */
     .hero-full {
-      min-height: calc(100vh - 64px);
-      min-height: calc(100dvh - 64px);
+      height: calc(100vh - 62px);
+      height: calc(100dvh - 62px);
+      min-height: 500px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
       text-align: center;
-      padding: 20px 18px 16px;
+      padding: 18px 18px 14px;
       position: relative;
+      overflow: hidden;
       background:
-        radial-gradient(ellipse at 50% 56%, rgba(168, 85, 247, 0.48) 0%, rgba(126, 34, 206, 0.22) 44%, transparent 74%),
-        radial-gradient(circle at 50% 18%, rgba(217, 70, 239, 0.24) 0%, transparent 52%),
+        radial-gradient(ellipse 75% 65% at 50% 54%, rgba(168, 85, 247, 0.42) 0%, rgba(126, 34, 206, 0.18) 45%, transparent 78%),
+        radial-gradient(circle at 50% 15%, rgba(217, 70, 239, 0.2) 0%, transparent 55%),
         #060210;
     }
 
     .hero-top {
       max-width: 880px;
-      z-index: 2;
+      z-index: 3;
+      flex-shrink: 0;
     }
 
     .hero-uv-title {
-      font-size: clamp(2rem, 5.2vw, 3.85rem);
+      font-size: clamp(1.85rem, 5.4vw, 3.8rem);
       font-weight: 900;
       line-height: 1.07;
       letter-spacing: -0.03em;
@@ -233,11 +236,11 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 22px rgba(192, 132, 252, 0.55));
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-uv-sub {
-      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
       color: #e9d5ff;
       font-weight: 600;
     }
@@ -249,73 +252,84 @@
       justify-content: center;
       flex: 1;
       width: 100%;
-      max-width: 680px;
-      margin: 8px auto;
+      max-width: 640px;
+      min-height: 0;
+      margin: 4px auto;
       z-index: 2;
     }
 
+    /* Weicher Raum-Glow ohne Kante */
     .aura-field {
       position: absolute;
-      width: min(94vw, 52dvh, 520px);
-      height: min(94vw, 52dvh, 520px);
-      border-radius: 44% 56% 52% 48% / 46% 44% 56% 54%;
-      background: radial-gradient(circle at 50% 50%, rgba(217, 70, 239, 0.34) 0%, rgba(147, 51, 234, 0.2) 48%, transparent 74%);
-      filter: blur(14px);
-      animation: morphAura 6s ease-in-out infinite;
+      width: min(92vw, 46dvh, 480px);
+      height: min(92vw, 46dvh, 480px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 70, 239, 0.34) 0%, rgba(147, 51, 234, 0.16) 52%, transparent 76%);
+      filter: blur(22px);
+      animation: pulseField 4.4s ease-in-out infinite;
       pointer-events: none;
     }
 
-    @keyframes morphAura {
-      0%, 100% {
-        transform: scale(0.96);
-        border-radius: 44% 56% 52% 48% / 46% 44% 56% 54%;
-      }
-      50% {
-        transform: scale(1.05);
-        border-radius: 54% 46% 44% 56% / 52% 56% 44% 48%;
-      }
+    @keyframes pulseField {
+      0%, 100% { transform: scale(0.96); opacity: 0.85; }
+      50% { transform: scale(1.04); opacity: 1; }
     }
 
-    .hero-avatar-free {
+    /* Kastenloses Ausblenden in den #060210 Hintergrund */
+    .seamless-avatar-wrap {
       position: relative;
-      width: min(88vw, 48dvh, 450px);
-      height: min(88vw, 48dvh, 450px);
-      object-fit: cover;
-      border-radius: 28px;
-      display: block;
-      -webkit-mask-image: radial-gradient(ellipse 68% 68% at 50% 50%, #000 58%, rgba(0, 0, 0, 0.65) 76%, transparent 98%);
-      mask-image: radial-gradient(ellipse 68% 68% at 50% 50%, #000 58%, rgba(0, 0, 0, 0.65) 76%, transparent 98%);
-      filter: drop-shadow(0 0 34px rgba(192, 132, 252, 0.55));
-      transition: transform 0.25s ease;
+      width: min(86vw, 44dvh, 440px);
+      height: min(86vw, 44dvh, 440px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero-avatar-free:hover {
-      transform: scale(1.02);
+    .seamless-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      -webkit-mask-image:
+        radial-gradient(closest-side, #000 54%, rgba(0, 0, 0, 0.72) 72%, rgba(0, 0, 0, 0.22) 88%, transparent 100%);
+      mask-image:
+        radial-gradient(closest-side, #000 54%, rgba(0, 0, 0, 0.72) 72%, rgba(0, 0, 0, 0.22) 88%, transparent 100%);
+      filter: contrast(1.05) saturate(1.12);
+    }
+
+    .seamless-avatar-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, transparent 48%, rgba(6, 2, 16, 0.55) 78%, #060210 100%);
     }
 
     .scroll-cue {
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      gap: 1px;
       color: #e9d5ff;
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       opacity: 0.9;
-      z-index: 2;
+      z-index: 3;
+      flex-shrink: 0;
       animation: bounceCue 2.2s ease-in-out infinite;
     }
 
     @keyframes bounceCue {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(5px); }
+      50% { transform: translateY(4px); }
     }
 
     /* SCREEN 2: Verkaufs-Punch + UV Buttons + 6er Playground */
     .sales-punch-section {
-      padding: 56px 0 42px;
+      padding: 54px 0 42px;
+      background: #060210;
     }
 
     .sales-copy-box {
@@ -364,7 +378,7 @@
 
     .playground-top-label {
       text-align: center;
-      font-size: 1.02rem;
+      font-size: 1rem;
       font-weight: 800;
       color: #f5d0fe;
       margin-bottom: 16px;
@@ -406,21 +420,22 @@
       display: flex;
       align-items: center;
       gap: 22px;
-      background: radial-gradient(circle at 12% 50%, rgba(168, 85, 247, 0.22), rgba(8, 3, 20, 0.82) 68%);
-      border: 1px solid rgba(192, 132, 252, 0.3);
+      background: radial-gradient(circle at 14% 50%, rgba(168, 85, 247, 0.22), rgba(8, 3, 20, 0.85) 70%);
+      border: 1px solid rgba(192, 132, 252, 0.28);
       border-radius: 22px;
       padding: 20px;
     }
 
-    .active-char-avatar-free {
-      width: 132px;
-      height: 132px;
-      object-fit: cover;
-      border-radius: 20px;
+    .playground-avatar-wrap {
+      position: relative;
+      width: 138px;
+      height: 138px;
       flex-shrink: 0;
-      -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 60%, transparent 98%);
-      mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 60%, transparent 98%);
-      filter: drop-shadow(0 0 18px rgba(217, 70, 239, 0.52));
+    }
+
+    .playground-avatar-wrap .seamless-avatar-img {
+      width: 100%;
+      height: 100%;
     }
 
     .active-char-role {
@@ -780,14 +795,14 @@
       transform: translateY(0);
     }
 
-    .chat-launcher-avatar-free {
-      width: 38px;
-      height: 38px;
+    .chat-launcher-avatar {
+      width: 36px;
+      height: 36px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 50%;
+      border: 1.5px solid #ffffff;
       flex-shrink: 0;
-      -webkit-mask-image: radial-gradient(ellipse 74% 74% at 50% 50%, #000 62%, transparent 98%);
-      mask-image: radial-gradient(ellipse 74% 74% at 50% 50%, #000 62%, transparent 98%);
+      background: #140730;
     }
 
     .chat-window {
@@ -827,14 +842,14 @@
       font-weight: 800;
     }
 
-    .chat-header-avatar-free {
-      width: 42px;
-      height: 42px;
+    .chat-header-avatar {
+      width: 40px;
+      height: 40px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 50%;
+      border: 1.5px solid #e879f9;
       flex-shrink: 0;
-      -webkit-mask-image: radial-gradient(ellipse 74% 74% at 50% 50%, #000 62%, transparent 98%);
-      mask-image: radial-gradient(ellipse 74% 74% at 50% 50%, #000 62%, transparent 98%);
+      background: #140730;
     }
 
     .chat-role-sub {
@@ -1001,7 +1016,7 @@
   </header>
 
   <main>
-    <!-- SCREEN 1 (100dvh, ohne Buttons, Charakter frei im Raum) -->
+    <!-- SCREEN 1 (100dvh, einheitlich ohne Kasten & ohne Buttons) -->
     <section id="start" class="hero-full">
       <div class="hero-top">
         <h1 class="hero-uv-title">Deine Website. Dein KI-Berater.</h1>
@@ -1010,12 +1025,14 @@
 
       <div class="hero-center">
         <div class="aura-field"></div>
-        <img
-          id="heroAvatarImg"
-          class="hero-avatar-free"
-          src="./kai.png"
-          alt="Kai – Dein KI-Berater"
-        />
+        <div class="seamless-avatar-wrap">
+          <img
+            id="heroAvatarImg"
+            class="seamless-avatar-img"
+            src="./kai.png"
+            alt="Kai – Dein KI-Berater"
+          />
+        </div>
       </div>
 
       <a href="#verkauf" class="scroll-cue" aria-label="Nach unten scrollen">
@@ -1054,12 +1071,14 @@
           </div>
 
           <div class="active-char-card">
-            <img
-              id="activeCharAvatar"
-              class="active-char-avatar-free"
-              src="./kai.png"
-              alt="Kai Avatar"
-            />
+            <div class="playground-avatar-wrap">
+              <img
+                id="activeCharAvatar"
+                class="seamless-avatar-img"
+                src="./kai.png"
+                alt="Kai Avatar"
+              />
+            </div>
             <div>
               <div class="active-char-role" id="activeCharRole">Kai – Dein KI-Berater 🤖✨</div>
               <p class="active-char-quote" id="activeCharQuote">
@@ -1286,7 +1305,7 @@
   <button type="button" class="chat-launcher" id="chatLauncher" aria-label="Chat öffnen">
     <img
       id="launcherAvatarImg"
-      class="chat-launcher-avatar-free"
+      class="chat-launcher-avatar"
       src="./kai.png"
       alt="Chat Avatar"
     />
@@ -1299,7 +1318,7 @@
       <div class="chat-title">
         <img
           id="chatHeaderAvatar"
-          class="chat-header-avatar-free"
+          class="chat-header-avatar"
           src="./kai.png"
           alt="Aktiver Charakter"
         />
@@ -1334,7 +1353,7 @@
             <radialGradient id="g" cx="50%" cy="50%" r="55%">
               <stop offset="0%" stop-color="${color1}" stop-opacity="0.72"/>
               <stop offset="75%" stop-color="${color2}" stop-opacity="0.22"/>
-              <stop offset="100%" stop-color="#070312" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#060210" stop-opacity="0"/>
             </radialGradient>
           </defs>
           <rect width="240" height="240" fill="url(#g)"/>
