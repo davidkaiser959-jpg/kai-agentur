@@ -2,26 +2,25 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>KAI Agentur – Kunden · Automatisch · Informieren</title>
   <style>
     :root {
-      --bg: #070b19;
-      --bg-soft: #0f162e;
-      --card: #131c3a;
-      --card-border: rgba(255, 255, 255, 0.1);
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --primary: #3b82f6;
-      --primary-hover: #2563eb;
-      --accent: #38bdf8;
-      --accent-2: #818cf8;
+      --bg: #070312;
+      --bg-soft: #120829;
+      --card: rgba(24, 11, 54, 0.78);
+      --card-border: rgba(192, 132, 252, 0.24);
+      --text: #faf5ff;
+      --muted: #c4b5fd;
+      --uv: #9333ea;
+      --uv-bright: #c084fc;
+      --uv-pink: #e879f9;
+      --uv-glow: 0 0 24px rgba(168, 85, 247, 0.55), 0 0 54px rgba(192, 132, 252, 0.25);
       --whatsapp: #25d366;
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.48);
-      --radius: 20px;
+      --radius: 22px;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -34,12 +33,14 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background:
-        radial-gradient(circle at 18% 8%, rgba(56, 189, 248, 0.16) 0%, transparent 38%),
-        radial-gradient(circle at 84% 16%, rgba(99, 102, 241, 0.18) 0%, transparent 42%),
+        radial-gradient(circle at 50% 18%, rgba(147, 51, 234, 0.34) 0%, transparent 46%),
+        radial-gradient(circle at 82% 8%, rgba(217, 70, 239, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 15% 75%, rgba(109, 40, 217, 0.28) 0%, transparent 45%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     a {
@@ -51,7 +52,7 @@
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 18px;
     }
 
     /* Header */
@@ -59,54 +60,55 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(14px);
-      background: rgba(7, 11, 25, 0.82);
-      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      background: rgba(7, 3, 18, 0.78);
+      border-bottom: 1px solid rgba(192, 132, 252, 0.16);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 74px;
-      gap: 12px;
-      padding: 8px 0;
+      min-height: 62px;
+      gap: 10px;
+      padding: 6px 0;
     }
 
     .brand {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
       min-width: 0;
     }
 
     .brand-main {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-weight: 900;
-      font-size: 1.32rem;
-      letter-spacing: 0.5px;
+      font-size: 1.18rem;
+      letter-spacing: 0.4px;
       line-height: 1.1;
     }
 
     .brand-kai {
-      background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 60%, #a5b4fc 100%);
+      background: linear-gradient(90deg, #e879f9 0%, #c084fc 55%, #a855f7 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 18px rgba(192, 132, 252, 0.35);
     }
 
     .brand-sub {
-      font-size: 0.76rem;
+      font-size: 0.7rem;
       color: var(--muted);
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
       font-weight: 500;
       white-space: nowrap;
     }
 
     .brand-sub strong {
-      color: var(--accent);
+      color: var(--uv-bright);
       font-weight: 800;
     }
 
@@ -121,8 +123,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 11px;
       transition: transform 0.15s ease, background 0.2s ease;
       flex-shrink: 0;
@@ -134,21 +136,13 @@
 
     .nav-icon-email {
       background: #ffffff;
-      border: 1px solid rgba(29, 78, 216, 0.2);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-icon-email:hover {
-      background: #f1f5f9;
+      border: 1px solid rgba(147, 51, 234, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
     .nav-icon-whatsapp {
       background: rgba(37, 211, 102, 0.16);
       border: 1px solid rgba(37, 211, 102, 0.45);
-    }
-
-    .nav-icon-whatsapp:hover {
-      background: rgba(37, 211, 102, 0.28);
     }
 
     /* Buttons */
@@ -157,10 +151,10 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px 24px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1rem;
+      padding: 14px 22px;
+      border-radius: 15px;
+      font-weight: 800;
+      font-size: 0.98rem;
       border: 1px solid transparent;
       cursor: pointer;
       transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -172,307 +166,355 @@
       transform: translateY(-2px);
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 55%, #0284c7 100%);
-      color: #fff;
-      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.42);
+    .btn-uv {
+      background: linear-gradient(135deg, #a855f7 0%, #7e22ce 55%, #c026d3 100%);
+      color: #ffffff;
+      border: 1px solid rgba(232, 121, 249, 0.55);
+      box-shadow: var(--uv-glow);
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #60a5fa 0%, #2563eb 60%, #0ea5e9 100%);
-      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.34);
+    .btn-uv:hover {
+      background: linear-gradient(135deg, #c084fc 0%, #9333ea 55%, #d946ef 100%);
+      box-shadow: 0 0 30px rgba(192, 132, 252, 0.72), 0 0 64px rgba(217, 70, 239, 0.35);
     }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.14);
+    .btn-uv-outline {
+      background: rgba(147, 51, 234, 0.16);
+      color: #f5d0fe;
+      border: 1px solid rgba(192, 132, 252, 0.48);
+      box-shadow: 0 0 18px rgba(147, 51, 234, 0.28);
       backdrop-filter: blur(8px);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.11);
-      border-color: rgba(56, 189, 248, 0.42);
+    .btn-uv-outline:hover {
+      background: rgba(168, 85, 247, 0.28);
+      border-color: var(--uv-pink);
+      box-shadow: 0 0 24px rgba(192, 132, 252, 0.45);
     }
 
     .btn-email {
       background: #ffffff;
-      color: #1d4ed8;
-      border: 1px solid rgba(29, 78, 216, 0.2);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-email:hover {
-      background: #f1f5f9;
+      color: #6b21a8;
+      border: 1px solid rgba(147, 51, 234, 0.25);
     }
 
     .btn-whatsapp {
-      background: rgba(37, 211, 102, 0.14);
+      background: rgba(37, 211, 102, 0.15);
       color: #eafff2;
       border: 1px solid rgba(37, 211, 102, 0.45);
       padding: 12px 16px;
     }
 
-    .btn-whatsapp:hover {
-      background: rgba(37, 211, 102, 0.24);
-    }
-
-    /* Hero: Modern, professionell & spielerisch */
-    .hero {
-      padding: 64px 0 56px;
-      position: relative;
-    }
-
-    .hero-wrapper {
-      max-width: 980px;
-      margin: 0 auto;
+    /* SCREEN 1: Exakt 100dvh, clean, button-frei */
+    .hero-full {
+      min-height: 100dvh;
+      max-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       text-align: center;
+      padding: 20px 18px 18px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 54%, rgba(168, 85, 247, 0.42) 0%, rgba(126, 34, 206, 0.16) 38%, transparent 68%),
+        radial-gradient(circle at 50% 20%, rgba(217, 70, 239, 0.2) 0%, transparent 50%),
+        #060210;
     }
 
-    .hero-headline {
-      font-size: clamp(2.35rem, 5.4vw, 4rem);
-      line-height: 1.08;
-      font-weight: 900;
+    .hero-top {
+      max-width: 780px;
+      z-index: 2;
+      margin-top: 4px;
+    }
+
+    .hero-uv-title {
+      font-size: clamp(2rem, 8.2vw, 3.85rem);
+      font-weight: 950;
+      line-height: 1.05;
       letter-spacing: -0.03em;
-      color: #ffffff;
-      margin-bottom: 18px;
-    }
-
-    .hero-gradient {
-      background: linear-gradient(110deg, #38bdf8 0%, #60a5fa 45%, #a5b4fc 100%);
+      background: linear-gradient(120deg, #f5d0fe 0%, #d8b4fe 35%, #c084fc 70%, #e879f9 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 0 22px rgba(192, 132, 252, 0.55));
+      margin-bottom: 8px;
     }
 
-    .hero-sub {
-      max-width: 690px;
-      margin: 0 auto 30px;
-      color: #cbd5e1;
-      font-size: clamp(1.06rem, 2.1vw, 1.24rem);
-      line-height: 1.65;
+    .hero-uv-sub {
+      font-size: clamp(0.95rem, 3.8vw, 1.24rem);
+      color: #e9d5ff;
+      font-weight: 600;
+      letter-spacing: -0.01em;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 36px;
-    }
-
-    /* Spielerischer Namens-Playground */
-    .name-playground {
-      max-width: 660px;
-      margin: 0 auto 38px;
-      background: linear-gradient(160deg, rgba(22, 32, 64, 0.9), rgba(13, 19, 41, 0.95));
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      border-radius: 22px;
-      padding: 20px 22px;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    }
-
-    .playground-label {
-      font-size: 0.96rem;
-      font-weight: 700;
-      color: #e2e8f0;
-      margin-bottom: 12px;
+    .hero-center {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      flex: 1;
+      width: 100%;
+      max-height: 54dvh;
+      z-index: 2;
     }
 
-    .playground-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
+    .aura-ring {
+      position: absolute;
+      width: min(300px, 68vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 70, 239, 0.34) 0%, rgba(147, 51, 234, 0.16) 52%, transparent 72%);
+      box-shadow: 0 0 55px rgba(168, 85, 247, 0.45), inset 0 0 40px rgba(232, 121, 249, 0.25);
+      animation: pulseAura 3.8s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    .name-chip {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #e2e8f0;
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
+    @keyframes pulseAura {
+      0%, 100% { transform: scale(0.96); opacity: 0.85; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    .hero-avatar-frame {
+      position: relative;
+      width: min(245px, 56vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #e879f9, #9333ea, #38bdf8);
+      box-shadow: 0 0 40px rgba(192, 132, 252, 0.65);
+      overflow: hidden;
+    }
+
+    .hero-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .scroll-cue {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: #e9d5ff;
+      font-size: 0.78rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.16s ease;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      z-index: 2;
+      animation: bounceCue 2.2s ease-in-out infinite;
     }
 
-    .name-chip:hover {
-      background: rgba(56, 189, 248, 0.18);
-      border-color: rgba(56, 189, 248, 0.45);
-      transform: translateY(-1px);
+    @keyframes bounceCue {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
 
-    .name-chip.active {
-      background: linear-gradient(135deg, #3b82f6, #0284c7);
-      border-color: #38bdf8;
+    /* SCREEN 2: Verkaufs-Punch + UV Buttons + 6er Playground */
+    .sales-punch-section {
+      padding: 48px 0 36px;
+    }
+
+    .sales-copy-box {
+      max-width: 780px;
+      margin: 0 auto 28px;
+      background: linear-gradient(160deg, rgba(35, 14, 78, 0.85), rgba(14, 6, 34, 0.92));
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45), 0 0 32px rgba(147, 51, 234, 0.18);
+    }
+
+    .sales-headline {
+      font-size: clamp(1.32rem, 5.2vw, 2.05rem);
+      font-weight: 900;
+      line-height: 1.25;
       color: #ffffff;
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+      margin-bottom: 14px;
     }
 
-    .playground-status {
-      font-size: 0.9rem;
-      color: #7dd3fc;
-      font-weight: 600;
+    .sales-body {
+      font-size: clamp(1rem, 4.1vw, 1.18rem);
+      line-height: 1.62;
+      color: #f3e8ff;
+      font-weight: 500;
     }
 
-    /* Moderne Bento-Karten im Hero */
-    .hero-bento {
+    .uv-cta-stack {
+      max-width: 640px;
+      margin: 0 auto 38px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* 6er Namens-Playground */
+    .playground-box {
+      max-width: 780px;
+      margin: 0 auto;
+      background: linear-gradient(165deg, rgba(28, 12, 64, 0.9), rgba(12, 5, 29, 0.96));
+      border: 1px solid rgba(217, 70, 239, 0.36);
+      border-radius: 26px;
+      padding: 22px 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 36px rgba(168, 85, 247, 0.2);
+    }
+
+    .playground-top-label {
+      text-align: center;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #f5d0fe;
+      margin-bottom: 14px;
+    }
+
+    .team-selector-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      text-align: left;
+      gap: 8px;
+      margin-bottom: 18px;
     }
 
-    .bento-card {
-      background: linear-gradient(165deg, rgba(21, 30, 62, 0.85), rgba(14, 21, 45, 0.92));
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 20px;
-      padding: 22px 20px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    .team-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(192, 132, 252, 0.24);
+      color: #f3e8ff;
+      padding: 10px 8px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      text-align: center;
     }
 
-    .bento-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(56, 189, 248, 0.42);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+    .team-btn:hover {
+      background: rgba(168, 85, 247, 0.22);
+      border-color: var(--uv-pink);
     }
 
-    .bento-top {
+    .team-btn.active {
+      background: linear-gradient(135deg, #a855f7, #c026d3);
+      border-color: #f5d0fe;
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(192, 132, 252, 0.55);
+    }
+
+    .active-char-card {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
+      gap: 16px;
+      background: rgba(8, 3, 20, 0.72);
+      border: 1px solid rgba(192, 132, 252, 0.28);
+      border-radius: 20px;
+      padding: 16px;
     }
 
-    .bento-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(56, 189, 248, 0.14);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .active-char-avatar {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid #e879f9;
+      box-shadow: 0 0 20px rgba(217, 70, 239, 0.45);
     }
 
-    .bento-tag {
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.1);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .bento-card h3 {
-      font-size: 1.08rem;
-      font-weight: 800;
+    .active-char-role {
+      font-size: 1.05rem;
+      font-weight: 850;
       color: #ffffff;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
-    .bento-card p {
-      font-size: 0.93rem;
-      color: var(--muted);
+    .active-char-quote {
+      font-size: 0.95rem;
+      color: #e9d5ff;
       line-height: 1.5;
     }
 
-    .hero-footnote {
-      margin-top: 26px;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .hero-footnote strong {
-      color: #e2e8f0;
-      font-weight: 650;
-    }
-
-    /* Sections */
+    /* Sections & Cards */
     section {
-      padding: 56px 0;
+      padding: 48px 0;
     }
 
     .section-head {
       text-align: center;
       max-width: 740px;
-      margin: 0 auto 36px;
+      margin: 0 auto 30px;
     }
 
     .section-head h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.3rem);
-      font-weight: 800;
-      margin-bottom: 10px;
+      font-size: clamp(1.55rem, 4.6vw, 2.25rem);
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #ffffff;
     }
 
     .section-head p {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      padding: 22px 20px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
     }
 
     .card-icon {
-      font-size: 1.9rem;
-      margin-bottom: 12px;
+      font-size: 1.7rem;
+      margin-bottom: 10px;
       display: inline-block;
     }
 
     .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      font-weight: 750;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+      font-weight: 800;
+      color: #ffffff;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
-    /* Pricing & Offer */
+    /* Pricing */
     .offer-box {
-      background: linear-gradient(145deg, #172347, #111936);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: linear-gradient(145deg, rgba(36, 15, 82, 0.9), rgba(16, 7, 38, 0.95));
+      border: 1px solid rgba(192, 132, 252, 0.38);
       border-radius: 24px;
-      padding: 36px;
+      padding: 26px 20px;
       max-width: 960px;
-      margin: 0 auto 44px;
+      margin: 0 auto 36px;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
+      gap: 24px;
       align-items: center;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.4);
     }
 
     .offer-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 11px;
-      margin-top: 16px;
-      color: var(--muted);
+      gap: 10px;
+      margin-top: 14px;
+      color: #e9d5ff;
+      font-size: 0.95rem;
     }
 
     .offer-list li {
@@ -482,66 +524,65 @@
     }
 
     .price-panel {
-      background: rgba(11, 16, 32, 0.65);
-      border: 1px solid var(--card-border);
+      background: rgba(8, 3, 20, 0.72);
+      border: 1px solid rgba(192, 132, 252, 0.26);
       border-radius: 18px;
-      padding: 24px;
+      padding: 20px;
       text-align: center;
     }
 
     .price-main {
-      font-size: 2.2rem;
-      font-weight: 850;
+      font-size: 2.1rem;
+      font-weight: 900;
       color: #fff;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .price-sub {
-      font-size: 1.15rem;
-      color: var(--accent);
-      font-weight: 750;
-      margin-top: 10px;
+      font-size: 1.1rem;
+      color: var(--uv-bright);
+      font-weight: 800;
+      margin-top: 8px;
     }
 
     .price-caption {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
       margin-top: 4px;
     }
 
     .price-bonus {
-      margin-top: 14px;
+      margin-top: 12px;
       padding: 8px 12px;
       border-radius: 10px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.4);
       color: #6ee7b7;
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-size: 0.86rem;
+      font-weight: 750;
     }
 
-    /* 3 Website Packages */
     .packages-head {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
     }
 
     .packages-head h3 {
-      font-size: clamp(1.45rem, 3vw, 1.95rem);
-      font-weight: 800;
-      margin-bottom: 8px;
+      font-size: clamp(1.35rem, 4.2vw, 1.9rem);
+      font-weight: 850;
+      margin-bottom: 6px;
     }
 
     .packages-head p {
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.96rem;
     }
 
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
       max-width: 1060px;
       margin: 0 auto;
     }
@@ -550,18 +591,17 @@
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: 22px;
-      padding: 28px 24px;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
-      position: relative;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
     }
 
     .pkg-card.featured {
-      border: 1px solid rgba(56, 189, 248, 0.55);
-      background: linear-gradient(165deg, #1b2852, #131c3a);
-      box-shadow: 0 18px 42px rgba(37, 99, 235, 0.28);
+      border: 1px solid rgba(232, 121, 249, 0.65);
+      background: linear-gradient(165deg, rgba(52, 20, 114, 0.92), rgba(20, 9, 46, 0.96));
+      box-shadow: 0 18px 44px rgba(147, 51, 234, 0.34);
     }
 
     .pkg-badge {
@@ -569,60 +609,60 @@
       align-self: flex-start;
       padding: 4px 12px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 750;
-      margin-bottom: 12px;
-      background: rgba(56, 189, 248, 0.16);
-      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: rgba(192, 132, 252, 0.18);
+      color: #f5d0fe;
     }
 
     .pkg-card.featured .pkg-badge {
-      background: linear-gradient(135deg, var(--primary), #0284c7);
+      background: linear-gradient(135deg, #a855f7, #c026d3);
       color: #fff;
     }
 
     .pkg-title {
-      font-size: 1.3rem;
-      font-weight: 800;
+      font-size: 1.25rem;
+      font-weight: 850;
       margin-bottom: 6px;
     }
 
     .pkg-desc {
       font-size: 0.92rem;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .pkg-price-box {
-      background: rgba(11, 16, 32, 0.6);
-      border: 1px solid var(--card-border);
+      background: rgba(8, 3, 20, 0.65);
+      border: 1px solid rgba(192, 132, 252, 0.22);
       border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 18px;
+      padding: 14px;
+      margin-bottom: 16px;
     }
 
     .pkg-price {
-      font-size: 2rem;
-      font-weight: 850;
+      font-size: 1.9rem;
+      font-weight: 900;
       color: #fff;
       line-height: 1.15;
     }
 
     .pkg-monthly {
-      font-size: 1.05rem;
-      color: var(--accent);
-      font-weight: 750;
-      margin-top: 8px;
+      font-size: 1.02rem;
+      color: var(--uv-bright);
+      font-weight: 800;
+      margin-top: 6px;
     }
 
     .pkg-bonus {
-      margin-top: 10px;
-      padding: 7px 10px;
+      margin-top: 8px;
+      padding: 6px 10px;
       border-radius: 9px;
       background: rgba(16, 185, 129, 0.16);
       border: 1px solid rgba(16, 185, 129, 0.4);
       color: #6ee7b7;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 750;
       text-align: center;
     }
@@ -631,57 +671,57 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.94rem;
-      margin-bottom: 22px;
+      gap: 9px;
+      color: #e9d5ff;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
     }
 
     .pkg-list li {
       display: flex;
       align-items: flex-start;
-      gap: 9px;
+      gap: 8px;
     }
 
     .pkg-cta {
       width: 100%;
     }
 
-    /* Contact / CTA */
+    /* CTA */
     .cta-box {
-      background: var(--card);
-      border: 1px solid var(--card-border);
+      background: linear-gradient(155deg, rgba(35, 14, 78, 0.9), rgba(14, 6, 34, 0.96));
+      border: 1px solid rgba(192, 132, 252, 0.35);
       border-radius: 24px;
-      padding: 38px 28px;
+      padding: 32px 20px;
       text-align: center;
       max-width: 820px;
       margin: 0 auto;
     }
 
     .cta-box h2 {
-      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-      margin-bottom: 12px;
+      font-size: clamp(1.5rem, 4.5vw, 2.15rem);
+      margin-bottom: 10px;
     }
 
     .cta-box p {
       color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 24px;
+      max-width: 580px;
+      margin: 0 auto 22px;
     }
 
     .cta-buttons {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid var(--card-border);
-      padding: 28px 0 96px;
+      border-top: 1px solid rgba(192, 132, 252, 0.18);
+      padding: 26px 0 98px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     .footer-inner {
@@ -689,66 +729,78 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .footer-tab {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 13px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.25);
       color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      font-size: 0.85rem;
+      font-weight: 650;
     }
 
-    .footer-tab:hover {
-      background: rgba(56, 189, 248, 0.15);
-      border-color: rgba(56, 189, 248, 0.4);
-      transform: translateY(-1px);
-    }
-
-    /* Chat Widget */
+    /* Chat Bubble: Erscheint erst ab Screen 2 beim Scrollen */
     .chat-launcher {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
       z-index: 60;
-      background: linear-gradient(135deg, var(--primary), #2563eb);
+      background: linear-gradient(135deg, #a855f7, #c026d3);
       color: #fff;
-      border: none;
+      border: 1px solid rgba(245, 208, 254, 0.55);
       border-radius: 999px;
-      padding: 14px 20px;
-      font-size: 1rem;
-      font-weight: 750;
+      padding: 9px 16px 9px 10px;
+      font-size: 0.95rem;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       cursor: pointer;
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45);
+      box-shadow: var(--uv-glow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .chat-launcher.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .chat-launcher-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #ffffff;
+      flex-shrink: 0;
     }
 
     .chat-window {
       position: fixed;
-      right: 20px;
-      bottom: 84px;
+      right: 12px;
+      bottom: calc(76px + env(safe-area-inset-bottom));
       z-index: 65;
       width: min(390px, calc(100vw - 24px));
-      height: min(540px, calc(100dvh - 110px));
-      background: #10172e;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      height: min(540px, calc(100dvh - 104px));
+      background: #120829;
+      border: 1px solid rgba(192, 132, 252, 0.35);
       border-radius: 22px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72), 0 0 35px rgba(147, 51, 234, 0.28);
       display: none;
       flex-direction: column;
       overflow: hidden;
@@ -759,9 +811,9 @@
     }
 
     .chat-header {
-      padding: 14px 16px;
-      background: #162040;
-      border-bottom: 1px solid var(--card-border);
+      padding: 12px 14px;
+      background: #1d0d40;
+      border-bottom: 1px solid rgba(192, 132, 252, 0.24);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -772,17 +824,26 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 750;
+      font-weight: 800;
     }
 
-    .chat-status {
-      font-size: 0.8rem;
-      color: #6ee7b7;
-      font-weight: 500;
+    .chat-header-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #e879f9;
+      flex-shrink: 0;
+    }
+
+    .chat-role-sub {
+      font-size: 0.76rem;
+      color: var(--uv-bright);
+      font-weight: 600;
     }
 
     .chat-close {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       border: none;
       color: #fff;
       width: 34px;
@@ -795,18 +856,18 @@
 
     .chat-messages {
       flex: 1;
-      padding: 16px;
+      padding: 14px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 11px;
     }
 
     .msg {
-      max-width: 85%;
+      max-width: 86%;
       padding: 11px 14px;
       border-radius: 15px;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       line-height: 1.45;
       word-wrap: break-word;
       white-space: pre-line;
@@ -814,14 +875,15 @@
 
     .msg.bot {
       align-self: flex-start;
-      background: #1b274d;
+      background: #24114f;
       color: var(--text);
+      border: 1px solid rgba(192, 132, 252, 0.22);
       border-bottom-left-radius: 4px;
     }
 
     .msg.user {
       align-self: flex-end;
-      background: var(--primary);
+      background: linear-gradient(135deg, #a855f7, #c026d3);
       color: #fff;
       border-bottom-right-radius: 4px;
     }
@@ -829,51 +891,39 @@
     .quick-prompts {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
       margin-top: 2px;
     }
 
     .quick-prompt-btn {
       align-self: flex-start;
-      max-width: 92%;
+      max-width: 94%;
       text-align: left;
-      background: rgba(59, 130, 246, 0.14);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #e6f2ff;
+      background: rgba(168, 85, 247, 0.16);
+      border: 1px solid rgba(192, 132, 252, 0.38);
+      color: #f5d0fe;
       border-radius: 12px;
-      padding: 9px 13px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      padding: 8px 12px;
+      font-size: 0.88rem;
+      font-weight: 650;
       line-height: 1.35;
       cursor: pointer;
-      transition: background 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
-    }
-
-    .quick-prompt-btn:hover:not(:disabled) {
-      background: rgba(59, 130, 246, 0.28);
-      border-color: var(--accent);
-      transform: translateX(2px);
-    }
-
-    .quick-prompt-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
     }
 
     .chat-form {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 12px;
-      background: #141d38;
-      border-top: 1px solid var(--card-border);
+      padding: 11px;
+      background: #180b36;
+      border-top: 1px solid rgba(192, 132, 252, 0.22);
     }
 
     .chat-input {
       flex: 1;
       min-width: 0;
-      background: #0d1326;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #0b041c;
+      border: 1px solid rgba(192, 132, 252, 0.28);
       color: #fff;
       border-radius: 12px;
       padding: 11px 13px;
@@ -881,53 +931,38 @@
       outline: none;
     }
 
-    .chat-input:focus {
-      border-color: var(--accent);
-    }
-
     .chat-send {
-      background: var(--primary);
+      background: linear-gradient(135deg, #a855f7, #c026d3);
       color: #fff;
       border: none;
       border-radius: 12px;
-      padding: 11px 16px;
-      font-size: 0.95rem;
-      font-weight: 700;
+      padding: 11px 15px;
+      font-size: 0.94rem;
+      font-weight: 750;
       cursor: pointer;
       flex-shrink: 0;
-      min-width: 0;
-      white-space: nowrap;
-    }
-
-    .chat-send:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
     }
 
     @media (max-width: 920px) {
-      .hero-bento,
       .grid-3,
-      .packages-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .packages-grid,
       .offer-box {
         grid-template-columns: 1fr;
       }
-
-      .hero {
-        padding: 44px 0 42px;
-      }
     }
 
-    @media (max-width: 520px) {
-      .hero-actions .btn,
+    @media (max-width: 560px) {
+      .active-char-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
       .cta-buttons .btn {
         width: 100%;
       }
 
       .brand-sub {
-        font-size: 0.7rem;
+        font-size: 0.66rem;
       }
     }
   </style>
@@ -944,13 +979,13 @@
       </a>
 
       <div class="nav-actions">
-        <a href="mailto:kai.agentur@gmail.com?subject=Anfrage%20Kai%20Website-Berater" class="nav-icon-btn nav-icon-email" aria-label="E-Mail senden" title="E-Mail senden">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <a href="mailto:kai.agentur@gmail.com?subject=Anfrage%20KAI%20Agentur" class="nav-icon-btn nav-icon-email" aria-label="E-Mail senden" title="E-Mail senden">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b21a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="4" width="20" height="16" rx="3"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
         </a>
-        <a href="https://wa.me/491784919319?text=Hey%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Kai%2C%20kannst%20du%20mir%20auch%20einen%20machen%3F" target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-icon-whatsapp" aria-label="Per WhatsApp schreiben" title="Per WhatsApp schreiben">
+        <a href="https://wa.me/491784919319?text=Hey%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eure%20Websites%20%26%20KI-Berater%21" target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-icon-whatsapp" aria-label="Per WhatsApp schreiben" title="Per WhatsApp schreiben">
           <svg width="21" height="21" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
             <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.33-1.66a11.87 11.87 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42ZM12.07 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
           </svg>
@@ -960,75 +995,74 @@
   </header>
 
   <main>
-    <!-- Hero Bereich: Modern, professionell & spielerisch -->
-    <section id="start" class="hero">
+    <!-- SCREEN 1 (100dvh exakt, ohne Buttons) -->
+    <section id="start" class="hero-full">
+      <div class="hero-top">
+        <h1 class="hero-uv-title">Deine Website. Dein KI-Berater.</h1>
+        <p class="hero-uv-sub">Kunden gewinnen, während du durchatmest.</p>
+      </div>
+
+      <div class="hero-center">
+        <div class="aura-ring"></div>
+        <div class="hero-avatar-frame">
+          <img
+            id="heroAvatarImg"
+            class="hero-avatar-img"
+            src="https://image_generation_content/17400958496521113187"
+            alt="Kai – KI-Berater"
+          />
+        </div>
+      </div>
+
+      <a href="#verkauf" class="scroll-cue" aria-label="Nach unten scrollen">
+        <span>Scrollen</span>
+        <span>⌄</span>
+      </a>
+    </section>
+
+    <!-- SCREEN 2 (Erst beim Scrollen sichtbar) -->
+    <section id="verkauf" class="sales-punch-section">
       <div class="container">
-        <div class="hero-wrapper">
-          <h1 class="hero-headline">
-            Deine Website. Dein Kai.<br />
-            <span class="hero-gradient">Dein 24/7-Kundenmagnet.</span>
-          </h1>
-
-          <p class="hero-sub">
-            Wir bauen dir eine moderne Website, die bei Google gefunden wird – und setzen deinen eigenen KI-Berater drauf, der Fragen sofort klärt und Termine einsammelt, während du arbeitest oder schläfst.
+        <div class="sales-copy-box">
+          <h2 class="sales-headline">Während du schläfst 😴, klickt dein Kunde gerade zur Konkurrenz. 💸⚡</h2>
+          <p class="sales-body">
+            Schluss mit verpassten Anrufen 📵 und veralteten Seiten 🕸️: Wir bringen dein Unternehmen bei Google ganz nach vorn ⭐⭐⭐⭐⭐ und schenken dir einen digitalen Mitarbeiter 🤖✨, der 24/7 für deine Kunden da ist. 📲💬 Freundlich 🤝, blitzschnell ⚡ und genau in deinem Stil. 🎯🔥
           </p>
+        </div>
 
-          <div class="hero-actions">
-            <button type="button" class="btn btn-primary" id="heroChatBtn" data-open-chat>Live mit Kai sprechen 🤖</button>
-            <a href="#paket" class="btn btn-secondary">Pakete &amp; Preise ansehen</a>
-            <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch</a>
+        <div class="uv-cta-stack">
+          <button type="button" class="btn btn-uv" id="dynamicTalkBtn" data-open-chat>Mit Kai sprechen 🤖✨</button>
+          <a href="#paket" class="btn btn-uv-outline">Pakete &amp; Preise ansehen 💎</a>
+          <a href="#kontakt" class="btn btn-uv-outline">Kostenloses Erstgespräch 📞</a>
+        </div>
+
+        <!-- Interaktiver 6er-Playground -->
+        <div class="playground-box" id="playground">
+          <div class="playground-top-label">Wähle deinen Charakter – Name, Bild, Buttons &amp; Chat-Stil ändern sich live:</div>
+
+          <div class="team-selector-grid" id="teamSelectorGrid">
+            <button type="button" class="team-btn active" data-char="kai">Kai 🤖✨</button>
+            <button type="button" class="team-btn" data-char="luna">Luna 🌸📋</button>
+            <button type="button" class="team-btn" data-char="bob">Bob 🛠️💪</button>
+            <button type="button" class="team-btn" data-char="nova">Nova 🚀📝</button>
+            <button type="button" class="team-btn" data-char="kevin">Kevin 😂</button>
+            <button type="button" class="team-btn" data-char="marcel">Marcel 🏆📞</button>
           </div>
 
-          <!-- Spielerischer Namens-Test -->
-          <div class="name-playground">
-            <div class="playground-label">
-              <span>😎 Kai ist cool – wie soll dein digitaler Berater heißen?</span>
-            </div>
-            <div class="playground-chips" id="nameChips">
-              <button type="button" class="name-chip active" data-agent-name="Kai">Kai 🤖</button>
-              <button type="button" class="name-chip" data-agent-name="Luna">Luna ✨</button>
-              <button type="button" class="name-chip" data-agent-name="Max">Max ⚡</button>
-              <button type="button" class="name-chip" data-agent-name="Nova">Nova 🚀</button>
-              <button type="button" class="name-chip" data-agent-name="Ben">Ben 💬</button>
-            </div>
-            <div class="playground-status" id="playgroundStatus">
-              Klick auf einen Namen – wir passen Name, Wissen &amp; Tonfall komplett an deinen Betrieb an.
+          <div class="active-char-card">
+            <img
+              id="activeCharAvatar"
+              class="active-char-avatar"
+              src="https://image_generation_content/17400958496521113187"
+              alt="Kai Avatar"
+            />
+            <div>
+              <div class="active-char-role" id="activeCharRole">Kai – Dein KI-Berater 🤖✨</div>
+              <p class="active-char-quote" id="activeCharQuote">
+                Ruhig, souverän und glasklar. Beantwortet Fragen rund um die Uhr, erklärt alles verständlich und führt Besucher ohne Druck direkt zur Anfrage.
+              </p>
             </div>
           </div>
-
-          <!-- 3 Moderne Bento-Karten -->
-          <div class="hero-bento">
-            <div class="bento-card">
-              <div class="bento-top">
-                <span class="bento-icon">🌐</span>
-                <span class="bento-tag">Web &amp; Google</span>
-              </div>
-              <h3>Moderne Websites, die gefunden werden</h3>
-              <p>Individuelles Design für Handy &amp; Desktop, blitzschnell geladen und sauber für Google &amp; Maps optimiert.</p>
-            </div>
-
-            <div class="bento-card">
-              <div class="bento-top">
-                <span class="bento-icon">🧠</span>
-                <span class="bento-tag">KI-Berater</span>
-              </div>
-              <h3>Dein bester Berater – rund um die Uhr</h3>
-              <p>Beantwortet Kundenfragen in Sekunden, erklärt deine Leistungen und leitet fertige Anfragen direkt per Mail an dich weiter.</p>
-            </div>
-
-            <div class="bento-card">
-              <div class="bento-top">
-                <span class="bento-icon">😴</span>
-                <span class="bento-tag">Autopilot</span>
-              </div>
-              <h3>Du schläfst, dein Assistent arbeitet</h3>
-              <p>Kein verlorener Interessent mehr während der Arbeit oder nach Feierabend – dein digitaler Berater ist immer wach.</p>
-            </div>
-          </div>
-
-          <p class="hero-footnote">
-            <strong>Du hast schon eine Website?</strong> Kein Problem – wir ergänzen auch einfach nur Kai, ohne deine bestehende Seite zu verändern.
-          </p>
         </div>
       </div>
     </section>
@@ -1037,7 +1071,7 @@
     <section id="vorteile">
       <div class="container">
         <div class="section-head">
-          <h2>Was Kai 🤖 für deinen Betrieb übernimmt ⚡</h2>
+          <h2 id="benefitsTitle">Was Kai für deinen Betrieb übernimmt ⚡</h2>
           <p>Weniger verpasste Anrufe während der Arbeit 📵, mehr echte Kundenanfragen direkt in deinem Postfach. 📬</p>
         </div>
 
@@ -1045,12 +1079,12 @@
           <div class="card">
             <span class="card-icon">💬</span>
             <h3>Sofortige Antworten ⚡</h3>
-            <p>Kai 🤖 erklärt deine Leistungen, Öffnungszeiten 🕒, Preise und Abläufe direkt im Chat – ohne Wartezeit für deine Besucher.</p>
+            <p>Erklärt Leistungen, Öffnungszeiten 🕒, Preise und Abläufe direkt im Chat – ohne Wartezeit für deine Besucher.</p>
           </div>
           <div class="card">
             <span class="card-icon">📅</span>
             <h3>Anfragen &amp; Termine sichern 📝</h3>
-            <p>Statt Besucher an leere Kontaktformulare zu verlieren, fragt Kai 🤖 gezielt Name, Anliegen und Rückrufwunsch ab. 📞</p>
+            <p>Statt Besucher an leere Kontaktformulare zu verlieren, werden gezielt Name, Anliegen und Rückrufwunsch abgefragt. 📞</p>
           </div>
           <div class="card">
             <span class="card-icon">📩</span>
@@ -1065,7 +1099,7 @@
     <section id="ablauf">
       <div class="container">
         <div class="section-head">
-          <h2>In 3 Schritten zu deinem eigenen Kai 🤖 ✨</h2>
+          <h2>In 3 Schritten startklar ✨</h2>
           <p>Du musst dich um keine Technik kümmern 🛠️ – wir übernehmen Einrichtung, Training und Einbindung.</p>
         </div>
 
@@ -1073,12 +1107,12 @@
           <div class="card">
             <span class="card-icon">1️⃣</span>
             <h3>Kurzes Gespräch ☕</h3>
-            <p>Wir klären in 15 Minuten ⏱️, welche Fragen deine Kunden stellen und wie dein Assistent heißen und auftreten soll.</p>
+            <p>Wir klären in 15 Minuten ⏱️, welche Fragen deine Kunden stellen und wie dein digitaler Berater auftreten soll.</p>
           </div>
           <div class="card">
             <span class="card-icon">2️⃣</span>
             <h3>Individueller Aufbau 🎨</h3>
-            <p>Wir richten deinen Assistenten exakt auf deinen Betrieb, deine Leistungen und deinen Tonfall ein. 🎯</p>
+            <p>Wir richten deinen Berater exakt auf deinen Betrieb, deine Leistungen und deinen Tonfall ein. 🎯</p>
           </div>
           <div class="card">
             <span class="card-icon">3️⃣</span>
@@ -1089,18 +1123,17 @@
       </div>
     </section>
 
-    <!-- Paket & Preis -->
+    <!-- Pakete & Preise -->
     <section id="paket">
       <div class="container">
         <div class="section-head">
           <h2>Unsere Pakete &amp; Preise 💶</h2>
-          <p>Du hast schon eine Website? Dann ergänzen wir einfach Kai 🤖. Du brauchst noch eine neue Website? Wähle eines unserer 3 Komplettpakete inklusive Google-Sichtbarkeit. 🚀</p>
+          <p>Du hast schon eine Website? Dann ergänzen wir einfach deinen KI-Berater. Du brauchst eine neue Website? Wähle eines unserer 3 Komplettpakete inklusive Google-Sichtbarkeit. 🚀</p>
         </div>
 
-        <!-- Option A: Nur Kai für bestehende Website -->
         <div class="offer-box">
           <div>
-            <h2>Nur Kai 🤖 für deine bestehende Website</h2>
+            <h2 id="nurKaiTitle">Nur Kai für deine bestehende Website</h2>
             <ul class="offer-list">
               <li><span>🧠</span><span>Individuell auf deinen Betrieb trainierter KI-Berater</span></li>
               <li><span>🏷️</span><span>Eigener Name &amp; Persönlichkeit für deinen Assistenten</span></li>
@@ -1118,70 +1151,66 @@
           </div>
         </div>
 
-        <!-- Option B: 3 Website-Pakete inklusive Kai & Google-Sichtbarkeit -->
         <div class="packages-head">
-          <h3>Komplettpakete: Neue Website + Kai 🤖 + Google-Sichtbarkeit 🌐</h3>
-          <p>Alle Komplettpakete beinhalten deine neue Website, deinen eigenen Kai und saubere Grundlagen für Google &amp; Co.</p>
+          <h3>Komplettpakete: Neue Website + KI-Berater + Google-Sichtbarkeit 🌐</h3>
+          <p>Alle Komplettpakete beinhalten deine neue Website, deinen digitalen Berater und saubere Grundlagen für Google &amp; Co.</p>
         </div>
 
         <div class="packages-grid">
-          <!-- Paket 1 -->
           <div class="pkg-card">
             <div>
               <span class="pkg-badge">Paket 1 · Starter 🌱</span>
-              <h4 class="pkg-title">Starter-Website + Kai</h4>
+              <h4 class="pkg-title">Starter-Website</h4>
               <p class="pkg-desc">Ideal für kleine Betriebe und Solo-Selbstständige für einen schnellen, professionellen Auftritt.</p>
 
               <div class="pkg-price-box">
                 <div class="pkg-price">790 €</div>
                 <div class="price-caption">einmalige Einrichtung 🛠️</div>
                 <div class="pkg-monthly">+ 75 € / Monat</div>
-                <div class="price-caption">Website- &amp; Kai-Betrieb, Hosting &amp; Basis-Support ☁️</div>
+                <div class="price-caption">Website- &amp; Bot-Betrieb, Hosting &amp; Basis-Support ☁️</div>
                 <div class="pkg-bonus">🎁 1 Monat gratis (monatliche Gebühr entfällt!)</div>
               </div>
 
               <ul class="pkg-list">
                 <li><span>💻</span><span>Moderne Website (1–3 Seiten, Handy &amp; Desktop)</span></li>
-                <li><span>🤖</span><span>Dein eigener Kai fix &amp; fertig integriert</span></li>
+                <li><span>🤖</span><span>Dein digitaler Berater fix &amp; fertig integriert</span></li>
                 <li><span>🔍</span><span>Technisches Basis-SEO &amp; Google-Anmeldung</span></li>
                 <li><span>📲</span><span>Direkte Kontakt-, E-Mail- &amp; WhatsApp-Buttons</span></li>
                 <li><span>📄</span><span>Impressum &amp; Datenschutzerklärung eingebunden</span></li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary pkg-cta" data-open-chat>Paket 1 anfragen 💬</button>
+            <button type="button" class="btn btn-uv-outline pkg-cta" data-open-chat>Paket 1 anfragen 💬</button>
           </div>
 
-          <!-- Paket 2 -->
           <div class="pkg-card featured">
             <div>
               <span class="pkg-badge">Paket 2 · Bestseller ⭐</span>
-              <h4 class="pkg-title">Business-Website + Kai</h4>
+              <h4 class="pkg-title">Business-Website</h4>
               <p class="pkg-desc">Für Betriebe, die lokal bei Google gefunden werden und aktiv Kundenanfragen gewinnen wollen.</p>
 
               <div class="pkg-price-box">
                 <div class="pkg-price">1.290 €</div>
                 <div class="price-caption">einmalige Einrichtung 🛠️</div>
                 <div class="pkg-monthly">+ 100 € / Monat</div>
-                <div class="price-caption">Hosting, Pflege, Google-Profil &amp; Kai-Betreuung ☁️</div>
+                <div class="price-caption">Hosting, Pflege, Google-Profil &amp; Bot-Betreuung ☁️</div>
                 <div class="pkg-bonus">🎁 2 Monate gratis (monatliche Gebühr entfällt!)</div>
               </div>
 
               <ul class="pkg-list">
                 <li><span>🌐</span><span>Umfangreiche Website (bis zu 6 Seiten)</span></li>
-                <li><span>🧠</span><span>Kai individuell auf deine Leistungen trainiert</span></li>
+                <li><span>🧠</span><span>Individuell auf deine Leistungen trainiert</span></li>
                 <li><span>📍</span><span>Lokale Google-Optimierung (Leistung + Ort)</span></li>
                 <li><span>🗺️</span><span>Google Unternehmensprofil (Maps) einrichten &amp; verknüpfen</span></li>
                 <li><span>📩</span><span>Lead- &amp; Terminweiterleitung direkt an dein Postfach</span></li>
               </ul>
             </div>
-            <button type="button" class="btn btn-primary pkg-cta" data-open-chat>Paket 2 anfragen 🚀</button>
+            <button type="button" class="btn btn-uv pkg-cta" data-open-chat>Paket 2 anfragen 🚀</button>
           </div>
 
-          <!-- Paket 3 -->
           <div class="pkg-card">
             <div>
               <span class="pkg-badge">Paket 3 · Premium 👑</span>
-              <h4 class="pkg-title">Premium-Website + Kai</h4>
+              <h4 class="pkg-title">Premium-Website</h4>
               <p class="pkg-desc">Maximale Sichtbarkeit, individuelles Design und maßgeschneiderte Anfrage- &amp; Terminführung.</p>
 
               <div class="pkg-price-box">
@@ -1194,13 +1223,13 @@
 
               <ul class="pkg-list">
                 <li><span>🎨</span><span>Individuelles Design &amp; mehrere Leistungsbereiche</span></li>
-                <li><span>⚡</span><span>Kai mit maßgeschneiderter Termin- &amp; Anfrageführung</span></li>
+                <li><span>⚡</span><span>Maßgeschneiderte Termin- &amp; Anfrageführung</span></li>
                 <li><span>🚀</span><span>Erweiterte Google-Sichtbarkeit &amp; lokale Strukturdaten</span></li>
                 <li><span>🗺️</span><span>Google Unternehmensprofil komplett optimiert</span></li>
                 <li><span>🤝</span><span>Priority-Support &amp; laufende Feinabstimmung</span></li>
               </ul>
             </div>
-            <button type="button" class="btn btn-secondary pkg-cta" data-open-chat>Paket 3 anfragen 💬</button>
+            <button type="button" class="btn btn-uv-outline pkg-cta" data-open-chat>Paket 3 anfragen 💬</button>
           </div>
         </div>
       </div>
@@ -1210,20 +1239,20 @@
     <section id="kontakt">
       <div class="container">
         <div class="cta-box">
-          <h2>Bereit für deinen eigenen Kai 🤖? 🚀</h2>
+          <h2 id="ctaHeading">Bereit für deinen digitalen Berater? 🚀</h2>
           <p>
-            Teste Kai 🤖 direkt unten rechts im Chat 💬 oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein digitaler Berater auf deiner Website aussieht. ✨
+            Teste ihn direkt im Live-Chat 💬 oder schreib uns kurz – wir zeigen dir unverbindlich, wie dein Team auf deiner Website aussieht. ✨
           </p>
           <div class="cta-buttons">
-            <button type="button" class="btn btn-primary" data-open-chat>Mit Kai 🤖 einen Termin ausmachen</button>
-            <a href="mailto:kai.agentur@gmail.com?subject=Anfrage%20Kai%20Website-Berater" class="btn btn-email" aria-label="E-Mail senden">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <button type="button" class="btn btn-uv" id="ctaChatBtn" data-open-chat>Termin mit Kai ausmachen</button>
+            <a href="mailto:kai.agentur@gmail.com?subject=Anfrage%20KAI%20Agentur" class="btn btn-email" aria-label="E-Mail senden">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b21a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="4" width="20" height="16" rx="3"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
               <span>E-Mail senden</span>
             </a>
-            <a href="https://wa.me/491784919319?text=Hey%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Kai%2C%20kannst%20du%20mir%20auch%20einen%20machen%3F" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Per WhatsApp schreiben">
+            <a href="https://wa.me/491784919319?text=Hey%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eure%20Websites%20%26%20KI-Berater%21" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Per WhatsApp schreiben">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#25d366" aria-hidden="true">
                 <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.33-1.66a11.87 11.87 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42ZM12.07 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.88 9.89Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/>
               </svg>
@@ -1249,47 +1278,43 @@
     </div>
   </footer>
 
-  <!-- Chat Launcher -->
-  <button type="button" class="chat-launcher" id="chatLauncher" aria-label="Chat mit Kai öffnen">
-    <span>Kai 🤖 fragen</span>
+  <!-- Chat Bubble (erscheint erst ab Screen 2 beim Scrollen) -->
+  <button type="button" class="chat-launcher" id="chatLauncher" aria-label="Chat öffnen">
+    <img
+      id="launcherAvatarImg"
+      class="chat-launcher-avatar"
+      src="https://image_generation_content/17400958496521113187"
+      alt="Chat Avatar"
+    />
+    <span id="launcherLabel">Kai fragen 🤖</span>
   </button>
 
   <!-- Chat Fenster -->
-  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Kai Chat">
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Live Chat">
     <div class="chat-header">
       <div class="chat-title">
-        <span>Kai 🤖</span>
-        <span class="chat-status">● online</span>
+        <img
+          id="chatHeaderAvatar"
+          class="chat-header-avatar"
+          src="https://image_generation_content/17400958496521113187"
+          alt="Aktiver Charakter"
+        />
+        <div>
+          <div id="chatHeaderName">Kai 🤖✨</div>
+          <div class="chat-role-sub" id="chatHeaderSub">● online · Dein KI-Berater</div>
+        </div>
       </div>
       <button type="button" class="chat-close" id="chatClose" aria-label="Chat schließen">✕</button>
     </div>
 
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg bot">
-        Hey! 👋 Ich bin Kai 🤖 – dein digitaler Kundenberater. Brauchst du eine komplett neue Website mit mir an Bord oder willst du mich auf deiner bestehenden Seite einbauen? Frag mich gern alles! 🚀
-      </div>
-      <div class="quick-prompts" id="quickPrompts">
-        <button type="button" class="quick-prompt-btn" data-prompt="Was kosten eure Website-Pakete?">
-          🌐 Was kosten eure Website-Pakete?
-        </button>
-        <button type="button" class="quick-prompt-btn" data-prompt="Ich habe schon eine Website – was kostet Kai?">
-          🤖 Ich habe schon eine Website – was kostet Kai?
-        </button>
-        <button type="button" class="quick-prompt-btn" data-prompt="Ich möchte ein kostenloses Erstgespräch.">
-          📅 Ich möchte ein kostenloses Erstgespräch.
-        </button>
-        <button type="button" class="quick-prompt-btn" data-prompt="Hau mal einen Witz raus!">
-          😂 Hau mal einen Witz raus!
-        </button>
-      </div>
-    </div>
+    <div class="chat-messages" id="chatMessages"></div>
 
     <form class="chat-form" id="chatForm">
       <input
         type="text"
         class="chat-input"
         id="chatInput"
-        placeholder="Deine Nachricht an Kai..."
+        placeholder="Deine Nachricht..."
         autocomplete="off"
         required
       />
@@ -1299,59 +1324,204 @@
 
   <script>
     (function () {
-      const chatWindow = document.getElementById("chatWindow");
-      const chatLauncher = document.getElementById("chatLauncher");
-      const chatClose = document.getElementById("chatClose");
-      const chatMessages = document.getElementById("chatMessages");
-      const chatForm = document.getElementById("chatForm");
-      const chatInput = document.getElementById("chatInput");
-      const chatSend = document.getElementById("chatSend");
-      const quickPrompts = document.getElementById("quickPrompts");
-      const heroChatBtn = document.getElementById("heroChatBtn");
-      const playgroundStatus = document.getElementById("playgroundStatus");
+      const CHARACTERS = {
+        kai: {
+          name: "Kai",
+          badge: "Kai 🤖✨",
+          roleTitle: "Kai – Dein KI-Berater 🤖✨",
+          subLine: "● online · Ruhig, klar & souverän",
+          avatar: "https://image_generation_content/17400958496521113187",
+          quote: "Ruhig, souverän und glasklar. Beantwortet Fragen rund um die Uhr, erklärt alles verständlich und führt Besucher ohne Druck direkt zur Anfrage.",
+          greeting: "Hey! 👋 Ich bin Kai – dein ruhiger, souveräner KI-Berater. Ich erkläre dir gern unsere Pakete oder nehme direkt dein Anliegen für ein Erstgespräch auf. Was möchtest du wissen? 🤖✨",
+          styleInstruction: "Du bist Kai, der ruhige, klare und souveräne KI-Berater der KAI Agentur. Schreibe freundlich, strukturiert und professionell ohne übertriebene Hektik."
+        },
+        luna: {
+          name: "Luna",
+          badge: "Luna 🌸📋",
+          roleTitle: "Luna – Deine Sekretärin 🌸📋",
+          subLine: "● online · Herzlich & top organisiert",
+          avatar: "https://image_generation_content/7077592720050227749",
+          quote: "Warmherzig, aufmerksam und top organisiert. Nimmt Anliegen charmant entgegen, sortiert alles sauber vor und sorgt dafür, dass kein Kunde untergeht.",
+          greeting: "Hallo und herzlich willkommen! 🌸 Ich bin Luna, deine Sekretärin bei der KAI Agentur. Ich sortiere dein Anliegen ganz entspannt für dich vor – wie kann ich dir heute weiterhelfen? 📋✨",
+          styleInstruction: "Du bist Luna, die herzliche, aufmerksame und perfekt organisierte Sekretärin der KAI Agentur. Schreibe warmherzig, zuvorkommend und strukturiert."
+        },
+        bob: {
+          name: "Bob",
+          badge: "Bob 🛠️💪",
+          roleTitle: "Bob – Unser Handwerker 🛠️💪",
+          subLine: "● online · Direkt & anpackend",
+          avatar: "https://image_generation_content/12295675431885750969",
+          quote: "Ehrliche Haut, packt direkt an und redet nicht lange um den heißen Brei. Klärt Fakten auf der Baustelle wie am Telefon – kurz, knackig, verlässlich.",
+          greeting: "Moin! 🛠️ Ich bin Bob, unser Mann fürs Grobe und Klare. Kein langes Drumherumgerede: Was liegt bei dir an, neue Seite oder KI-Berater auf die bestehende Kiste? 💪",
+          styleInstruction: "Du bist Bob, der bodenständige, direkte und zupackende Handwerker der KAI Agentur. Schreibe kurz, ehrlich, locker und ohne Fachchinesisch."
+        },
+        nova: {
+          name: "Nova",
+          badge: "Nova 🚀📝",
+          roleTitle: "Nova – Unsere Praktikantin 🚀📝",
+          subLine: "● online · Frisch & blitzschnell",
+          avatar: "https://image_generation_content/11643169259663903421",
+          quote: "Frisch, neugierig und super motiviert. Hört genau zu, notiert jedes Detail blitzschnell und leitet alles sofort an den Chef weiter.",
+          greeting: "Hiii! 🚀 Ich bin Nova, die motivierteste Praktikantin der KAI Agentur! Ich hab schon den Stift gezückt und notiere mir alles super schnell – worum geht’s bei dir? 📝⚡",
+          styleInstruction: "Du bist Nova, die frische, begeisterte und super motivierte Praktikantin der KAI Agentur. Schreibe energetisch, schnell, neugierig und hilfsbereit."
+        },
+        kevin: {
+          name: "Kevin",
+          badge: "Kevin 😂",
+          roleTitle: "Kevin 😂",
+          subLine: "● online · Trocken & entspannt",
+          avatar: "https://image_generation_content/6806310450130586392",
+          quote: "Keine Sorge, wir nehmen „Kevin“ absolut ernst! Hinter dem Namen steckt trotzdem ein hochprofessioneller KI-Berater für deinen Betrieb. 😉",
+          greeting: "Jo, Kevin hier. 😎 Keine Sorge, wir nehmen „Kevin“ absolut ernst – hinten dran steckt trotzdem volle KI-Power für deinen Betrieb. Was kann ich für dich regeln? 😉",
+          styleInstruction: "Du bist Kevin – entspannter trockener Humor gepaart mit verlässlicher Kompetenz. Bleib locker und charmant, ohne unprofessionell zu wirken."
+        },
+        marcel: {
+          name: "Marcel",
+          badge: "Marcel 🏆📞",
+          roleTitle: "Marcel – Leiter für Kundenzufriedenheit 🏆📞",
+          subLine: "● online · Bringt es zum Laufen",
+          avatar: "https://image_generation_content/17550585987975080515",
+          quote: "„Hallo, mein Name ist Marcel – Leiter für Kundenzufriedenheit!“ Wir verkaufen zwar kein DSL, aber wenn du ein Problem hast: Bringt er es zum Laufen. 🤝✨",
+          greeting: "Hallo, mein Name ist Marcel – Leiter für Kundenzufriedenheit! 🏆📞 Wir verkaufen zwar kein DSL, aber wenn du ein Problem hast: Ich bringe es zum Laufen. Wo drückt der Schuh? 🤝✨",
+          styleInstruction: "Du bist Marcel, Leiter für Kundenzufriedenheit bei der KAI Agentur (mit Augenzwinkern im Stil von Marcel Davis, aber ohne DSL zu verkaufen). Hilfsbereit, lösungsorientiert und verbindlich."
+        }
+      };
 
+      let activeKey = "kai";
       const contents = [];
 
-      // Spielerische Namens-Auswahl im Hero
-      document.querySelectorAll(".name-chip[data-agent-name]").forEach(function (chip) {
-        chip.addEventListener("click", function () {
-          document.querySelectorAll(".name-chip").forEach(function (c) {
-            c.classList.remove("active");
+      const heroAvatarImg = document.getElementById("heroAvatarImg");
+      const activeCharAvatar = document.getElementById("activeCharAvatar");
+      const activeCharRole = document.getElementById("activeCharRole");
+      const activeCharQuote = document.getElementById("activeCharQuote");
+      const dynamicTalkBtn = document.getElementById("dynamicTalkBtn");
+      const launcherAvatarImg = document.getElementById("launcherAvatarImg");
+      const launcherLabel = document.getElementById("launcherLabel");
+      const chatHeaderAvatar = document.getElementById("chatHeaderAvatar");
+      const chatHeaderName = document.getElementById("chatHeaderName");
+      const chatHeaderSub = document.getElementById("chatHeaderSub");
+      const benefitsTitle = document.getElementById("benefitsTitle");
+      const nurKaiTitle = document.getElementById("nurKaiTitle");
+      const ctaChatBtn = document.getElementById("ctaChatBtn");
+      const chatInput = document.getElementById("chatInput");
+      const chatMessages = document.getElementById("chatMessages");
+      const chatLauncher = document.getElementById("chatLauncher");
+      const chatWindow = document.getElementById("chatWindow");
+      const chatClose = document.getElementById("chatClose");
+      const chatForm = document.getElementById("chatForm");
+      const chatSend = document.getElementById("chatSend");
+
+      function renderGreetingAndPrompts(charObj) {
+        if (!chatMessages) return;
+        chatMessages.innerHTML = "";
+
+        const botGreeting = document.createElement("div");
+        botGreeting.className = "msg bot";
+        botGreeting.textContent = charObj.greeting;
+        chatMessages.appendChild(botGreeting);
+
+        const quickWrap = document.createElement("div");
+        quickWrap.className = "quick-prompts";
+        quickWrap.id = "quickPrompts";
+
+        const prompts = [
+          { label: "🌐 Was kosten eure Website-Pakete?", text: "Was kosten eure Website-Pakete?" },
+          { label: "🤖 Ich habe schon eine Website – was kostet der KI-Berater?", text: "Ich habe schon eine Website – was kostet der KI-Berater?" },
+          { label: "📅 Ich möchte ein kostenloses Erstgespräch.", text: "Ich möchte ein kostenloses Erstgespräch." },
+          { label: "😂 Hau mal einen Witz raus!", text: "Hau mal einen Witz raus!" }
+        ];
+
+        prompts.forEach(function (item) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "quick-prompt-btn";
+          btn.textContent = item.label;
+          btn.addEventListener("click", function () {
+            sendChatMessage(item.text);
           });
-          chip.classList.add("active");
-          const chosen = chip.getAttribute("data-agent-name") || "Kai";
-          if (heroChatBtn) {
-            heroChatBtn.textContent = "Live mit " + chosen + " sprechen 🤖";
-          }
-          if (playgroundStatus) {
-            playgroundStatus.textContent = "„" + chosen + "“ klingt stark! Wir trainieren deinen Berater genau auf deinen Betrieb.";
-          }
+          quickWrap.appendChild(btn);
+        });
+
+        chatMessages.appendChild(quickWrap);
+      }
+
+      function applyCharacter(charKey) {
+        const c = CHARACTERS[charKey] || CHARACTERS.kai;
+        activeKey = charKey in CHARACTERS ? charKey : "kai";
+
+        document.querySelectorAll(".team-btn").forEach(function (btn) {
+          btn.classList.toggle("active", btn.getAttribute("data-char") === activeKey);
+        });
+
+        if (heroAvatarImg) {
+          heroAvatarImg.src = c.avatar;
+          heroAvatarImg.alt = c.roleTitle;
+        }
+        if (activeCharAvatar) {
+          activeCharAvatar.src = c.avatar;
+          activeCharAvatar.alt = c.roleTitle;
+        }
+        if (activeCharRole) activeCharRole.textContent = c.roleTitle;
+        if (activeCharQuote) activeCharQuote.textContent = c.quote;
+        if (dynamicTalkBtn) dynamicTalkBtn.textContent = "Mit " + c.name + " sprechen 💬";
+        if (launcherAvatarImg) {
+          launcherAvatarImg.src = c.avatar;
+          launcherAvatarImg.alt = c.name;
+        }
+        if (launcherLabel) launcherLabel.textContent = c.name + " fragen";
+        if (chatHeaderAvatar) {
+          chatHeaderAvatar.src = c.avatar;
+          chatHeaderAvatar.alt = c.name;
+        }
+        if (chatHeaderName) chatHeaderName.textContent = c.badge;
+        if (chatHeaderSub) chatHeaderSub.textContent = c.subLine;
+        if (benefitsTitle) benefitsTitle.textContent = "Was " + c.name + " für deinen Betrieb übernimmt ⚡";
+        if (nurKaiTitle) nurKaiTitle.textContent = "Nur " + c.name + " für deine bestehende Website";
+        if (ctaChatBtn) ctaChatBtn.textContent = "Termin mit " + c.name + " ausmachen";
+        if (chatInput) chatInput.placeholder = "Deine Nachricht an " + c.name + "...";
+
+        contents.length = 0;
+        renderGreetingAndPrompts(c);
+      }
+
+      document.querySelectorAll(".team-btn[data-char]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          applyCharacter(btn.getAttribute("data-char"));
         });
       });
+
+      // Bubble erst ab Screen 2 (nach dem Scrollen) einblenden
+      function updateBubbleVisibility() {
+        if (!chatLauncher) return;
+        const heroEl = document.getElementById("start");
+        const threshold = heroEl ? Math.max(120, heroEl.offsetHeight * 0.45) : 260;
+        if (window.scrollY > threshold || chatWindow.classList.contains("open")) {
+          chatLauncher.classList.add("visible");
+        } else {
+          chatLauncher.classList.remove("visible");
+        }
+      }
+
+      window.addEventListener("scroll", updateBubbleVisibility, { passive: true });
 
       function setChatOpen(isOpen) {
         if (!chatWindow) return;
         if (isOpen) {
           chatWindow.classList.add("open");
           chatWindow.style.display = "flex";
+          if (chatLauncher) chatLauncher.classList.add("visible");
         } else {
           chatWindow.classList.remove("open");
           chatWindow.style.display = "none";
+          updateBubbleVisibility();
         }
       }
 
-      window.openChat = function () {
-        setChatOpen(true);
-      };
-
-      window.closeChat = function () {
-        setChatOpen(false);
-      };
-
+      window.openChat = function () { setChatOpen(true); };
+      window.closeChat = function () { setChatOpen(false); };
       window.toggleChat = function () {
-        if (!chatWindow) return;
-        const isCurrentlyOpen = chatWindow.classList.contains("open") || chatWindow.style.display === "flex";
-        setChatOpen(!isCurrentlyOpen);
+        const open = chatWindow.classList.contains("open") || chatWindow.style.display === "flex";
+        setChatOpen(!open);
       };
 
       document.querySelectorAll("[data-open-chat]").forEach(function (btn) {
@@ -1360,22 +1530,12 @@
         });
       });
 
-      if (chatLauncher) {
-        chatLauncher.addEventListener("click", function () {
-          window.toggleChat();
-        });
-      }
-
-      if (chatClose) {
-        chatClose.addEventListener("click", function () {
-          setChatOpen(false);
-        });
-      }
+      if (chatLauncher) chatLauncher.addEventListener("click", window.toggleChat);
+      if (chatClose) chatClose.addEventListener("click", function () { setChatOpen(false); });
 
       function hideQuickPrompts() {
-        if (quickPrompts) {
-          quickPrompts.style.display = "none";
-        }
+        const qp = document.getElementById("quickPrompts");
+        if (qp) qp.style.display = "none";
       }
 
       function appendMessage(text, sender) {
@@ -1402,9 +1562,7 @@
           if (!payload || payload === "[DONE]") continue;
           try {
             const parsed = JSON.parse(payload);
-            if (parsed?.error) {
-              throw new Error(parsed.error);
-            }
+            if (parsed?.error) throw new Error(parsed.error);
             if (typeof parsed?.text === "string") {
               out += parsed.text;
             } else {
@@ -1424,6 +1582,7 @@
         const text = (rawText || "").trim();
         if (!text || (chatSend && chatSend.disabled)) return;
 
+        const activeChar = CHARACTERS[activeKey] || CHARACTERS.kai;
         hideQuickPrompts();
         appendMessage(text, "user");
         contents.push({ role: "user", parts: [{ text: text }] });
@@ -1437,7 +1596,12 @@
           const res = await fetch("/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: contents })
+            body: JSON.stringify({
+              character: activeKey,
+              characterName: activeChar.name,
+              systemPrompt: activeChar.styleInstruction,
+              contents: contents
+            })
           });
 
           if (!res.ok) {
@@ -1472,9 +1636,7 @@
 
             if (buffer.trim()) {
               const tailDelta = extractStreamDelta(buffer);
-              if (tailDelta) {
-                fullRawReply += tailDelta;
-              }
+              if (tailDelta) fullRawReply += tailDelta;
             }
           } else {
             const fullText = await res.text();
@@ -1482,9 +1644,7 @@
           }
 
           const cleanReply = stripLeadMarker(fullRawReply);
-          if (!cleanReply) {
-            throw new Error("Leere Antwort");
-          }
+          if (!cleanReply) throw new Error("Leere Antwort");
 
           if (botBubble) {
             botBubble.textContent = cleanReply;
@@ -1501,13 +1661,6 @@
         }
       }
 
-      document.querySelectorAll(".quick-prompt-btn[data-prompt]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          const promptText = btn.getAttribute("data-prompt");
-          sendChatMessage(promptText);
-        });
-      });
-
       if (chatForm && chatInput) {
         chatForm.addEventListener("submit", async function (e) {
           e.preventDefault();
@@ -1517,6 +1670,9 @@
           await sendChatMessage(text);
         });
       }
+
+      applyCharacter("kai");
+      updateBubbleVisibility();
     })();
   </script>
 </body>
